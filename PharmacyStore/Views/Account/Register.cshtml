@@ -1,0 +1,62 @@
+﻿@model PharmacyStore.Models.RegisterModel
+@{
+    ViewBag.Title = "Đăng ký";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Tạo mới tài khoản.</h2>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmEmail)
+                @Html.TextBoxFor(m => m.ConfirmEmail)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Gender)
+                @Html.DropDownListFor(m => m.Gender, new SelectList(PharmacyStore.Models.OtherList.Gender, "Key", "Value"))
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Birthdate)
+                @Html.EditorFor(m => m.Birthdate)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Mobile)
+                @Html.EditorFor(m => m.Mobile)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.UserRefer)
+                @Html.TextBoxFor(m => m.UserRefer)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.TermsAccepted)
+                @Html.LabelFor(m => m.TermsAccepted)
+            </li>
+        </ol>
+        <input type="submit" value="Đăng ký" />
+    </fieldset>
+}

@@ -1,0 +1,89 @@
+﻿Giao diện:
+@(Html.Kendo().DropDownList()
+    .Name("skinselector")
+    .HtmlAttributes(new { @style = "width:100px;" })
+    .DataTextField("Text")
+    .DataValueField("Value")
+    .Events(e => e.Change("change"))
+    .BindTo(new List<SelectListItem>() {
+        new SelectListItem() {
+            Text = "Black",
+            Value = "Black"
+        },
+        new SelectListItem() {
+            Text = "Blue Opal",
+            Value = "blueopal"
+        },
+        new SelectListItem() {
+            Text = "Default",
+            Value = "default"
+        },
+        new SelectListItem() {
+            Text = "Metro",
+            Value = "metro"
+        },
+        new SelectListItem() {
+            Text = "Silver",
+            Value = "silver"
+        },
+        new SelectListItem() {
+            Text = "Bootstrap",
+            Value = "bootstrap"
+        },
+        new SelectListItem() {
+            Text = "Uniform",
+            Value = "uniform"
+        }
+    })
+    .Value("blueopal")
+)
+<script>
+    function change() {
+        var theme = (this.value() || "blueopal").toLowerCase();
+        changeTheme(theme);
+    };
+
+    // loads new stylesheet
+    function changeTheme(skinName, animate) {
+        var doc = document,
+            kendoLinks = $("link[href*='kendo.']", doc.getElementsByTagName("head")[0]),
+            commonLink = kendoLinks.filter("[href*='kendo.common']"),
+            skinLink = kendoLinks.filter(":not([href*='kendo.common'])"),
+            href = location.href,
+            skinRegex = /kendo\.\w+(\.min)?\.css/i,
+            extension = skinLink.attr("rel") === "stylesheet" ? ".css" : ".less",
+            url = commonLink.attr("href").replace(skinRegex, "kendo." + skinName + "$1" + extension),
+            exampleElement = $("#example");
+
+        function preloadStylesheet(file, callback) {
+            var element = $("<link rel='stylesheet' media='print' href='" + file + "'").appendTo("head");
+
+            setTimeout(function () {
+                callback();
+                element.remove();
+            }, 100);
+        }
+
+        function replaceTheme() {
+            var oldSkinName = $(doc).data("kendoSkin"),
+                newLink;
+
+            if ($.browser.msie) {
+                newLink = doc.createStyleSheet(url);
+            } else {
+                newLink = skinLink.eq(0).clone().attr("href", url);
+            }
+
+            newLink.insertBefore(skinLink[0]);
+            skinLink.remove();
+
+            $(doc.documentElement).removeClass("k-" + oldSkinName).addClass("k-" + skinName);
+        }
+
+        if (animate) {
+            preloadStylesheet(url, replaceTheme);
+        } else {
+            replaceTheme();
+        }
+    };
+</script>
