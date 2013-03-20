@@ -1,0 +1,26 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+        @(Html.Kendo().Menu()
+            .Name("menu")
+            .Items(menu =>
+            {
+                menu.Add()
+                    .Text("Nghiệp vụ")
+                    .Items(child =>
+                    {
+                        child.Add().Text("Nhập kho").Action("Index", "NhapKho");
+                        child.Add().Text("Bán hàng").Action("Index", "BanHang");
+                    });
+                menu.Add().Text("Thiết lập");
+                menu.Add()
+                    .Text("Danh mục")
+                    .Items(child =>
+                    {
+                        child.Add().Text("Danh mục loại thuốc, dụng cụ y tế");
+                        child.Add().Text("Danh mục bác sĩ").Action("Index", "Doctor");
+                    });
+                menu.Add().Text("Báo cáo").Action("Index", "Home");
+                menu.Add().Text("Trợ giúp").Action("About", "Home");
+            }))
+    </text>
+}

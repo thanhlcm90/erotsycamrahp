@@ -1,0 +1,43 @@
+﻿@model PharmacyStore.OpenAccess.LS_DOCTOR
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<fieldset>
+    <legend>LS_DOCTOR</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fullname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fullname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mobile)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mobile)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StoreId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StoreId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

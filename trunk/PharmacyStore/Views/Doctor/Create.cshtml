@@ -1,0 +1,59 @@
+﻿@model PharmacyStore.OpenAccess.LS_DOCTOR
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LS_DOCTOR</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fullname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fullname)
+            @Html.ValidationMessageFor(model => model.Fullname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Mobile)
+            @Html.ValidationMessageFor(model => model.Mobile)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StoreId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StoreId)
+            @Html.ValidationMessageFor(model => model.StoreId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
