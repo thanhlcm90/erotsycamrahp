@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PharmacyStore.Models.SY_STORE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Website)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreTelephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreTaxNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreFax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Website)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreTelephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreTaxNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
