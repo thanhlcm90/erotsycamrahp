@@ -1,7 +1,7 @@
-﻿@model IEnumerable<PharmacyStore.OpenAccess.LS_DOCTOR>
+﻿@model IEnumerable<PharmacyStore.Models.LS_DOCTOR>
 
 @{
-    ViewBag.Title = "Danh sách bác sĩ";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -12,16 +12,16 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Fullname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Store.Website)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Mobile)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StoreId)
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th></th>
     </tr>
@@ -29,16 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Fullname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
+            @Html.DisplayFor(modelItem => item.Store.Website)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Mobile)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StoreId)
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

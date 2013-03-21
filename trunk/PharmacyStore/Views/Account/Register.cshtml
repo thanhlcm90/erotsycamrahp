@@ -1,62 +1,105 @@
 ﻿@model PharmacyStore.Models.RegisterModel
 @{
-    ViewBag.Title = "Đăng ký";
+    ViewBag.Title = "Đăng ký tài khoản";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Tạo mới tài khoản.</h2>
 </hgroup>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
+    <table class="table-form">
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.UserName)
+            </td>
+            <td>
                 @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.Password)
+            </td>
+            <td>
                 @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.ConfirmPassword)
+            </td>
+            <td>
                 @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-            <li>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.Email)
-                @Html.TextBoxFor(m => m.Email)
-            </li>
-            <li>
+            </td>
+            <td>
+                @Html.EditorFor(m => m.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.ConfirmEmail)
-                @Html.TextBoxFor(m => m.ConfirmEmail)
-            </li>
-            <li>
+            </td>
+            <td>
+                @Html.EditorFor(m => m.ConfirmEmail)
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.Gender)
-                @Html.DropDownListFor(m => m.Gender, new SelectList(PharmacyStore.Models.OtherList.Gender, "Key", "Value"))
-            </li>
-            <li>
+            </td>
+            <td>
+                @Html.Kendo().DropDownListFor(m => m.Gender).BindTo(new SelectList(PharmacyStore.Models.OtherList.Gender,"Key","Value"))
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Identification)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.Identification)
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.Birthdate)
-                @Html.EditorFor(m => m.Birthdate)
-            </li>
-            <li>
+            </td>
+            <td>
+                @Html.Kendo().DatePickerFor(m => m.Birthdate)
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.Mobile)
-                @Html.EditorFor(m => m.Mobile)
-            </li>
-            <li>
+            </td>
+            <td>
+                @(Html.TextBoxFor(m => m.Mobile))
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(m => m.UserRefer)
+            </td>
+            <td>
                 @Html.TextBoxFor(m => m.UserRefer)
-            </li>
-            <li>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
                 @Html.CheckBoxFor(m => m.TermsAccepted)
                 @Html.LabelFor(m => m.TermsAccepted)
-            </li>
-        </ol>
-        <input type="submit" value="Đăng ký" />
-    </fieldset>
+            </td>
+        </tr>
+    </table>
+    
+    <input type="submit" value="Đăng ký" />
 }

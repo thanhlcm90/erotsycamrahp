@@ -166,15 +166,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CommonFunction\CommonFunction.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\DoctorController.cs" />
-    <Compile Include="Migrations\201303200701032_Init.cs" />
-    <Compile Include="Migrations\201303200701032_Init.Designer.cs">
-      <DependentUpon>201303200701032_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201303201039000_Init.cs" />
+    <Compile Include="Migrations\201303201039000_Init.Designer.cs">
+      <DependentUpon>201303201039000_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Mapping\SY_USERConfiguration.cs" />
@@ -766,6 +767,7 @@
     </Content>
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Site.css">
     </Content>
@@ -780,10 +782,6 @@
     <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
-    <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Doctor\Create.cshtml" />
-    <Content Include="Views\Doctor\Details.cshtml" />
-    <Content Include="Views\Doctor\Edit.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -796,6 +794,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Shared\_SelectSkinPartial.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Store\Details.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
+    <Content Include="Views\Store\Delete.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Doctor\Create.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Doctor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -806,8 +814,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201303200701032_Init.resx">
-      <DependentUpon>201303200701032_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201303201039000_Init.resx">
+      <DependentUpon>201303201039000_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

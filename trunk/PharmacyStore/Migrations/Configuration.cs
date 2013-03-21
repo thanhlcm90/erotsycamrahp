@@ -27,7 +27,7 @@ namespace PharmacyStore.Migrations
             if (!WebSecurity.UserExists("thanhlcm"))
                 WebSecurity.CreateUserAndAccount(
                     "thanhlcm",
-                    "P@$$w0rd!", new { Birthdate = new DateTime(1990, 03, 23), });
+                    "P@$$w0rd!", new { Birthdate = new DateTime(1990, 03, 23), Gender = 1, Email = "thanhlcm90@gmail.com", Identification = "225414257" });
             if (!Roles.GetRolesForUser("thanhlcm").Contains("Administrator"))
                 Roles.AddUsersToRoles(new[] { "thanhlcm" }, new[] { "Administrator" });
         }

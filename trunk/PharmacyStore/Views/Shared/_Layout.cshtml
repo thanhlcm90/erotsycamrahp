@@ -4,9 +4,9 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/jquery.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.all.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js")"></script>
@@ -21,21 +21,15 @@
             @Html.Partial("_SelectSkinPartial")
         </section>
     </div>
-    <div id="titlefixed">
-        <section id="menu">
-            @Html.Partial("_MenuPartial")
-        </section>
-        <div id="contenttitle">
-            @ViewBag.Title
+    <section id="menu">
+        @Html.Partial("_MenuPartial")
+    </section>
+    <div class="k-block">
+        <div class="k-header k-shadow">@ViewBag.Title</div>
+        <div class="k-block-content">
+        @RenderBody()
         </div>
     </div>
-    <div id="content">
-        <section id="main">
-            @RenderBody()
-        </section>
-    </div>
-    )
-    
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
@@ -57,19 +51,34 @@
         });
 
         $(document).ready(function () {
-            $("#titlefixed").addClass("defaultmenu");
-            titlefixedtop =
-                $("#titlefixed").position().top - 30;
+            $("#menu").addClass("defaultmenu");
+            titlefixedtop = $("#menu").position().top - 30;
+            TransformKendo();
         });
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() >= titlefixedtop) {
-                $("#titlefixed").addClass("fixedtop").removeClass("defaultmenu");
-            }
-            else {
-                $("#titlefixed").removeClass("fixedtop").addClass("defaultmenu");
+            var obj = $find("#menu");
+            if (obj != null) {
+                if ($(window).scrollTop() >= titlefixedtop) {
+                    $("#menu").addClass("fixedtop").removeClass("defaultmenu");
+                }
+                else {
+                    $("#menu").removeClass("fixedtop").addClass("defaultmenu");
+                }
             }
         });
+
+        //Thay đổi giao diện các control chuẩn của html thành của kendo
+        function TransformKendo() {
+            $("input").each(function () {
+                var type = $(this).attr("type");
+                if (type == 'text' || type == 'password' || type == 'email') {
+                    $(this).addClass('k-textbox');
+                } else if (type == 'submit' || type == 'reset') {
+                    $(this).addClass('k-button');
+                }
+            });
+        }
     </script>
 </body>
 </html>

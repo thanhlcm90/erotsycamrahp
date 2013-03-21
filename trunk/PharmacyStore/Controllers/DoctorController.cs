@@ -1,11 +1,13 @@
-﻿using PharmacyStore.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PharmacyStore.Models;
 
-namespace PharmacyStore
+namespace PharmacyStore.Controllers
 {
     public class DoctorController : Controller
     {
@@ -16,20 +18,21 @@ namespace PharmacyStore
 
         public ActionResult Index()
         {
-            return View(db.LS_DOCTORs.ToList());
+            var ls_doctors = db.LS_DOCTORs.Include(l => l.Store);
+            return View(ls_doctors.ToList());
         }
 
         //
         // GET: /Doctor/Details/5
 
-        public ActionResult Details(Guid id)
+        public ActionResult Details(int id = 0)
         {
-            LS_DOCTOR doctor = db.LS_DOCTORs.Where(p => p.Id == id).SingleOrDefault();
-            if (doctor == null)
+            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
+            if (ls_doctor == null)
             {
                 return HttpNotFound();
             }
-            return View(doctor);
+            return View(ls_doctor);
         }
 
         //
@@ -37,6 +40,7 @@ namespace PharmacyStore
 
         public ActionResult Create()
         {
+            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website");
             return View();
         }
 
@@ -44,70 +48,78 @@ namespace PharmacyStore
         // POST: /Doctor/Create
 
         [HttpPost]
-        public ActionResult Create(LS_DOCTOR doctor)
+        public ActionResult Create(LS_DOCTOR ls_doctor)
         {
             if (ModelState.IsValid)
             {
-                db.LS_DOCTORs.Add(doctor);
+                db.LS_DOCTORs.Add(ls_doctor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(doctor);
+
+            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
+            return View(ls_doctor);
         }
 
         //
         // GET: /Doctor/Edit/5
 
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(int id = 0)
         {
-            LS_DOCTOR doctor = db.LS_DOCTORs.Where(p => p.Id == id).SingleOrDefault();
-            if (doctor == null)
+            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
+            if (ls_doctor == null)
             {
                 return HttpNotFound();
             }
-            return View(doctor);
+            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
+            return View(ls_doctor);
         }
 
         //
         // POST: /Doctor/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Guid id, LS_DOCTOR doctor)
+        public ActionResult Edit(LS_DOCTOR ls_doctor)
         {
             if (ModelState.IsValid)
             {
-                LS_DOCTOR doctorUpdate = db.LS_DOCTORs.Where(p => p.Id == id).SingleOrDefault();
-                CommonFunction.CopyProperties(doctorUpdate, doctor);
+                db.Entry(ls_doctor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(doctor);
+            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
+            return View(ls_doctor);
         }
 
         //
         // GET: /Doctor/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            return View();
+            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
+            if (ls_doctor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ls_doctor);
         }
 
         //
         // POST: /Doctor/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
+            db.LS_DOCTORs.Remove(ls_doctor);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

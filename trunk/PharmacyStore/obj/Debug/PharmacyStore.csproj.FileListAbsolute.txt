@@ -58,8 +58,8 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\pt-PT\Kendo.Mvc.resources.d
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\ru-RU\Kendo.Mvc.resources.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\uk-UA\Kendo.Mvc.resources.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\zh-CN\Kendo.Mvc.resources.dll
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.Migrations.Init.resources
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csproj.GenerateResource.Cache
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.pdb
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csprojResolveAssemblyReference.cache
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.Migrations.Init.resources
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csproj.GenerateResource.Cache

@@ -11,7 +11,6 @@ namespace PharmacyStore.Models
     {
         public static Dictionary<int, string> Gender = new Dictionary<int, string>()
             {
-                { 0, ""},
                 { 1, "Male"},
                 { 2, "Female"}
             };
