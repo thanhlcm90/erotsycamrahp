@@ -1,7 +1,73 @@
 ﻿<!DOCTYPE html>
+
+<!--[if IEMobile 7]><html class="no-js iem7 oldie"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7 oldie" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="en"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <html>
 <head>
     <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/reset.css?v=1")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/style.css?v=1")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/colors.css?v=1")">
+    <link rel="stylesheet" media="print" href="@Url.Content("~/Content/print.css?v=1")">
+    <!-- For progressively larger displays -->
+    <link rel="stylesheet" media="only all and (min-width: 480px)" href="@Url.Content("~/Content/480.css?v=1")">
+    <link rel="stylesheet" media="only all and (min-width: 768px)" href="@Url.Content("~/Content/768.css?v=1")">
+    <link rel="stylesheet" media="only all and (min-width: 992px)" href="@Url.Content("~/Content/992.css?v=1")">
+    <link rel="stylesheet" media="only all and (min-width: 1200px)" href="@Url.Content("~/Content/1200.css?v=1")">
+    <!-- For Retina displays -->
+    <link rel="stylesheet" media="only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)" href="@Url.Content("~/Content/2x.css?v=1")">
+
+    <!-- JavaScript at bottom except for Modernizr -->
+    <script src="@Url.Content("~/Scripts/developer/libs/modernizr.custom.js")"></script>
+
+    <!-- For Modern Browsers -->
+    <link rel="shortcut icon" src="@Url.Content("~/Images/favicons/favicon.png")">
+    <!-- For everything else -->
+    <link rel="shortcut icon" src="@Url.Content("~/Images/favicons/favicon.ico")">
+    <!-- For retina screens -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" src="@Url.Content("~/Images/favicons/apple-touch-icon-retina.png")">
+    <!-- For iPad 1-->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" src="@Url.Content("~/Images/favicons/apple-touch-icon-ipad.png")">
+    <!-- For iPhone 3G, iPod Touch and Android -->
+    <link rel="apple-touch-icon-precomposed" src="@Url.Content("~/Images/favicons/apple-touch-icon.png")">
+
+    <!-- iOS web-app metas -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" src="@Url.Content("~/Images/splash/ipad-landscape.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" src="@Url.Content("~/Images/splash/ipad-portrait.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" src="@Url.Content("~/Images/splash/iphone.png")" media="screen and (max-device-width: 320px)">
+
+    <!-- Microsoft clear type rendering -->
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
+    <meta name="application-name" content="Developr Admin Skin">
+    <meta name="msapplication-tooltip" content="Cross-platform admin template.">
+    <meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
+    <!-- These custom tasks are examples, you need to edit them to show actual pages -->
+    <meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+    <meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+
+    <!-- Style for Kendo  -->
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
@@ -12,61 +78,115 @@
     <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js")"></script>
 </head>
 
-<body>
-    <div id="header">
-        <section id="login">
-            @Html.Partial("_LoginPartial")
-        </section>
-        <section id="skinselectorsection">
-            @Html.Partial("_SelectSkinPartial")
-        </section>
-    </div>
-    <section id="menu">
+<body class="clearfix with-menu with-shortcuts">
+    <!-- Prompt IE 6 users to install Chrome Frame -->
+    <!--[if lt IE 7]><p class="message red-gradient simpler">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+    <!-- Title bar -->
+    <header role="banner" id="title-bar">
+        <h2>@ViewBag.Title
+        </h2>
+    </header>
+
+    <!-- Button to open/hide menu -->
+    <a href="#" id="open-menu"><span>Menu</span></a>
+
+    <!-- Button to open/hide shortcuts -->
+    <a href="#" id="open-shortcuts"><span class="icon-thumbs"></span></a>
+
+    <!-- Main content -->
+    <section role="main" id="main">
+
+        <!-- Visible only to browsers without javascript -->
+        <noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
+        @RenderBody()
+
+    </section>
+    <!-- End main content -->
+
+    <!-- Side tabs shortcuts -->
+    @Html.Partial("_ShortcutPartial")
+
+    <!-- Sidebar/drop-down menu -->
+    <section id="menu" role="complementary">
         @Html.Partial("_MenuPartial")
     </section>
-    <div class="k-block">
-        <div class="k-header k-shadow">@ViewBag.Title</div>
-        <div class="k-block-content">
-        @RenderBody()
-        </div>
-    </div>
+    <!-- End sidebar/drop-down menu -->
+
+    @*<div id="header">
+		<section id="login">
+			@Html.Partial("_LoginPartial")
+		</section>
+	</div>
+	<section id="menu">
+		@Html.Partial("_MenuPartial")
+	</section>*@
+
+    <!-- JavaScript at the bottom for fast page loading -->
+
+    <!-- Scripts -->
+    <script src="@Url.Content("~/Scripts/developer/setup.js")"></script>
+
+    <!-- Template functions -->
+    <script src="@Url.Content("~/Scripts/developer/developr.navigable.js")"></script>
+    <script src="@Url.Content("~/Scripts/developer/developr.notify.js")"></script>
+    <script src="@Url.Content("~/Scripts/developer/developr.scroll.js")"></script>
+    <script src="@Url.Content("~/Scripts/developer/developr.tooltip.js")"></script>
+
+    <!-- Tinycon -->
+    <script src="@Url.Content("~/Scripts/developer/libs/tinycon.min.js")"></script>
+
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
-        var titlefixedtop;
+        // Call template init (optional, but faster if called manually)
+        $.template.init();
 
-        $(".themeChooser").kendoDropDownList({
-            dataSource: [
-                { text: "Black", value: "black" },
-                { text: "Blue Opal", value: "blueopal" },
-                { text: "Default", value: "default" },
-                { text: "Metro", value: "metro" },
-                { text: "Silver", value: "silver" }
-            ],
-            change: function (e) {
-                var theme = (this.value() || "default").toLowerCase();
 
-                changeTheme(theme);
-            }
-        });
+        // If the browser support the Notification API, ask user for permission (with a little delay)
+        if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet()) {
+            setTimeout(function () {
+                notify.showNotificationPermission('Your browser supports desktop notification, click here to enable them.', function () {
+                    // Confirmation message
+                    if (notify.hasNotificationPermission()) {
+                        notify('Notifications API enabled!', 'You can now see notifications even when the application is in background', {
+                            icon: 'img/demo/icon.png',
+                            system: true
+                        });
+                    }
+                    else {
+                        notify('Notifications API disabled!', 'Desktop notifications will not be used.', {
+                            icon: 'img/demo/icon.png'
+                        });
+                    }
+                });
 
-        $(document).ready(function () {
-            $("#menu").addClass("defaultmenu");
-            titlefixedtop = $("#menu").position().top - 30;
-            TransformKendo();
-        });
+            }, 2000);
+        }
 
-        $(window).scroll(function () {
-            var obj = $find("#menu");
-            if (obj != null) {
-                if ($(window).scrollTop() >= titlefixedtop) {
-                    $("#menu").addClass("fixedtop").removeClass("defaultmenu");
-                }
-                else {
-                    $("#menu").removeClass("fixedtop").addClass("defaultmenu");
-                }
-            }
-        });
+
+        /*
+		 * Handling of 'other actions' menu
+		 */
+
+
+        //$(document).ready(function () {
+        //	$("#menu").addClass("defaultmenu");
+        //	titlefixedtop = $("#menu").position().top - 30;
+        //	TransformKendo();
+        //});
+
+        //$(window).scroll(function () {
+        //	var obj = $find("#menu");
+        //	if (obj != null) {
+        //		if ($(window).scrollTop() >= titlefixedtop) {
+        //			$("#menu").addClass("fixedtop").removeClass("defaultmenu");
+        //		}
+        //		else {
+        //			$("#menu").removeClass("fixedtop").addClass("defaultmenu");
+        //		}
+        //	}
+        //});
 
         //Thay đổi giao diện các control chuẩn của html thành của kendo
         function TransformKendo() {

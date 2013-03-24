@@ -16,18 +16,47 @@ namespace PharmacyStore.Controllers
         //
         // GET: /Store/
 
+        [Authorize]
         public ActionResult Index()
         {
-            var sy_stores = db.SY_STOREs.Include(s => s.User);
-            return View(sy_stores.ToList());
+            List<StoreViewModel> sy_stores = (from p in db.SY_STOREs.ToList()
+                                       select new StoreViewModel
+                                       {
+                                           Id = p.Id,
+                                           StoreName = p.StoreName,
+                                           StoreAddress = p.StoreAddress,
+                                           Email = p.Email,
+                                           ListDoctor = String.Join("; ", p.ListDoctor),
+                                           OwnerFullname = p.User.Fullname,
+                                           StoreFax = p.StoreFax,
+                                           StoreTaxNo = p.StoreTaxNo,
+                                           StoreTelephone = p.StoreTelephone,
+                                           Website = p.Website
+                                       }).ToList();
+            return View(sy_stores);
         }
 
         //
         // GET: /Store/Details/5
 
+        [Authorize]
         public ActionResult Details(int id = 0)
         {
-            SY_STORE sy_store = db.SY_STOREs.Find(id);
+            StoreViewModel  sy_store = (from p in db.SY_STOREs.ToList()
+                                        where p.Id==id
+                                        select new StoreViewModel 
+                                        {
+                                            Id=p.Id,
+                                            StoreName=p.StoreName,
+                                            StoreAddress=p.StoreAddress,
+                                            Email=p.Email,
+                                            ListDoctor = String.Join("; ",p.ListDoctor),
+                                            OwnerFullname=p.User.Fullname,
+                                            StoreFax=p.StoreFax,
+                                            StoreTaxNo=p.StoreTaxNo,
+                                            StoreTelephone=p.StoreTelephone,
+                                            Website=p.Website
+                                        }).SingleOrDefault();
             if (sy_store == null)
             {
                 return HttpNotFound();
@@ -37,7 +66,7 @@ namespace PharmacyStore.Controllers
 
         //
         // GET: /Store/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.SY_USERs, "Id", "UserName");
@@ -47,73 +76,49 @@ namespace PharmacyStore.Controllers
         //
         // POST: /Store/Create
 
-        [HttpPost]
-        public ActionResult Create(SY_STORE sy_store)
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(StoreViewModel sy_store)
         {
-            if (ModelState.IsValid)
+            if (sy_store != null && ModelState.IsValid)
             {
-                db.SY_STOREs.Add(sy_store);
+                SY_STORE _new = new SY_STORE();
+                CommonFunction.CopyProperties(sy_store, _new);
+                _new.UserId = (from p in db.SY_USERs where p.UserName == User.Identity.Name select p.Id).SingleOrDefault();
+                db.SY_STOREs.Add(_new);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            ViewBag.UserId = new SelectList(db.SY_USERs, "Id", "UserName", sy_store.UserId);
             return View(sy_store);
         }
 
         //
-        // GET: /Store/Edit/5
+        // POST: /Store/Edit
 
-        public ActionResult Edit(int id = 0)
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Edit(StoreViewModel sy_store)
         {
-            SY_STORE sy_store = db.SY_STOREs.Find(id);
+            if (sy_store!=null && ModelState.IsValid)
+            {
+                SY_STORE _edit = db.SY_STOREs.Find(sy_store.Id);
+                CommonFunction.CopyProperties(sy_store, _edit);
+                db.SaveChanges();
+            }
+            return View(sy_store);
+        }
+
+        //
+        // POST: /Store/Delete
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Delete(StoreViewModel sy_store)
+        {
+            SY_STORE _delete = db.SY_STOREs.Find(sy_store.Id);
             if (sy_store == null)
             {
-                return HttpNotFound();
-            }
-            ViewBag.UserId = new SelectList(db.SY_USERs, "Id", "UserName", sy_store.UserId);
-            return View(sy_store);
-        }
-
-        //
-        // POST: /Store/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(SY_STORE sy_store)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sy_store).State = EntityState.Modified;
+                db.SY_STOREs.Remove(_delete);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UserId = new SelectList(db.SY_USERs, "Id", "UserName", sy_store.UserId);
-            return View(sy_store);
-        }
-
-        //
-        // GET: /Store/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            SY_STORE sy_store = db.SY_STOREs.Find(id);
-            if (sy_store == null)
-            {
                 return HttpNotFound();
             }
             return View(sy_store);
-        }
-
-        //
-        // POST: /Store/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            SY_STORE sy_store = db.SY_STOREs.Find(id);
-            db.SY_STOREs.Remove(sy_store);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

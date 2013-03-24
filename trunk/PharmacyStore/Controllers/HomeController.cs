@@ -8,10 +8,9 @@ namespace PharmacyStore
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 

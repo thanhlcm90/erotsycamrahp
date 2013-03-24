@@ -4,125 +4,124 @@ to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 html, body {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
 }
 
 body {
-    font: 11px "Segoe UI",Arial, Verdana, Tahoma, "Segoe UI", Times;
-    color: #383838;
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    z-index: 0;
+	font: 11px "Segoe UI",Arial, Verdana, Tahoma, "Segoe UI", Times;
+	color: #383838;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	z-index: 0;
 }
 
 #header {
-    height: 120px;
-    background: url('../Images/banner.jpg');
-}
-
-#skinselectorsection {
-    float: right;
-    margin-right: 200px;
-    margin-top: 5px;
+	height: 120px;
+	background: url('../Images/banner.jpg') no-repeat;
 }
 
 #login {
-    padding-right: 20px;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    color: white;
+	padding-right: 20px;
+	position: absolute;
+	right: 0;
+	top: 10px;
+	color: white;
 }
 
 .k-block-content {
-    padding: 5px !important;	
+	padding: 5px !important;	
+}
+
+.k-header {
+	font-weight:bold !important;
+	padding-left:5px !important ;
 }
 
 
 /* HEADINGS   
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
-    font-size: 1.5em;
-    color: #000;
+	font-size: 1.5em;
+	color: #000;
 }
 
 h1 {
-    font-size: 2em;
-    padding-bottom: 0;
-    margin-bottom: 0;
+	font-size: 2em;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 h2 {
-    padding: 0 0 10px 0;
+	padding: 0 0 10px 0;
 }
 
 h3 {
-    font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 h4 {
-    font-size: 1.1em;
+	font-size: 1.1em;
 }
 
 h5, h6 {
-    font-size: 1em;
+	font-size: 1em;
 }
 
 a {
-    color: #696969;
+	color: #696969;
 }
 
 li {
-    line-height: 1.6;
+	line-height: 1.6;
 }
 
 /* MENU   
 ----------------------------------------------------------*/
 #mainmenu {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .defaultmenu {
-    margin-top: -30px !important;
+	margin-top: -30px !important;
 }
 
 .fixedtop {
-    position: fixed !important;
-    left: 0px !important;
-    top: 0px !important;
-    right: 0px !important;
+	position: fixed !important;
+	left: 0px !important;
+	top: 0px !important;
+	right: 0px !important;
 }
 
 #menu .t-item {
-    border-width: 0 0 0 1px;
+	border-width: 0 0 0 1px;
 }
 
 #menu .t-link {
-    padding: 5px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    line-height: 1.8em;
+	padding: 5px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 1.8em;
 }
 
 /* FORM LAYOUT ELEMENTS   
 ----------------------------------------------------------*/
 
 fieldset {
-    border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+	border: 1px solid #ddd;
+	padding: 0 1.4em 1.4em 1.4em;
+	margin: 0 0 1.5em 0;
 }
 
 legend {
-    font-size: 1.2em;
-    font-weight: bold;
+	font-size: 1.2em;
+	font-weight: bold;
 }
 
 textarea {
-    min-height: 75px;
+	min-height: 75px;
 }
 
 /* TABLE
@@ -131,114 +130,114 @@ textarea {
 /* table-form contain all control */
 .table-form
 {
-    display: block; /*line-height: 30px;*/
-    margin: 5px 5px 5px 5px;
+	display: block; /*line-height: 30px;*/
+	margin: 5px 5px 5px 5px;
 }
 .table-form td
 {
-    padding: 3px;
-    vertical-align: middle;
+	padding: 3px;
+	vertical-align: middle;
 }
 .table-form td.lb
 {
-    text-align: right;
-    padding-right: 5px;
-    padding-left: 5px;
-    vertical-align: middle;
+	text-align: right;
+	padding-right: 5px;
+	padding-left: 5px;
+	vertical-align: middle;
 }
 .table-form tr
 {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .lbReq
 {
-    margin-left: 3px;
-    color: Red;
+	margin-left: 3px;
+	color: Red;
 }
 
 /* MISC  
 ----------------------------------------------------------*/
 .clear {
-    clear: both;
+	clear: both;
 }
 
 .error {
-    color: Red;
+	color: Red;
 }
 
 div#title {
-    display: block;
-    text-align: left;
+	display: block;
+	text-align: left;
 }
 
 #logindisplay {
-    font-size: 1.1em;
-    display: block;
-    text-align: right;
-    margin: 10px;
-    color: White;
+	font-size: 1.1em;
+	display: block;
+	text-align: right;
+	margin: 10px;
+	color: White;
 }
 
-    #logindisplay a:link {
-        color: white;
-        text-decoration: underline;
-    }
+	#logindisplay a:link {
+		color: white;
+		text-decoration: underline;
+	}
 
-    #logindisplay a:visited {
-        color: white;
-        text-decoration: underline;
-    }
+	#logindisplay a:visited {
+		color: white;
+		text-decoration: underline;
+	}
 
-    #logindisplay a:hover {
-        color: white;
-        text-decoration: none;
-    }
+	#logindisplay a:hover {
+		color: white;
+		text-decoration: none;
+	}
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
-    color: #ff0000 !important;
+	color: #ff0000 !important;
 }
 
 .field-validation-valid {
-    display: none;
+	display: none;
 }
 
 .input-validation-error {
-    border: 1px solid #ff0000 !important ;
-    background-color: #ffeeee !important ;
+	border: 1px solid #ff0000 !important ;
+	background-color: #ffeeee !important ;
 }
 
 .validation-summary-errors {
-    font-weight: bold;
-    color: #ff0000;
+	font-weight: bold;
+	color: #ff0000;
 }
 
 .validation-summary-valid {
-    display: none;
+	display: none;
 }
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/
 .display-label,
 .editor-label {
-    margin: 1em 0 0 0;
+	margin: 1em 0 0 0;
 }
 
 .display-field,
 .editor-field {
-    margin: 0.5em 0 0 0;
+	margin: 0.5em 0 0 0;
 }
 
 .text-box {
-    width: 30em;
+	width: 30em;
 }
 
-    .text-box.multi-line {
-        height: 6.5em;
-    }
+	.text-box.multi-line {
+		height: 6.5em;
+	}
 
 .tri-state {
-    width: 6em;
+	width: 6em;
 }
