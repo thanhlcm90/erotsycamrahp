@@ -1,75 +1,60 @@
-﻿@model IEnumerable<PharmacyStore.Models.SY_STORE>
+﻿@model IEnumerable<PharmacyStore.Models.StoreViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách tiệm thuốc";
 }
 
-<h2>Index</h2>
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(column =>
+    {
+        column.Bound(p => p.StoreName);
+        column.Bound(p => p.OwnerFullname);
+        column.Bound(p => p.StoreAddress);
+        column.Bound(p => p.StoreFax);
+        column.Bound(p => p.StoreTelephone);
+        column.Bound(p => p.StoreTaxNo);
+        column.Bound(p => p.Website);
+        column.Bound(p => p.Email);
+        column.Bound(p => p.ListDoctor);
+        column.Command(command => { command.Destroy(); }).Width(160);
+    })
+    .ToolBar(toolbar =>
+        {
+            toolbar.Create().Text("Thêm mới");
+        })
+    .Editable(p => p
+        .Window(win => win
+            .Title(ViewBag.PopupTitle)
+            .Visible(false)
+            .Modal(true)
+            .LoadContentFrom("Create", "Store"))
+        .Mode(GridEditMode.PopUp))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .Selectable(p => p.Mode(GridSelectionMode.Single))
+    .DataSource(datasource => datasource
+        .Ajax()
+        .PageSize(20)
+        .Model(model => model.Id(p => p.Id))
+        .Read(read => read.Action("Index", "Store"))
+        .Create(create => create.Action("Create","Store"))
+        .Destroy(update => update.Action("Delete", "Store"))
+    )
+)
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Website)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreTelephone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreTaxNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreFax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StoreAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
-        </th>
-        <th></th>
-    </tr>
+@*@(Html.Kendo().Window().Name("Details")
+    .Title(ViewBag.PopupTitle)
+    .Visible(false)
+    .Modal(true)
+    .LoadContentFrom("Create", "Store")
+)
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Website)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreTelephone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreTaxNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreFax)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<script>
+    function CreateToolbarClick() {
+        var wnd = $("#Details").data("kendoWindow");
+        wnd.center().open();
+    }
+</script>*@

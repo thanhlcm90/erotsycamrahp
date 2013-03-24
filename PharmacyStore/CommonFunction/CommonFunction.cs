@@ -15,8 +15,12 @@ namespace PharmacyStore
             PropertyInfo[] destinationProperties = destination.GetType().GetProperties();
             foreach (PropertyInfo destinationPi in destinationProperties)
             {
-                PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
-                destinationPi.SetValue(destination, sourcePi.GetValue(source, null), null);
+                int check = (from p in source.GetType().GetProperties() where p.Name==destinationPi.Name select p).Count();
+                if (check > 0)
+                {
+                    PropertyInfo sourcePi = source.GetType().GetProperty(destinationPi.Name);
+                    destinationPi.SetValue(destination, sourcePi.GetValue(source, null), null);
+                }
             }
         }
     }
