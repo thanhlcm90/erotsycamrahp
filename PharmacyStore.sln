@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacyStore", "PharmacyStore\PharmacyStore.csproj", "{B78B49B9-EB1E-4ECF-A59C-F95ACE13C82D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmacyStoreModel", "PharmacyStoreModel\PharmacyStoreModel.csproj", "{C50145E6-A244-4F1F-B41F-90D1925B4A00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B78B49B9-EB1E-4ECF-A59C-F95ACE13C82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B78B49B9-EB1E-4ECF-A59C-F95ACE13C82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B78B49B9-EB1E-4ECF-A59C-F95ACE13C82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50145E6-A244-4F1F-B41F-90D1925B4A00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

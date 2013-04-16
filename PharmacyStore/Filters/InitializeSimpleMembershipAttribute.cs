@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using PharmacyStore.Models;
+using System.Web.Security;
+using System.Linq;
 
 namespace PharmacyStore.Filters
 {
@@ -25,20 +25,21 @@ namespace PharmacyStore.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<PharmacyStoreContext>(null);
-
                 try
                 {
-                    using (var context = new PharmacyStoreContext())
-                    {
-                        if (!context.Database.Exists())
-                        {
-                            // Create the SimpleMembership database without Entity Framework migration schema
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
-                        }
-                    }
 
                     WebSecurity.InitializeDatabaseConnection("PharmacyStoreConnection", "SY_USER", "Id", "UserName", autoCreateTables: true);
+
+                    if (!Roles.RoleExists("Administrator"))
+                    {
+                        Roles.CreateRole("Administrator");
+                    }
+                    if (!WebSecurity.UserExists("thanhlcm"))
+                        WebSecurity.CreateUserAndAccount(
+                            "thanhlcm",
+                            "P@$$w0rd!", new { Fullname = "Lê Cao Minh Thành", Birthdate = new DateTime(1990, 03, 23), Gender = 1, Email = "thanhlcm90@gmail.com", Identification = "225414257" });
+                    if (!Roles.GetRolesForUser("thanhlcm").Contains("Administrator"))
+                        Roles.AddUsersToRoles(new[] { "thanhlcm" }, new[] { "Administrator" });
                 }
                 catch (Exception ex)
                 {

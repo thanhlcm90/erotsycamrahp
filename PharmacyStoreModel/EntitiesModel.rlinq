@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="PharmacyStoreModel" namespace="PharmacyStoreModel" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="PharmacyStoreModel" backend="mssql" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="PharmacyStoreModel" default="true">
+      <orm:class name="Webpages_Role" uniqueId="99c7f470-dd3f-46f0-a2f8-1401ed3ff810">
+        <orm:table name="webpages_Roles" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_roleId" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_roleId" property="RoleId" behavior="readwrite" uniqueId="c83c88f6-98e0-482f-8e23-fc8f5504bff2" type="System.Int32">
+          <orm:column name="RoleId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_roleName" property="RoleName" behavior="readwrite" uniqueId="8966b280-3af9-4c91-9555-06287266eeb0" type="System.String">
+          <orm:column name="RoleName" sql-type="nvarchar" nullable="false" length="256" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_sY_USERs" property="SY_USERs" behavior="readwrite" uniqueId="0eac6021-b96d-4716-98be-43a187537a31" type="PharmacyStoreModel.SY_USER">
+          <orm:join-table uniqueId="2dc2ec9e-c3dd-41db-95f4-37de7af59694" association-name="Webpages_RolesHaveSY_USERs">
+            <orm:table name="webpages_UsersInRoles" join-table="true" />
+            <orm:owner>
+              <orm:constraint name="fk_RoleId" destination-table="webpages_Roles">
+                <orm:column name="RoleId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="PharmacyStoreModel.Webpages_Role" target-field="_roleId" />
+              </orm:constraint>
+            </orm:owner>
+            <orm:value>
+              <orm:constraint name="fk_UserId" destination-table="SY_USER">
+                <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="PharmacyStoreModel.SY_USER" target-field="_id" />
+              </orm:constraint>
+            </orm:value>
+          </orm:join-table>
+        </orm:field>
+        <orm:index name="UQ__webpages__8A2B616015502E78" unique="true">
+          <orm:columnMapping>
+            <orm:column name="RoleName" sql-type="nvarchar" nullable="false" length="256" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="Webpages_OAuthMembership" uniqueId="6372c13c-17ad-4dcf-b7e6-4de8ed15621a">
+        <orm:table name="webpages_OAuthMembership" />
+        <orm:identity>
+          <orm:multiple-field>
+            <orm:single-field field-name="_provider" />
+            <orm:single-field field-name="_providerUserId" />
+          </orm:multiple-field>
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_provider" property="Provider" behavior="readwrite" uniqueId="7e9c78da-fb55-48cc-8ecf-7b5fff3ee94a" type="System.String">
+          <orm:column name="Provider" sql-type="nvarchar" nullable="false" length="30" scale="0" primary-key="true" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_providerUserId" property="ProviderUserId" behavior="readwrite" uniqueId="84509d82-a2f2-4f7a-86fd-d25732f553ef" type="System.String">
+          <orm:column name="ProviderUserId" sql-type="nvarchar" nullable="false" length="100" scale="0" primary-key="true" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_userId" property="UserId" behavior="readwrite" uniqueId="ff6e4bdf-4f32-4b27-9c5b-ab8dafe7a89b" type="System.Int32">
+          <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Webpages_Membership" uniqueId="2724374f-c08f-4379-8e50-6a9ee941f6ee">
+        <orm:table name="webpages_Membership" />
+        <orm:identity>
+          <orm:single-field field-name="_userId" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_userId" property="UserId" behavior="readwrite" uniqueId="cf64c418-1470-4286-a18d-e3e1cdd106b6" type="System.Int32">
+          <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_createDate" property="CreateDate" behavior="readwrite" uniqueId="74e7a41f-20c1-4f5b-a1fe-aa9fc80ac520" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="CreateDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_confirmationToken" property="ConfirmationToken" behavior="readwrite" uniqueId="e8a6e06f-cc24-4227-8123-41103e4b0871" type="System.String">
+          <orm:column name="ConfirmationToken" sql-type="nvarchar" nullable="true" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_isConfirmed" property="IsConfirmed" behavior="readwrite" uniqueId="01a2e0b1-73da-4c42-8292-e60d923afecc" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="IsConfirmed" sql-type="bit" nullable="true" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="_lastPasswordFailureDate" property="LastPasswordFailureDate" behavior="readwrite" uniqueId="bc47eb70-9815-4bfa-9a41-32078b295063" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="LastPasswordFailureDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_passwordFailuresSinceLastSuccess" property="PasswordFailuresSinceLastSuccess" behavior="readwrite" uniqueId="db456772-885c-4376-8638-fbad0745e979" type="System.Int32">
+          <orm:column name="PasswordFailuresSinceLastSuccess" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_password" property="Password" behavior="readwrite" uniqueId="8cd20235-d796-4a9f-8169-6db49f8886ce" type="System.String">
+          <orm:column name="Password" sql-type="nvarchar" nullable="false" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_passwordChangedDate" property="PasswordChangedDate" behavior="readwrite" uniqueId="147d9c03-8cc8-47d5-8311-9de6ed5f39a4" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PasswordChangedDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_passwordSalt" property="PasswordSalt" behavior="readwrite" uniqueId="9820f21d-25ea-461c-8b03-ef2003c1e744" type="System.String">
+          <orm:column name="PasswordSalt" sql-type="nvarchar" nullable="false" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_passwordVerificationToken" property="PasswordVerificationToken" behavior="readwrite" uniqueId="b6fc6c82-1139-4a74-be7c-e8d086268114" type="System.String">
+          <orm:column name="PasswordVerificationToken" sql-type="nvarchar" nullable="true" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        </orm:field>
+        <orm:field name="_passwordVerificationTokenExpirationDate" property="PasswordVerificationTokenExpirationDate" behavior="readwrite" uniqueId="c9f7231e-4a5c-4a3b-a82f-900f400102dd" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="PasswordVerificationTokenExpirationDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="SY_USER" uniqueId="f2ff3e7f-d94a-4043-9b2b-9898896cba88">
+        <orm:table name="SY_USER" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_id" property="Id" behavior="readwrite" uniqueId="be12c2b6-e995-40f8-92eb-dd45a20ef3bb" type="System.Int32">
+          <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_userName" property="UserName" behavior="readwrite" uniqueId="54362602-1e8a-4877-85c7-634ab724f01b" type="System.String">
+          <orm:column name="UserName" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_fullname" property="Fullname" behavior="readwrite" uniqueId="4614f7af-39eb-4651-b2f5-51c4c94ed5fc" type="System.String">
+          <orm:column name="Fullname" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_email" property="Email" behavior="readwrite" uniqueId="31abfdba-2e42-467e-bb15-71d19f8d921d" type="System.String">
+          <orm:column name="Email" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_gender" property="Gender" behavior="readwrite" uniqueId="f9aff873-cee7-49ac-b2df-d3b1940ed96a" type="System.String">
+          <orm:column name="Gender" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_birthdate" property="Birthdate" behavior="readwrite" uniqueId="083bb281-a7fd-40db-8993-12cb1dadf5b4" type="System.DateTime">
+          <orm:column name="Birthdate" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="_mobile" property="Mobile" behavior="readwrite" uniqueId="e91eb73a-4036-4920-84ef-77e2c2bc92d7" type="System.String">
+          <orm:column name="Mobile" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_userRefer" property="UserRefer" behavior="readwrite" uniqueId="ea134153-6f59-403d-b991-ee3f8efd49ae" type="System.String">
+          <orm:column name="UserRefer" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_identification" property="Identification" behavior="readwrite" uniqueId="8384299d-6101-47ff-b124-4c0b611f5954" type="System.String">
+          <orm:column name="Identification" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_sY_STOREs" property="SY_STOREs" behavior="readwrite" uniqueId="2dfec43e-a831-4c78-84e3-18c399114ac9" type="PharmacyStoreModel.SY_STORE">
+          <orm:collection element-class="PharmacyStoreModel.SY_STORE" inverse-field="_sY_USER" order-by="" uniqueId="61449f81-ffb1-4743-9296-255b6e26f612" />
+        </orm:field>
+        <orm:field name="_webpages_Roles" property="Webpages_Roles" behavior="readwrite" uniqueId="502b04f8-2cf6-4145-9bec-ef09e72f34fd" type="PharmacyStoreModel.Webpages_Role">
+          <orm:collection element-class="PharmacyStoreModel.Webpages_Role" inverse-field="_sY_USERs" order-by="" uniqueId="2dc2ec9e-c3dd-41db-95f4-37de7af59694" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="SY_STORE" uniqueId="60484c4a-a24e-4337-8922-b9b9b4a3152e">
+        <orm:table name="SY_STORE" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_id" property="Id" behavior="readwrite" uniqueId="04b3874d-cac1-4bca-b843-295d24c9af33" type="System.Int32">
+          <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_website" property="Website" behavior="readwrite" uniqueId="6ac20188-3aa0-4aee-977c-197e830400af" type="System.String">
+          <orm:column name="Website" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_storeTelephone" property="StoreTelephone" behavior="readwrite" uniqueId="bac92026-1131-44f7-ba4f-eb920bedc874" type="System.String">
+          <orm:column name="StoreTelephone" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_storeTaxNo" property="StoreTaxNo" behavior="readwrite" uniqueId="78e04852-0b52-4b38-88db-607cff6020c2" type="System.String">
+          <orm:column name="StoreTaxNo" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_storeName" property="StoreName" behavior="readwrite" uniqueId="54b40087-6f26-4515-a0a2-a9b67e0b4da8" type="System.String">
+          <orm:column name="StoreName" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_storeFax" property="StoreFax" behavior="readwrite" uniqueId="f6732939-47d5-442f-bb10-4aca74145b27" type="System.String">
+          <orm:column name="StoreFax" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_storeAddress" property="StoreAddress" behavior="readwrite" uniqueId="0acf8a15-03a1-4d38-a6b3-dca32fbc3f0f" type="System.String">
+          <orm:column name="StoreAddress" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_email" property="Email" behavior="readwrite" uniqueId="8ca16a9d-58b4-49da-a712-cb9eff243f1e" type="System.String">
+          <orm:column name="Email" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_userId" property="UserId" behavior="readwrite" uniqueId="2e404417-c3ed-4cee-8667-73cf3c0ff3dc" type="System.Int32">
+          <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_sY_USER" property="SY_USER" behavior="readwrite" uniqueId="76e97662-f99c-4328-9b42-0d8ca0083d0f" type="PharmacyStoreModel.SY_USER">
+          <orm:reference uniqueId="61449f81-ffb1-4743-9296-255b6e26f612">
+            <orm:sharedfield name="_userId" target-class="PharmacyStoreModel.SY_USER" target-field="_id" />
+            <orm:constraint name="FK_dbo.SY_STORE_dbo.SY_USER_UserId" destination-table="SY_USER" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="_lS_DOCTORs" property="LS_DOCTORs" behavior="readwrite" uniqueId="84b7401e-294e-4150-bf7f-18c4e882fc10" type="PharmacyStoreModel.LS_DOCTOR">
+          <orm:collection element-class="PharmacyStoreModel.LS_DOCTOR" inverse-field="_sY_STORE" order-by="" uniqueId="393545b6-fd16-4d98-b169-5e57fcced3bd" />
+        </orm:field>
+        <orm:index name="IX_UserId">
+          <orm:columnMapping>
+            <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="LS_DOCTOR" uniqueId="c2967ae0-67f1-4497-bf8d-673e41326a2a">
+        <orm:table name="LS_DOCTOR" />
+        <orm:identity>
+          <orm:key-generator name="autoinc" />
+          <orm:single-field field-name="_id" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="_id" property="Id" behavior="readwrite" uniqueId="75e0834a-dab6-4918-93ae-81e5cf0cdc16" type="System.Int32">
+          <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_storeId" property="StoreId" behavior="readwrite" uniqueId="7c56f4ab-a983-4869-848f-e4eb12412de4" type="System.Int32">
+          <orm:column name="StoreId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="_mobile" property="Mobile" behavior="readwrite" uniqueId="be11c520-d7c7-4eb4-bf51-22b35ecbd3f1" type="System.String">
+          <orm:column name="Mobile" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_fullname" property="Fullname" behavior="readwrite" uniqueId="bc6ec47b-cbfd-47b7-a15e-7a1d1a5725f2" type="System.String">
+          <orm:column name="Fullname" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_address" property="Address" behavior="readwrite" uniqueId="ee622043-bfd7-413f-9fca-cad444e0fc89" type="System.String">
+          <orm:column name="Address" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        </orm:field>
+        <orm:field name="_sY_STORE" property="SY_STORE" behavior="readwrite" uniqueId="651ab300-9343-4faf-87b7-618e0ff63700" type="PharmacyStoreModel.SY_STORE">
+          <orm:reference uniqueId="393545b6-fd16-4d98-b169-5e57fcced3bd">
+            <orm:sharedfield name="_storeId" target-class="PharmacyStoreModel.SY_STORE" target-field="_id" />
+            <orm:constraint name="FK_dbo.LS_DOCTOR_dbo.SY_STORE_StoreId" destination-table="SY_STORE" />
+          </orm:reference>
+        </orm:field>
+        <orm:index name="IX_StoreId">
+          <orm:columnMapping>
+            <orm:column name="StoreId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="webpages_UsersInRoles" join-table="true">
+        <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="RoleId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:constraint name="fk_RoleId" destination-table="webpages_Roles">
+          <orm:column name="RoleId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="fk_UserId" destination-table="SY_USER">
+          <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="webpages_Roles">
+        <orm:column name="RoleId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="RoleName" sql-type="nvarchar" nullable="false" length="256" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:index name="UQ__webpages__8A2B616015502E78" unique="true">
+          <orm:columnMapping>
+            <orm:column name="RoleName" sql-type="nvarchar" nullable="false" length="256" scale="0" ado-type="UnicodeStringVariableLength" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:table>
+      <orm:table name="webpages_OAuthMembership">
+        <orm:column name="Provider" sql-type="nvarchar" nullable="false" length="30" scale="0" primary-key="true" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="ProviderUserId" sql-type="nvarchar" nullable="false" length="100" scale="0" primary-key="true" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="webpages_Membership">
+        <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="CreateDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="ConfirmationToken" sql-type="nvarchar" nullable="true" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="IsConfirmed" sql-type="bit" nullable="true" length="0" scale="0" has-default-value="true" ado-type="Bit" />
+        <orm:column name="LastPasswordFailureDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="PasswordFailuresSinceLastSuccess" sql-type="int" nullable="false" length="0" scale="0" has-default-value="true" ado-type="Int32" />
+        <orm:column name="Password" sql-type="nvarchar" nullable="false" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PasswordChangedDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="PasswordSalt" sql-type="nvarchar" nullable="false" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PasswordVerificationToken" sql-type="nvarchar" nullable="true" length="128" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column name="PasswordVerificationTokenExpirationDate" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+      </orm:table>
+      <orm:table name="SY_USER">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="UserName" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Fullname" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Email" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Gender" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Birthdate" sql-type="datetime" nullable="false" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="Mobile" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="UserRefer" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Identification" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+      </orm:table>
+      <orm:table name="SY_STORE">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="Website" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="StoreTelephone" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="StoreTaxNo" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="StoreName" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="StoreFax" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="StoreAddress" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Email" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:index name="IX_UserId">
+          <orm:columnMapping>
+            <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK_dbo.SY_STORE_dbo.SY_USER_UserId" destination-table="SY_USER">
+          <orm:column name="UserId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="LS_DOCTOR">
+        <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="StoreId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="Mobile" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Fullname" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:column name="Address" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
+        <orm:index name="IX_StoreId">
+          <orm:columnMapping>
+            <orm:column name="StoreId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK_dbo.LS_DOCTOR_dbo.SY_STORE_StoreId" destination-table="SY_STORE">
+          <orm:column name="StoreId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+      <orm:source-strategy>Property</orm:source-strategy>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>PharmacyStoreConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>Data Source=.;Initial Catalog=PharmacyStore;Integrated Security=True</AppConfigConnectionString>
+    <InitialCatalog>PharmacyStore</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <AddPrefix>_</AddPrefix>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <MappingDefinitionType>Attributes</MappingDefinitionType>
+      <OutputMode>SubNamespaces</OutputMode>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="99c7f470-dd3f-46f0-a2f8-1401ed3ff810" name="Webpages_Role" namespace="PharmacyStoreModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="c83c88f6-98e0-482f-8e23-fc8f5504bff2" name="RoleId" type="Int32" label="RoleId : Int32" kind="Persistent" identity="true" fieldName="_roleId" />
+      <Property Id="8966b280-3af9-4c91-9555-06287266eeb0" name="RoleName" label="RoleName : String" kind="Persistent" fieldName="_roleName" />
+      <AssociationTargets>
+        <Association Id="2dc2ec9e-c3dd-41db-95f4-37de7af59694" name="Webpages_RolesHaveSY_USERs">
+          <DomainClassMoniker name="/PharmacyStoreModel/SY_USER" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="910aa192-7919-4d4b-ad73-0dd380eb27ab">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/SY_USER/Webpages_Roles" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="ae029c4b-fbd7-4c50-86b7-06fd3f376c71">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/Webpages_Role/SY_USERs" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="5b8b3324-7fa5-4553-83ee-89a96005f5ae">
+          <NavigationalProperty Id="0eac6021-b96d-4716-98be-43a187537a31" name="SY_USERs" type="IList&lt;SY_USER&gt;" label="SY_USERs : IList&lt;SY_USER&gt;" nullable="true" kind="Persistent" fieldName="_sY_USERs" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="6372c13c-17ad-4dcf-b7e6-4de8ed15621a" name="Webpages_OAuthMembership" namespace="PharmacyStoreModel" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="7e9c78da-fb55-48cc-8ecf-7b5fff3ee94a" name="Provider" label="Provider : String" kind="Persistent" identity="true" fieldName="_provider" />
+      <Property Id="84509d82-a2f2-4f7a-86fd-d25732f553ef" name="ProviderUserId" label="ProviderUserId : String" kind="Persistent" identity="true" fieldName="_providerUserId" />
+      <Property Id="ff6e4bdf-4f32-4b27-9c5b-ab8dafe7a89b" name="UserId" type="Int32" label="UserId : Int32" kind="Persistent" fieldName="_userId" />
+    </DomainClass>
+    <DomainClass Id="2724374f-c08f-4379-8e50-6a9ee941f6ee" name="Webpages_Membership" namespace="PharmacyStoreModel" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="cf64c418-1470-4286-a18d-e3e1cdd106b6" name="UserId" type="Int32" label="UserId : Int32" kind="Persistent" identity="true" fieldName="_userId" />
+      <Property Id="e8a6e06f-cc24-4227-8123-41103e4b0871" name="ConfirmationToken" label="ConfirmationToken : String" kind="Persistent" fieldName="_confirmationToken" />
+      <Property Id="74e7a41f-20c1-4f5b-a1fe-aa9fc80ac520" name="CreateDate" type="DateTime" label="CreateDate : DateTime" nullable="true" kind="Persistent" fieldName="_createDate" />
+      <Property Id="01a2e0b1-73da-4c42-8292-e60d923afecc" name="IsConfirmed" type="Boolean" label="IsConfirmed : Boolean" nullable="true" kind="Persistent" fieldName="_isConfirmed" />
+      <Property Id="bc47eb70-9815-4bfa-9a41-32078b295063" name="LastPasswordFailureDate" type="DateTime" label="LastPasswordFailureDate : DateTime" nullable="true" kind="Persistent" fieldName="_lastPasswordFailureDate" />
+      <Property Id="8cd20235-d796-4a9f-8169-6db49f8886ce" name="Password" label="Password : String" kind="Persistent" fieldName="_password" />
+      <Property Id="147d9c03-8cc8-47d5-8311-9de6ed5f39a4" name="PasswordChangedDate" type="DateTime" label="PasswordChangedDate : DateTime" nullable="true" kind="Persistent" fieldName="_passwordChangedDate" />
+      <Property Id="db456772-885c-4376-8638-fbad0745e979" name="PasswordFailuresSinceLastSuccess" type="Int32" label="PasswordFailuresSinceLastSuccess : Int32" kind="Persistent" fieldName="_passwordFailuresSinceLastSuccess" />
+      <Property Id="9820f21d-25ea-461c-8b03-ef2003c1e744" name="PasswordSalt" label="PasswordSalt : String" kind="Persistent" fieldName="_passwordSalt" />
+      <Property Id="b6fc6c82-1139-4a74-be7c-e8d086268114" name="PasswordVerificationToken" label="PasswordVerificationToken : String" kind="Persistent" fieldName="_passwordVerificationToken" />
+      <Property Id="c9f7231e-4a5c-4a3b-a82f-900f400102dd" name="PasswordVerificationTokenExpirationDate" type="DateTime" label="PasswordVerificationTokenExpirationDate : DateTime" nullable="true" kind="Persistent" fieldName="_passwordVerificationTokenExpirationDate" />
+    </DomainClass>
+    <DomainClass Id="f2ff3e7f-d94a-4043-9b2b-9898896cba88" name="SY_USER" namespace="PharmacyStoreModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="be12c2b6-e995-40f8-92eb-dd45a20ef3bb" name="Id" type="Int32" label="Id : Int32" kind="Persistent" identity="true" fieldName="_id" />
+      <Property Id="083bb281-a7fd-40db-8993-12cb1dadf5b4" name="Birthdate" type="DateTime" label="Birthdate : DateTime" kind="Persistent" fieldName="_birthdate" />
+      <Property Id="31abfdba-2e42-467e-bb15-71d19f8d921d" name="Email" label="Email : String" kind="Persistent" fieldName="_email" />
+      <Property Id="4614f7af-39eb-4651-b2f5-51c4c94ed5fc" name="Fullname" label="Fullname : String" kind="Persistent" fieldName="_fullname" />
+      <Property Id="f9aff873-cee7-49ac-b2df-d3b1940ed96a" name="Gender" label="Gender : String" kind="Persistent" fieldName="_gender" />
+      <Property Id="8384299d-6101-47ff-b124-4c0b611f5954" name="Identification" label="Identification : String" kind="Persistent" fieldName="_identification" />
+      <Property Id="e91eb73a-4036-4920-84ef-77e2c2bc92d7" name="Mobile" label="Mobile : String" kind="Persistent" fieldName="_mobile" />
+      <Property Id="54362602-1e8a-4877-85c7-634ab724f01b" name="UserName" label="UserName : String" kind="Persistent" fieldName="_userName" />
+      <Property Id="ea134153-6f59-403d-b991-ee3f8efd49ae" name="UserRefer" label="UserRefer : String" kind="Persistent" fieldName="_userRefer" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="a0e82dce-cc3e-4423-be14-3ca18dfabd31">
+          <NavigationalProperty Id="2dfec43e-a831-4c78-84e3-18c399114ac9" name="SY_STOREs" type="IList&lt;SY_STORE&gt;" label="SY_STOREs : IList&lt;SY_STORE&gt;" nullable="true" kind="Persistent" fieldName="_sY_STOREs" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="27d41ac9-0c0d-4e1d-80f9-5cd033979cee">
+          <NavigationalProperty Id="502b04f8-2cf6-4145-9bec-ef09e72f34fd" name="Webpages_Roles" type="IList&lt;Webpages_Role&gt;" label="Webpages_Roles : IList&lt;Webpages_Role&gt;" nullable="true" kind="Persistent" fieldName="_webpages_Roles" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="60484c4a-a24e-4337-8922-b9b9b4a3152e" name="SY_STORE" namespace="PharmacyStoreModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="04b3874d-cac1-4bca-b843-295d24c9af33" name="Id" type="Int32" label="Id : Int32" kind="Persistent" identity="true" fieldName="_id" />
+      <Property Id="8ca16a9d-58b4-49da-a712-cb9eff243f1e" name="Email" label="Email : String" kind="Persistent" fieldName="_email" />
+      <Property Id="0acf8a15-03a1-4d38-a6b3-dca32fbc3f0f" name="StoreAddress" label="StoreAddress : String" kind="Persistent" fieldName="_storeAddress" />
+      <Property Id="f6732939-47d5-442f-bb10-4aca74145b27" name="StoreFax" label="StoreFax : String" kind="Persistent" fieldName="_storeFax" />
+      <Property Id="54b40087-6f26-4515-a0a2-a9b67e0b4da8" name="StoreName" label="StoreName : String" kind="Persistent" fieldName="_storeName" />
+      <Property Id="78e04852-0b52-4b38-88db-607cff6020c2" name="StoreTaxNo" label="StoreTaxNo : String" kind="Persistent" fieldName="_storeTaxNo" />
+      <Property Id="bac92026-1131-44f7-ba4f-eb920bedc874" name="StoreTelephone" label="StoreTelephone : String" kind="Persistent" fieldName="_storeTelephone" />
+      <Property Id="2e404417-c3ed-4cee-8667-73cf3c0ff3dc" name="UserId" type="Int32" label="UserId : Int32" kind="Persistent" fieldName="_userId" />
+      <Property Id="6ac20188-3aa0-4aee-977c-197e830400af" name="Website" label="Website : String" kind="Persistent" fieldName="_website" />
+      <AssociationTargets>
+        <Association Id="61449f81-ffb1-4743-9296-255b6e26f612" SourceMultiplicity="One" name="SY_STOREHasSY_USER">
+          <DomainClassMoniker name="/PharmacyStoreModel/SY_USER" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7d046df2-e17d-43a7-83d1-5addfba8a414">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/SY_USER/SY_STOREs" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="12a6f671-1ac8-4ed8-b03c-043840b42238">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/SY_STORE/SY_USER" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="fa70aa75-23cb-4031-91ad-c3ae3de09e8f">
+          <NavigationalProperty Id="76e97662-f99c-4328-9b42-0d8ca0083d0f" name="SY_USER" type="SY_USER" label="SY_USER : SY_USER" nullable="true" kind="Persistent" fieldName="_sY_USER" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c82f0718-73a4-4369-a0e2-3abd04129a9f">
+          <NavigationalProperty Id="84b7401e-294e-4150-bf7f-18c4e882fc10" name="LS_DOCTORs" type="IList&lt;LS_DOCTOR&gt;" label="LS_DOCTORs : IList&lt;LS_DOCTOR&gt;" nullable="true" kind="Persistent" fieldName="_lS_DOCTORs" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="c2967ae0-67f1-4497-bf8d-673e41326a2a" name="LS_DOCTOR" namespace="PharmacyStoreModel" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
+      <Property Id="75e0834a-dab6-4918-93ae-81e5cf0cdc16" name="Id" type="Int32" label="Id : Int32" kind="Persistent" identity="true" fieldName="_id" />
+      <Property Id="ee622043-bfd7-413f-9fca-cad444e0fc89" name="Address" label="Address : String" kind="Persistent" fieldName="_address" />
+      <Property Id="bc6ec47b-cbfd-47b7-a15e-7a1d1a5725f2" name="Fullname" label="Fullname : String" kind="Persistent" fieldName="_fullname" />
+      <Property Id="be11c520-d7c7-4eb4-bf51-22b35ecbd3f1" name="Mobile" label="Mobile : String" kind="Persistent" fieldName="_mobile" />
+      <Property Id="7c56f4ab-a983-4869-848f-e4eb12412de4" name="StoreId" type="Int32" label="StoreId : Int32" kind="Persistent" fieldName="_storeId" />
+      <AssociationTargets>
+        <Association Id="393545b6-fd16-4d98-b169-5e57fcced3bd" SourceMultiplicity="One" name="LS_DOCTORHasSY_STORE">
+          <DomainClassMoniker name="/PharmacyStoreModel/SY_STORE" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="19cbd7a9-2f55-42ea-be09-f30a22c25901">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/SY_STORE/LS_DOCTORs" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bc1b444e-d7ff-4f40-acb0-b9aae354c051">
+              <NavigationalPropertyMoniker name="/PharmacyStoreModel/LS_DOCTOR/SY_STORE" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="166b2d02-294d-42f5-b81a-f2473c434843">
+          <NavigationalProperty Id="651ab300-9343-4faf-87b7-618e0ff63700" name="SY_STORE" type="SY_STORE" label="SY_STORE : SY_STORE" nullable="true" kind="Persistent" fieldName="_sY_STORE" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="6ecb0d31-abaf-4671-ac8d-8f5b424d7161">
+      <domainContainer name="PharmacyStoreModel" namespace="PharmacyStoreModel" showPropertiesCompartment="true">
+        <entitySetProperty name="Webpages_Roles" namespace="PharmacyStoreModel" type="Webpages_Role" label="Webpages_Roles : IQueryable&lt;PharmacyStoreModel.Webpages_Role&gt;" />
+        <entitySetProperty name="Webpages_OAuthMemberships" namespace="PharmacyStoreModel" type="Webpages_OAuthMembership" label="Webpages_OAuthMemberships : IQueryable&lt;PharmacyStoreModel.Webpages_OAuthMembership&gt;" />
+        <entitySetProperty name="Webpages_Memberships" namespace="PharmacyStoreModel" type="Webpages_Membership" label="Webpages_Memberships : IQueryable&lt;PharmacyStoreModel.Webpages_Membership&gt;" />
+        <entitySetProperty name="SY_USERs" namespace="PharmacyStoreModel" type="SY_USER" label="SY_USERs : IQueryable&lt;PharmacyStoreModel.SY_USER&gt;" />
+        <entitySetProperty name="SY_STOREs" namespace="PharmacyStoreModel" type="SY_STORE" label="SY_STOREs : IQueryable&lt;PharmacyStoreModel.SY_STORE&gt;" />
+        <entitySetProperty name="LS_DOCTORs" namespace="PharmacyStoreModel" type="LS_DOCTOR" label="LS_DOCTORs : IQueryable&lt;PharmacyStoreModel.LS_DOCTOR&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>

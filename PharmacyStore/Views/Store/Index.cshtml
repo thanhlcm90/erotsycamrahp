@@ -1,14 +1,12 @@
-﻿@model IEnumerable<PharmacyStore.Models.StoreViewModel>
-
-@{
+﻿@{
     ViewBag.Title = "Danh sách tiệm thuốc";
 }
 
-@(Html.Kendo().Grid(Model)
+@(Html.Kendo().Grid<PharmacyStoreModel.SY_STORE>()
     .Name("Grid")
     .Columns(column =>
     {
-        column.Bound(p => p.StoreName);
+        column.Bound(p => p.StoreName).HeaderHtmlAttributes(new {@class="hide-on-mobile" });
         column.Bound(p => p.OwnerFullname);
         column.Bound(p => p.StoreAddress);
         column.Bound(p => p.StoreFax);
@@ -29,18 +27,25 @@
             .Visible(false)
             .Modal(true)
             .LoadContentFrom("Create", "Store"))
-        .Mode(GridEditMode.PopUp))
+        .Mode(GridEditMode.PopUp))    
+    .TableHtmlAttributes(new { @class="responsive-table" })
     .Pageable()
     .Sortable()
     .Scrollable()
-    .Filterable()
+    .Filterable(p => p
+        .Extra(false)
+        .Operators(o => o
+            .ForString(str => str
+                .Clear())))
+    .Resizable(p => p.Columns(true))
+    .Reorderable(p => p.Columns(true))
     .Selectable(p => p.Mode(GridSelectionMode.Single))
     .DataSource(datasource => datasource
         .Ajax()
         .PageSize(20)
         .Model(model => model.Id(p => p.Id))
-        .Read(read => read.Action("Index", "Store"))
-        .Create(create => create.Action("Create","Store"))
+        .Read(read => read.Action("GetStoreList", "Store"))
+        .Create(create => create.Action("Create", "Store"))
         .Destroy(update => update.Action("Delete", "Store"))
     )
 )
