@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PharmacyStore.Filters;
 using PharmacyStore.Models;
+using PharmacyStoreModel;
 
 namespace PharmacyStore
 {
@@ -83,6 +84,8 @@ namespace PharmacyStore
                                                     model.Password,
                                                     new
                                                     {
+                                                        Fullname = model.Fullname,
+                                                        Identification = model.Identification,
                                                         Email = model.Email,
                                                         Mobile = model.Mobile,
                                                         Gender = model.Gender,
@@ -272,15 +275,14 @@ namespace PharmacyStore
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (PharmacyStoreContext db = new PharmacyStoreContext())
-                {
-                    SY_USER user = db.SY_USERs.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                var rep = new PharmacyStoreRepository();
+                    SY_USER user = rep.GetUserInfoFromUsername(model.UserName);
                     // Check if user already exists
                     if (user == null)
                     {
                         // Insert name into the profile table
-                        db.SY_USERs.Add(new SY_USER { UserName = model.UserName });
-                        db.SaveChanges();
+                        var _newUser = new SY_USER { UserName = model.UserName };
+                        rep.InsertUser(_newUser);
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
@@ -291,7 +293,6 @@ namespace PharmacyStore
                     {
                         ModelState.AddModelError("UserName", "User name already exists. Please enter a different user name.");
                     }
-                }
             }
 
             ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;

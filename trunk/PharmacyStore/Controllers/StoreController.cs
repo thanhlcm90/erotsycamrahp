@@ -1,39 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PharmacyStore.Models;
+using PharmacyStoreModel;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace PharmacyStore.Controllers
 {
     public class StoreController : Controller
     {
-        private PharmacyStoreContext db = new PharmacyStoreContext();
-
+        PharmacyStoreRepository rep = new PharmacyStoreRepository();
         //
         // GET: /Store/
 
         [Authorize]
         public ActionResult Index()
         {
-            List<StoreViewModel> sy_stores = (from p in db.SY_STOREs.ToList()
-                                       select new StoreViewModel
-                                       {
-                                           Id = p.Id,
-                                           StoreName = p.StoreName,
-                                           StoreAddress = p.StoreAddress,
-                                           Email = p.Email,
-                                           ListDoctor = String.Join("; ", p.ListDoctor),
-                                           OwnerFullname = p.User.Fullname,
-                                           StoreFax = p.StoreFax,
-                                           StoreTaxNo = p.StoreTaxNo,
-                                           StoreTelephone = p.StoreTelephone,
-                                           Website = p.Website
-                                       }).ToList();
-            return View(sy_stores);
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult GetStoreList([DataSourceRequest] DataSourceRequest request)
+        {
+            var model = rep.GetStoreList();
+            return Json(model.ToDataSourceResult(request));
         }
 
         //
@@ -42,26 +36,12 @@ namespace PharmacyStore.Controllers
         [Authorize]
         public ActionResult Details(int id = 0)
         {
-            StoreViewModel  sy_store = (from p in db.SY_STOREs.ToList()
-                                        where p.Id==id
-                                        select new StoreViewModel 
-                                        {
-                                            Id=p.Id,
-                                            StoreName=p.StoreName,
-                                            StoreAddress=p.StoreAddress,
-                                            Email=p.Email,
-                                            ListDoctor = String.Join("; ",p.ListDoctor),
-                                            OwnerFullname=p.User.Fullname,
-                                            StoreFax=p.StoreFax,
-                                            StoreTaxNo=p.StoreTaxNo,
-                                            StoreTelephone=p.StoreTelephone,
-                                            Website=p.Website
-                                        }).SingleOrDefault();
-            if (sy_store == null)
+            var model = rep.GetStoreInfo(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(sy_store);
+            return View(model);
         }
 
         //
@@ -69,7 +49,7 @@ namespace PharmacyStore.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.SY_USERs, "Id", "UserName");
+            ViewBag.UserId = new SelectList(rep.GetUserList(), "Id", "UserName");
             return View();
         }
 
@@ -77,53 +57,42 @@ namespace PharmacyStore.Controllers
         // POST: /Store/Create
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(StoreViewModel sy_store)
+        public ActionResult Create(SY_STORE model)
         {
-            if (sy_store != null && ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
-                SY_STORE _new = new SY_STORE();
-                CommonFunction.CopyProperties(sy_store, _new);
-                _new.UserId = (from p in db.SY_USERs where p.UserName == User.Identity.Name select p.Id).SingleOrDefault();
-                db.SY_STOREs.Add(_new);
-                db.SaveChanges();
+                model.UserId = rep.GetUserInfoFromUsername(User.Identity.Name).Id;
+                rep.InsertStore(model);
             }
-            return View(sy_store);
+            return View(model);
         }
 
         //
         // POST: /Store/Edit
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(StoreViewModel sy_store)
+        public ActionResult Edit(SY_STORE model)
         {
-            if (sy_store!=null && ModelState.IsValid)
+            if (model != null && ModelState.IsValid)
             {
-                SY_STORE _edit = db.SY_STOREs.Find(sy_store.Id);
-                CommonFunction.CopyProperties(sy_store, _edit);
-                db.SaveChanges();
+                rep.UpdateStore(model);
             }
-            return View(sy_store);
+            return View(model);
         }
 
         //
         // POST: /Store/Delete
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(StoreViewModel sy_store)
+        public ActionResult Delete(int id)
         {
-            SY_STORE _delete = db.SY_STOREs.Find(sy_store.Id);
-            if (sy_store == null)
-            {
-                db.SY_STOREs.Remove(_delete);
-                db.SaveChanges();
-                return HttpNotFound();
-            }
-            return View(sy_store);
+            rep.DeleteStore(id);
+            return View();
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            rep.Dispose();
             base.Dispose(disposing);
         }
     }

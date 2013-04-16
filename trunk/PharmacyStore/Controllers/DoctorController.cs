@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PharmacyStore.Models;
+using PharmacyStoreModel;
 
 namespace PharmacyStore.Controllers
 {
     public class DoctorController : Controller
     {
-        private PharmacyStoreContext db = new PharmacyStoreContext();
+        private PharmacyStoreRepository rep = new PharmacyStoreRepository();
 
         //
         // GET: /Doctor/
 
         public ActionResult Index()
         {
-            var ls_doctors = db.LS_DOCTORs.Include(l => l.Store);
-            return View(ls_doctors.ToList());
+            var model = rep.GetDoctorList();
+            return View(model);
         }
 
         //
@@ -27,12 +26,12 @@ namespace PharmacyStore.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
-            if (ls_doctor == null)
+            var model = rep.GetDoctorInfo(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(ls_doctor);
+            return View(model);
         }
 
         //
@@ -40,7 +39,7 @@ namespace PharmacyStore.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website");
+            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website");
             return View();
         }
 
@@ -48,17 +47,16 @@ namespace PharmacyStore.Controllers
         // POST: /Doctor/Create
 
         [HttpPost]
-        public ActionResult Create(LS_DOCTOR ls_doctor)
+        public ActionResult Create(LS_DOCTOR model)
         {
             if (ModelState.IsValid)
             {
-                db.LS_DOCTORs.Add(ls_doctor);
-                db.SaveChanges();
+                rep.InsertDoctor(model);
                 return RedirectToAction("Index");
             }
-
-            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
-            return View(ls_doctor);
+            
+            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website");
+            return View(model);
         }
 
         //
@@ -66,29 +64,28 @@ namespace PharmacyStore.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
-            if (ls_doctor == null)
+            var model =rep.GetDoctorInfo(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
-            return View(ls_doctor);
+            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website", model.StoreId);
+            return View(model);
         }
 
         //
         // POST: /Doctor/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(LS_DOCTOR ls_doctor)
+        public ActionResult Edit(LS_DOCTOR model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ls_doctor).State = EntityState.Modified;
-                db.SaveChanges();
+                rep.UpdateDoctor(model);
                 return RedirectToAction("Index");
             }
-            ViewBag.StoreId = new SelectList(db.SY_STOREs, "Id", "Website", ls_doctor.StoreId);
-            return View(ls_doctor);
+            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website", model.StoreId);
+            return View(model);
         }
 
         //
@@ -96,12 +93,8 @@ namespace PharmacyStore.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
-            if (ls_doctor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ls_doctor);
+            var model=rep.GetDoctorInfo(id);
+            return View(model);
         }
 
         //
@@ -110,15 +103,13 @@ namespace PharmacyStore.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            LS_DOCTOR ls_doctor = db.LS_DOCTORs.Find(id);
-            db.LS_DOCTORs.Remove(ls_doctor);
-            db.SaveChanges();
+            rep.DeleteDoctor(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            rep.Dispose();
             base.Dispose(disposing);
         }
     }

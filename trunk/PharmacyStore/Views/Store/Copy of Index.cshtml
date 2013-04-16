@@ -1,0 +1,93 @@
+﻿@model PharmacyStoreModel.SY_STORE
+
+@{
+	ViewBag.Title = "Danh sách tiệm thuốc";
+}
+
+<div class="table-header blue-gradient button-height">
+	<div class="float-right">
+		Search&nbsp;<input type="text" name="table_search" id="table_search" value="" class="input mid-margin-left">
+	</div>
+
+	Show&nbsp;<select name="range" class="select blue-gradient glossy">
+		<option value="1">10</option>
+		<option value="2">20</option>
+		<option value="3" selected="selected">40</option>
+		<option value="4">100</option>
+	</select>
+	entries
+</div>
+
+<table class="table responsive-table" id="data_table">
+	<thead>
+		<tr>
+			<th scope="col">
+				<input type="checkbox" name="check-all" id="check-all" value="1">
+			</th>
+			<th>
+				@Html.DisplayNameFor(p => p.StoreName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(p => p.StoreAddress)
+			</th>
+			<th>
+				@Html.DisplayNameFor(p => p.StoreFax)
+			</th>
+			<th>
+				@Html.DisplayNameFor(p => p.StoreTelephone)
+			</th>
+			<th>
+				@Html.DisplayNameFor(p => p.StoreTaxNo)
+			</th>
+		</tr>
+	</thead>
+</table>
+
+<form method="post" action="" class="table-footer blue-gradient button-height large-margin-bottom">
+	<div class="float-right">
+		<div class="button-group">
+			<a href="#" title="First page" class="button blue-gradient glossy"><span class="icon-previous"></span></a>
+			<a href="#" title="Previous page" class="button blue-gradient glossy"><span class="icon-backward"></span></a>
+		</div>
+
+		<div class="button-group">
+			<a href="#" title="Page 1" class="button blue-gradient glossy">1</a>
+			<a href="#" title="Page 2" class="button blue-gradient glossy active">2</a>
+			<a href="#" title="Page 3" class="button blue-gradient glossy">3</a>
+			<a href="#" title="Page 4" class="button blue-gradient glossy">4</a>
+		</div>
+
+		<div class="button-group">
+			<a href="#" title="Next page" class="button blue-gradient glossy"><span class="icon-forward"></span></a>
+			<a href="#" title="Last page" class="button blue-gradient glossy"><span class="icon-next"></span></a>
+		</div>
+	</div>
+
+	With selected:
+	<select name="select90" class="select blue-gradient glossy mid-margin-left">
+		<option value="0">Delete</option>
+		<option value="1">Duplicate</option>
+		<option value="2">Put offline</option>
+		<option value="3">Put online</option>
+		<option value="4">Move to trash</option>
+	</select>
+	<button type="submit" class="button blue-gradient glossy">Go</button>
+</form>
+
+<script>
+	$(document).ready(function () {
+		$("#data_table").dataTable({
+			"bProcessing": true,
+			"bServerSide": true,
+			"sAjaxSource": "Store/GetStoreList",
+			"sServerMethod": "POST",
+			"aoColumns": [
+				{ "mData": "StoreName" },
+				{ "mData": "StoreAddress" },
+				{ "mData": "StoreFax" },
+				{ "mData": "StoreTelephone" },
+				{ "mData": "StoreTaxNo" }
+			]
+		});
+	});
+</script>

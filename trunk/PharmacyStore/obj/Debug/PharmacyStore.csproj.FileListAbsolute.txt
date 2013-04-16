@@ -1,3 +1,4 @@
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csprojResolveAssemblyReference.cache
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\PharmacyStore.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\PharmacyStore.pdb
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Antlr3.Runtime.dll
@@ -7,11 +8,11 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\DotNetOpenAuth.OAuth.Consum
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\DotNetOpenAuth.OAuth.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\DotNetOpenAuth.OpenId.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\EntityFramework.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Kendo.Mvc.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Microsoft.Web.Infrastructure.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Microsoft.Web.WebPages.OAuth.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Newtonsoft.Json.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\PharmacyStoreModel.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Net.Http.Formatting.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Helpers.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Http.dll
@@ -22,11 +23,12 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Razor.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Deployment.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Razor.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.35.Extensions.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebGrease.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.Data.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.WebData.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\PharmacyStoreModel.pdb
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Kendo.Mvc.xml
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\EntityFramework.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Newtonsoft.Json.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Net.Http.Formatting.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Helpers.xml
@@ -37,6 +39,7 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Razor.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Deployment.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Razor.xml
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.35.Extensions.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.Data.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Microsoft.Web.WebPages.OAuth.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.WebData.xml
@@ -60,6 +63,7 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\uk-UA\Kendo.Mvc.resources.d
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\zh-CN\Kendo.Mvc.resources.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.pdb
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csprojResolveAssemblyReference.cache
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.Migrations.Init.resources
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.csproj.GenerateResource.Cache
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Elmah.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\TugberkUg.MVC.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.xml
