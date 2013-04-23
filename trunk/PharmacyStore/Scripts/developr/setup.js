@@ -2573,7 +2573,8 @@
 	// If there's a hash, stop here
 	if (!location.hash)
 	{
-		// Scroll to 1
+	    // Scroll to 1
+        try {
 		window.scrollTo(0, 1);
 		var scrollTop = 1,
 			getScrollTop = function()
@@ -2604,6 +2605,8 @@
 				}
 			}, 0);
 		});
+        } catch (ex) {
+        }
 	}
 
 	/********************************************************/

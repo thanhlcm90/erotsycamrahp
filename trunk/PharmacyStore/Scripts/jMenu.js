@@ -1,15 +1,6 @@
-// JavaScript Document
-/*var mlddm_shiftx       = -50;       // horizontal submenu shifting (in pixels)
-var mlddm_shifty       = -3;      // vertical submenu shifting (in pixels)	
-var mlddm_timeout      = 500;     // delay before closing (in milliseconds)
-var mlddm_effect       = 'none'; // specifies the visual effect for submenus (can be 'none', fade', 'slide')
-var mlddm_effect_speed = 150;     // specifies the visual effect speed
-var mlddm_orientation  = 'v';     // specifies the horizontal or vertical orientation (can be 'h' or 'v')
-var mlddm_direction    = 'on';    // on/off automatic submenus direction (submenus on left side when not enough right space) (can be 1 or 0)
-var mlddm_delay        = 50;      // delay before first menu opening (in milliseconds). Useful to prevent accidental hovers
-var mlddm_highlight    = 1;       // keep 'hover' pseudo class style on the parent active items. (can be 1 or 0)
-var mlddm_closeonclick = 0;       // closing menu when onclick event happens. (can be 1 or 0)
-/**/
+﻿//Tạo jMenu, phát triển và fixbug từ DropDownMenu
+//Copyright Lê Cao Minh Thành
+
 var mlddm_shiftx = 0;
 var mlddm_shifty = 0;
 var mlddm_timeout = 500;
@@ -21,9 +12,589 @@ var mlddm_md = 375;
 var mlddm_closeonclick = 1;
 /**/
 
-eval(function (p, a, c, k, e, d) { e = function (c) { return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) }; while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); return p }('b 2J=0;c(!30){b 46=0;b 45=0;b 44=4A;b 30=\'2v\';b 43=4z;b 42=\'h\';b 41=P;b 40=0;b 3Z=P;b 3Y=U;b 3V=3U}b V=\'4y\';b 1G=N Q();g 4x(4w){b 1S=R.Z(\'1M\');b p=0;B(b i=0;i<1S.q;i++){c(1S[i].1o==V){1S[i].o.19=\'1Z\';b u=1S[i];b 2I=u.4v(\'2f\');1G[p]=N 48(u,p,2I);p++}}}g l(f){e.f=f;e.1v=U;e.G=0;e.x=0;e.y=0;e.1D=0;e.1C=0;e.1F=0;e.2t=0;e.24=0;e.3n=0;e.2D=0;e.1E=0;e.2B=0;e.2C=0;e.1f=U;e.11=N Q();e.M=0;e.T=O;e.1s=N Q();}g 48(u,47,2f){b 1L=u;b 1p=47;b C=e;b 1N=O;b 1O=O;b 1k=P;b 2M=O;b 1r=U;b 23=46;b 2A=45;b 2W=44;b 1w=30;b 17=43;b 1H=42;b 1K=41;b 2P=40;b 2d=3Z;b 2G=3Y;b D;c(2f){D=2f.4u(",");c(D[0])23=D[0]*1;c(D[1])2A=D[1]*1;c(D[2])2W=D[2]*1;c(D[3])1w=D[3];c(D[4])17=D[4]*1;c(D[5])1H=D[5];c(D[6])1K=D[6]*1;c(D[7])2P=D[7]*1;c(D[8])2d=D[8]*1;c(D[8])2G=D[9]*1;c(!17)17=2Z}e.m=N Q();g J(p,4t,1R,W){b F=C.m[p];B(b z=0;z<F.11.q;z++)2c(F.11[z]);b M=F.M;b W=3X.3W(2Z/W);b K=0;c(M<1R){B(b i=M;i<=1R;i=i+4){F.11[K]=1q("2w("+1p+","+p+","+i+")",(K*W));K++}}I c(M>1R){B(b i=M;i>=1R;i=i-4){F.11[K]=1q("2w("+1p+","+p+","+i+")",(K*W));K++}}}g 1P(p,2Y,W){b F=C.m[p];B(b z=0;z<F.11.q;z++)2c(F.11[z]);b M=F.M;b W=3X.3W(2Z/W);b K=0;c(1H==\'h\')2e=0;I 2e=1;c(2Y==\'3T\'){B(i=M;i<=Y;i=i+2){F.11[K]=1q("2u("+1p+","+p+","+i+","+2e+")",(K*W));K++}}I c(2Y==\'3R\'){B(i=M;i>=0;i=i-2){F.11[K]=1q("2u("+1p+","+p+","+i+","+2e+")",(K*W));K++}}}g 3q(l){b G=0;b 1Q=l;12(1Q.1o!=V){c(1Q.14==\'2N\')G++;1Q=1Q.1m}E G}g 3Q(){1r=U;B(b i=0;i<C.m.q;i++)c(C.m[i].1v){1r=P;2n}}g 3G(p){c(!C.m[p].1v&&(3V==3U)){c(1w==\'3S\')J(p,0,Y,17);I c(1w==\'1P\')1P(p,\'3T\',17);I C.m[p].f.o.19=\'1Z\';2X(p,P);C.m[p].1v=P;1r=P;}}g 2K(p){c(C.m[p].1v){c(1w==\'3S\')J(p,Y,0,17);I c(1w==\'1P\')1P(p,\'3R\',17);I C.m[p].f.o.19=\'2p\';2X(p,U);C.m[p].1v=U;}c(C.m[p].G==1)3Q()}g 2X(p,3P){b d=C.m[p];c(3P&&2d&&d.T)d.T.o.13=d.1s[1];I c(2d&&d.T)d.T.o.13=d.1s[0]}g 28(u){B(i=0;i<C.m.q;i++){c(C.m[i].f==u)E i}E-1}g 3p(l){12(l.1o!=V){l=l.1m;c(l.14==\'2N\')E 28(l)}E-1}g 3m(u){b 2y=u.1x;u.o.2r=\'4s\';b 1B=2y-u.1x;u.o.2r=1B+\'L\';E 1B}g 3l(u){12(u.1o!=V){u=u.1m;c(u.14==\'3O\')2n}E u.Z("a")[0].3o;}g 3k(u){c(u.1o==V)E O;12(u.14!=\'3O\')u=u.1m;E 1X(u,\'A\')}g 3E(){c(1N){X.2c(1N);1N=O}}g 3F(){1O=X.1q(C.27,2W)}g 2L(){c(1O){X.2c(1O);1O=O}}g 3j(){b 3N=\'.\'+V+\' > 1I > a:2V\'.1t();b 3M=\'.\'+V+\' 1I a:2V\'.1t();b 3L=\'.\'+V+\' 1M 1I a:2V\'.1t();b 2T=\'\';b 2a=\'\';b 2S=\'\';b 1u=N Q();B(b i=0;i<R.2U.q;i++){39{1u[1u.q]=R.2U[i].4r||R.2U[i].4q}37(36){}}B(b j=0;j<1u.q;j++){B(b k=0;k<1u[j].q;k++){b 16=1u[j][k];c(!16.2b)4p;c(16.2b.1t()==3N)2T=16.o.13;I c(16.2b.1t()==3M)2a=16.o.13;I c(16.2b.1t()==3L)2S=16.o.13}}b d=C.m;B(b z=0;z<d.q;z++){c(d[z].T)d[z].1s[0]=d[z].T.o.13;c(d[z].T&&d[z].G==1)d[z].1s[1]=2a+\';\'+2T;c(d[z].T&&d[z].G>1)d[z].1s[1]=2a+\';\'+2S;}}g 22(3K,3J){b 3H=3K+3J;B(b i=0;i<C.m.q;i++){c(C.m[i].G>1){C.m[i].f.o.2z=C.m[i].x+\'L\';C.m[i].1f=U}}B(b i=0;i<C.m.q;i++){b F=C.m[i];c(F.G>1){b 2Q=F.1F;b 2R=F.2D;b 3I=1V(F.f)[0];c((3I+2Q+2R*F.G-2R)>3H&&1K){F.f.o.2z=-2Q-23+\'L\';F.1f=P}}}}e.2x=g(p){c(!1r){1r=p;1N=1q("3i("+1p+","+p+")",2P)}I 3G(p)};e.3B=g(){c(1k){1k=U;2L();b 29=e;b l=29.Z("1M")[0];b 2O=28(l);c(2O>=0)C.2x(2O);b 10=N Q();10[0]=29.Z("1M")[0];c(!10[0])10[0]=0;b 1n=29.1m;b H=0;12(1n.1o!=V){c(1n.14==\'2N\'){H++;10[H]=1n}1n=1n.1m}b 1l=N Q(C.m.q);B(b i=0;i<1l.q;i++)1l[i]=U;B(b i=0;i<10.q;i++)1l[28(10[i])]=P;B(b i=0;i<1l.q;i++)c(!1l[i]&&(2M!=10[0]))2K(i);2M=10[1]}};e.3z=g(){c(1X(e,O).14==\'A\'){1k=P;C.27()}};e.3A=g(){1k=P};e.3x=g(){3F();3E()};e.3v=g(){2L()};e.3u=g(){22(1y(),1W())};e.3t=g(){22(1y(),1W())};e.27=g(){B(b i=0;i<C.m.q;i++){c(1k)2K(i)}};c(R.3D(\'3C\'))2J=R.3D(\'3C\');2J.2I=\'\';b 1j=1L.Z("1I");e.m[0]=N l(1L);B(b z=0;z<1j.q;z++){b 2H=1j[z].Z("1M")[0];c(2H)e.m[e.m.q]=N l(2H);1j[z].3w=e.3B;1j[z].3y=e.3A;c(2G)1j[z].3s=e.3z}1L.3y=e.3x;1L.3w=e.3v;c(1K)X.4o=e.3u;c(1K)X.4n=e.3t;R.3s=e.27;B(b H=1;H<e.m.q;H++){b 26=e.m[H].f.3a;b 1a=N Q();b 1J=N Q();b 25=0;B(b x=0;x<26.q;x++){c(!1z(26[x]))1a[1a.q]=26[x]}B(b y=0;y<1a.q;y++){b 1i=1a[y].Z("*");c(1i.q&&!1z(1i[0])&&1i[0].14!=\'A\'){1i[0].o.3r=\'2v\';1J[1J.q]=1i[0]}}B(b z=0;z<1a.q;z++){b 2F=1a[z].Z("a");c(2F[0]){b S=2F[0].2E;c(S>25)25=S}}B(b s=0;s<1J.q;s++)1J[s].o.3r=\'4m\';e.m[H].f.o.S=25+\'L\'}B(b H=0;H<e.m.q;H++){b d=e.m[H];d.G=3q(d.f);d.2C=3p(d.f);d.1F=d.f.2E;d.2t=d.f.3o;d.24=1X(d.f.Z("1I")[0],O).2E;d.3n=0;d.2D=(d.1F-d.24)/2;d.1E=3m(d.f);d.2B=3l(d.f);d.T=3k(d.f)};B(b H=0;H<e.m.q;H++){b G=e.m[H].G;b d=e.m[H];c((1H==\'h\'&&G>1)||(1H==\'v\'&&G>0)){d.x=e.m[d.2C].24+23;d.y=d.f.1x-d.1E-d.2B+2A;d.f.o.2z=d.x+\'L\';d.f.o.2y=d.y+\'L\'}I{d.x=d.f.32;d.y=d.f.1x-d.1E}d.1D=1V(d.f)[0];d.1C=1V(d.f)[1]}3j();22(1y(),1W())}g 3i(1h,1g){1G[1h].2x(1g)}g 2w(1h,1g,J){b 21=1G[1h];b l=21.m[1g];l.M=J;l.f.o.J=(J/Y);l.f.o.4l=(J/Y);l.f.o.4k=(J/Y);l.f.o.3h="4j(J="+J+")";c(J>3e)l.f.o.3h=\'2v\';c(J>0)l.f.o.19=\'1Z\';c(J<=0)l.f.o.19=\'2p\'}g 2u(1h,1g,15,3g){b 21=1G[1h];b l=21.m[1g];b G=l.G;b 1D=l.1D;b 1C=l.1C;b S=l.1F;b 2s=l.2t;b 1B=l.1E;b 1f=l.1f;l.M=15;b 2q=1y()-1D;b 20=33()-1C;c(!1f){c(G==1&&3g==0){b h=2s-15*2s/Y;1c(l.f,h,2q,20,0);l.f.o.2r=-h+1B+\'L\'}I{b w=S-15*S/Y;1c(l.f,0,2q,20,w);l.f.o.1Y=-w+\'L\'}}I{b w=S-15*S/Y;b 3f=S-w;1c(l.f,0,3f,20,0);l.f.o.1Y=w+\'L\'}c(15<=0){l.f.o.19=\'2p\';1c(l.f,0,0,0,0);l.f.o.1Y=\'3d\';}c(15>0){l.f.o.19=\'1Z\';}c(15>3e){1c(l.f,0,0,0,0);l.f.o.1Y=\'3d\';}}g 3b(1e){E!(/[^\\t\\n\\r ]/.4i(1e.4h))}g 1z(1e){E(1e.3c==8)||((1e.3c==3)&&3b(1e))}g 38(1A){12((1A=1A.4g)){c(!1z(1A))E 1A}E O}g 1X(f,2o){b 1d=f.3a[0];39{12(1d.14!=2o){c(!1z(1d)&&!2o)2n;1d=38(1d)}E 1d}37(36){E O}}g 1c(f,2m,2l,2k,2j){c((2m==0)&&(2l==0)&&(2k==0)&&(2j==0)){b 35=f.o.13;f.o.13=35.4f(/34: {0,2}.*\\);{0,1}/i,\'\');E}f.o.34=\'4e(\'+2m+\'L, \'+2l+\'L, \'+2k+\'L, \'+2j+\'L)\'}g 1y(){E R.2i.4d}g 33(){E R.2i.4c}g 1W(){E R.2i.4b}g 1V(u){b 2h=2g=0;c(u.31){4a{2h+=u.32;2g+=u.1x}12(u=u.31)}E[2h,2g]}18=Q();g 1T(){b i,1b;B(i=0;i<18.q;i++){1b=18[i];c(1b!=1T)1b()}}g 49(1b){c(X.1U&&X.1U!=1T)18[18.q]=X.1U;X.1U=1T;18[18.q]=1b}', 62, 285, '|||||||||||var|if|cl|this|handler|function|||||layer|_0||style|index|length||||obj|||||||for|_1|params_array|return|current_layer|level|num|else|opacity|timer|px|degree|new|null|true|Array|document|width|button|false|MLDDM_CLASS|speed|window|100|getElementsByTagName|open_layers|timeouts|while|cssText|nodeName|pos|rule|_2|_3|visibility|nodes|loaderFunc|uniclip|node|nod|reverse|layer_num|obj_num|dnodes|all_li|_4|layers_to_hide|parentNode|currobj|className|_5|setTimeout|_6|buttoncss|toLowerCase|cssrules|showed|_7|offsetTop|getClientWidth|is_ignorable|sib|margintop|ya|xa|topmargin|outerwidth|obj_menu|_8|li|specific_nodes|_9|_10|ul|_11|_12|slide|currentobj|opac_end|candidates|callAllLoaders|onload|findPos|getScrollLeft|getchildnode|marginLeft|visible|maxclip_h|object|setpositions|_13|innerwidth|maxwidth|nodesww|pcloseall|getlayerindex|currentli|root_style|selectorText|clearTimeout|_14|_15|params|curtop|curleft|documentElement|y2|x2|y1|x1|break|nodename|hidden|maxclip_w|marginTop|height|outerheight|changePOS|none|changeOpac|pmopentime|top|left|_16|shifter|parentindex|border|offsetWidth|anodes|_17|layer_handler|value|_18|mclose|mcancelclosetime|_19|UL|ind|_20|layer_width|border_width|next_style|noin_style|styleSheets|hover|_21|highlight_button|direction|1000|mlddm_effect|offsetParent|offsetLeft|getClientHeight|clip|csstext|err|catch|node_after|try|childNodes|is_all_ws|nodeType|auto|98|mw|ori|filter|openLayer|storebuttoncss|getparentbutton|getparentheight|gettopmargin|innerheight|offsetHeight|getparentindex|getlevel|display|onclick|eventscroll|eventresize|allover|onmouseover|allout|onmouseout|eventclick|eventout|eventover|debug|getElementById|canceldelay|mclosetime|mopen|max_right|layer_absx|scroll_left|client_width|next_selector|root_selector|noin_selector|LI|activate|updateglobalstate|hide|fade|show|375|mlddm_md|round|Math|mlddm_closeonclick|mlddm_highlight|mlddm_delay|mlddm_direction|mlddm_orientation|mlddm_effect_speed|mlddm_timeout|mlddm_shifty|mlddm_shiftx|obj_n|menu|appendLoader|do|scrollLeft|clientHeight|clientWidth|rect|replace|nextSibling|data|test|alpha|KhtmlOpacity|MozOpacity|block|onscroll|onresize|continue|rules|cssRules|0px|opac_start|split|getAttribute|md7|mlddminit|mlddm|300|500'.split('|')))
+var _18 = 0;
+if (!mlddm_effect) {
+    var mlddm_shiftx = 0;
+    var mlddm_shifty = 0;
+    var mlddm_timeout = 500;
+    var mlddm_effect = 'none';
+    var mlddm_effect_speed = 300;
+    var mlddm_orientation = 'h';
+    var mlddm_direction = true;
+    var mlddm_delay = 0;
+    var mlddm_highlight = true;
+    var mlddm_closeonclick = false;
+    var mlddm_md = 375
+}
+var MLDDM_CLASS = 'mlddm';
+var obj_menu = new Array();
+function mlddminit(md7) {
+    var candidates = document.getElementsByTagName('ul');
+    var index = 0;
+    for (var i = 0; i < candidates.length; i++) {
+        if (candidates[i].className == MLDDM_CLASS) {
+            candidates[i].style.visibility = 'visible';
+            var obj = candidates[i];
+            var value = obj.getAttribute('params');
+            obj_menu[index] = new menu(obj, index, value);
+            index++
+        }
+    }
+}
+function layer(handler) {
+    this.handler = handler;
+    this.showed = false;
+    this.level = 0;
+    this.x = 0;
+    this.y = 0;
+    this.xa = 0;
+    this.ya = 0;
+    this.outerwidth = 0;
+    this.outerheight = 0;
+    this.innerwidth = 0;
+    this.innerheight = 0;
+    this.border = 0;
+    this.topmargin = 0;
+    this.shifter = 0;
+    this.parentindex = 0;
+    this.reverse = false;
+    this.timeouts = new Array();
+    this.degree = 0;
+    this.button = null;
+    this.buttoncss = new Array();
+}
+function menu(obj, obj_n, params) {
+    var _10 = obj;
+    var _5 = obj_n;
+    var _1 = this;
+    var _11 = null;
+    var _12 = null;
+    var _4 = true;
+    var _19 = null;
+    var _6 = false;
+    var _13 = mlddm_shiftx;
+    var _16 = mlddm_shifty;
+    var _21 = mlddm_timeout;
+    var _7 = mlddm_effect;
+    var _2 = mlddm_effect_speed;
+    var _8 = mlddm_orientation;
+    var _9 = mlddm_direction;
+    var _20 = mlddm_delay;
+    var _14 = mlddm_highlight;
+    var _17 = mlddm_closeonclick;
+    var params_array;
+    if (params) {
+        params_array = params.split(",");
+        if (params_array[0])
+            _13 = params_array[0] * 1;
+        if (params_array[1])
+            _16 = params_array[1] * 1;
+        if (params_array[2])
+            _21 = params_array[2] * 1;
+        if (params_array[3])
+            _7 = params_array[3];
+        if (params_array[4])
+            _2 = params_array[4] * 1;
+        if (params_array[5])
+            _8 = params_array[5];
+        if (params_array[6])
+            _9 = params_array[6] * 1;
+        if (params_array[7])
+            _20 = params_array[7] * 1;
+        if (params_array[8])
+            _14 = params_array[8] * 1;
+        if (params_array[8])
+            _17 = params_array[9] * 1;
+        if (!_2)
+            _2 = 1000
+    }
+    this._0 = new Array();
+    function opacity(index, opac_start, opac_end, speed) {
+        var current_layer = _1._0[index];
+        for (var z = 0; z < current_layer.timeouts.length; z++)
+            clearTimeout(current_layer.timeouts[z]);
+        var degree = current_layer.degree;
+        var speed = Math.round(1000 / speed);
+        var timer = 0;
+        if (degree < opac_end) {
+            for (var i = degree; i <= opac_end; i = i + 4) {
+                current_layer.timeouts[timer] = setTimeout("changeOpac(" + _5 + "," + index + "," + i + ")", (timer * speed));
+                timer++
+            }
+        } else if (degree > opac_end) {
+            for (var i = degree; i >= opac_end; i = i - 4) {
+                current_layer.timeouts[timer] = setTimeout("changeOpac(" + _5 + "," + index + "," + i + ")", (timer * speed));
+                timer++
+            }
+        }
+    }
+    function slide(index, direction, speed) {
+        var current_layer = _1._0[index];
+        for (var z = 0; z < current_layer.timeouts.length; z++)
+            clearTimeout(current_layer.timeouts[z]);
+        var degree = current_layer.degree;
+        var speed = Math.round(1000 / speed);
+        var timer = 0;
+        if (_8 == 'h')
+            _15 = 0;
+        else
+            _15 = 1;
+        if (direction == 'show') {
+            for (i = degree; i <= 100; i = i + 2) {
+                current_layer.timeouts[timer] = setTimeout("changePOS(" + _5 + "," + index + "," + i + "," + _15 + ")", (timer * speed));
+                timer++
+            }
+        } else if (direction == 'hide') {
+            for (i = degree; i >= 0; i = i - 2) {
+                current_layer.timeouts[timer] = setTimeout("changePOS(" + _5 + "," + index + "," + i + "," + _15 + ")", (timer * speed));
+                timer++
+            }
+        }
+    }
+    function getlevel(layer) {
+        var level = 0;
+        var currentobj = layer;
+        while (currentobj.className != MLDDM_CLASS) {
+            if (currentobj.nodeName == 'UL')
+                level++;
+            currentobj = currentobj.parentNode
+        }
+        return level
+    }
+    function updateglobalstate() {
+        _6 = false;
+        for (var i = 0; i < _1._0.length; i++)
+            if (_1._0[i].showed) {
+                _6 = true;
+                break
+            }
+    }
+    function mopen(index) {
+        if (!_1._0[index].showed && (mlddm_md == 375)) {
+            if (_7 == 'fade')
+                opacity(index, 0, 100, _2);
+            else if (_7 == 'slide')
+                slide(index, 'show', _2);
+            else
+                _1._0[index].handler.style.visibility = 'visible';
+            highlight_button(index, true);
+            _1._0[index].showed = true;
+            _6 = true;
+        }
+    }
+    function mclose(index) {
+        if (_1._0[index].showed) {
+            if (_7 == 'fade')
+                opacity(index, 100, 0, _2);
+            else if (_7 == 'slide')
+                slide(index, 'hide', _2);
+            else
+                _1._0[index].handler.style.visibility = 'hidden';
+            highlight_button(index, false);
+            _1._0[index].showed = false;
+        }
+        if (_1._0[index].level == 1)
+            updateglobalstate()
+    }
+    function highlight_button(index, activate) {
+        var cl = _1._0[index];
+        if (activate && _14 && cl.button)
+            cl.button.style.cssText = cl.buttoncss[1];
+        else if (_14 && cl.button)
+            cl.button.style.cssText = cl.buttoncss[0]
+    }
+    function getlayerindex(obj) {
+        for (i = 0; i < _1._0.length; i++) {
+            if (_1._0[i].handler == obj)
+                return i
+        }
+        return -1
+    }
+    function getparentindex(layer) {
+        while (layer.className != MLDDM_CLASS) {
+            layer = layer.parentNode;
+            if (layer.nodeName == 'UL')
+                return getlayerindex(layer)
+        }
+        return -1
+    }
+    function gettopmargin(obj) {
+        var top = obj.offsetTop;
+        obj.style.marginTop = '0px';
+        var margintop = top - obj.offsetTop;
+        obj.style.marginTop = margintop + 'px';
+        return margintop
+    }
+    function getparentheight(obj) {
+        while (obj.className != MLDDM_CLASS) {
+            obj = obj.parentNode;
+            if (obj.nodeName == 'LI')
+                break
+        }
+        return obj.getElementsByTagName("a")[0].offsetHeight;
+    }
+    function getparentbutton(obj) {
+        if (obj.className == MLDDM_CLASS)
+            return null;
+        while (obj.nodeName != 'LI')
+            obj = obj.parentNode;
+        return getchildnode(obj, 'A')
+    }
+    function canceldelay() {
+        if (_11) {
+            window.clearTimeout(_11);
+            _11 = null
+        }
+    }
+    function mclosetime() {
+        _12 = window.setTimeout(_1.pcloseall, _21)
+    }
+    function mcancelclosetime() {
+        if (_12) {
+            window.clearTimeout(_12);
+            _12 = null
+        }
+    }
+    function storebuttoncss() {
+        var noin_selector = '.' + MLDDM_CLASS + ' > li > a:hover'.toLowerCase();
+        var root_selector = '.' + MLDDM_CLASS + ' li a:hover'.toLowerCase();
+        var next_selector = '.' + MLDDM_CLASS + ' ul li a:hover'.toLowerCase();
+        var noin_style = '';
+        var root_style = '';
+        var next_style = '';
+        var cssrules = new Array();
+        for (var i = 0; i < document.styleSheets.length; i++) {
+            try {
+                cssrules[cssrules.length] = document.styleSheets[i].cssRules || document.styleSheets[i].rules
+            } catch (err) {
+            }
+        }
+        for (var j = 0; j < cssrules.length; j++) {
+            if (cssrules[j] != null) {
+                for (var k = 0; k < cssrules[j].length; k++) {
+                    var rule = cssrules[j][k];
+                    if (!rule.selectorText)
+                        continue;
+                    if (rule.selectorText.toLowerCase() == noin_selector)
+                        noin_style = rule.style.cssText;
+                    else if (rule.selectorText.toLowerCase() == root_selector)
+                        root_style = rule.style.cssText;
+                    else if (rule.selectorText.toLowerCase() == next_selector)
+                        next_style = rule.style.cssText
+                }
+            }
+        }
+        var cl = _1._0;
+        for (var z = 0; z < cl.length; z++) {
+            if (cl[z].button)
+                cl[z].buttoncss[0] = cl[z].button.style.cssText;
+            if (cl[z].button && cl[z].level == 1)
+                cl[z].buttoncss[1] = root_style + ';' + noin_style;
+            if (cl[z].button && cl[z].level > 1)
+                cl[z].buttoncss[1] = root_style + ';' + next_style;
+        }
+    }
+    function setpositions(client_width, scroll_left) {
+        var max_right = client_width + scroll_left;
+        for (var i = 0; i < _1._0.length; i++) {
+            if (_1._0[i].level > 1) {
+                _1._0[i].handler.style.left = _1._0[i].x + 'px';
+                _1._0[i].reverse = false
+            }
+        }
+        for (var i = 0; i < _1._0.length; i++) {
+            var current_layer = _1._0[i];
+            if (current_layer.level > 1) {
+                var layer_width = current_layer.outerwidth;
+                var border_width = current_layer.border;
+                var layer_absx = findPos(current_layer.handler)[0];
+                if ((layer_absx + layer_width + border_width * current_layer.level - border_width) > max_right && _9) {
+                    current_layer.handler.style.left = -layer_width - _13 + 'px';
+                    current_layer.reverse = true
+                }
+            }
+        }
+    }
+    this.pmopentime = function (index) {
+        if (!_6) {
+            _6 = index;
+            _11 = setTimeout("openLayer(" + _5 + "," + index + ")", _20)
+        } else
+            mopen(index)
+    };
+    this.eventover = function () {
+        if (_4) {
+            _4 = false;
+            mcancelclosetime();
+            var currentli = this;
+            var layer = currentli.getElementsByTagName("ul")[0];
+            var ind = getlayerindex(layer);
+            if (ind >= 0)
+                _1.pmopentime(ind);
+            var open_layers = new Array();
+            open_layers[0] = currentli.getElementsByTagName("ul")[0];
+            if (!open_layers[0])
+                open_layers[0] = 0;
+            var currobj = currentli.parentNode;
+            var num = 0;
+            while (currobj.className != MLDDM_CLASS) {
+                if (currobj.nodeName == 'UL') {
+                    num++;
+                    open_layers[num] = currobj
+                }
+                currobj = currobj.parentNode
+            }
+            var layers_to_hide = new Array(_1._0.length);
+            for (var i = 0; i < layers_to_hide.length; i++)
+                layers_to_hide[i] = false;
+            for (var i = 0; i < open_layers.length; i++)
+                layers_to_hide[getlayerindex(open_layers[i])] = true;
+            for (var i = 0; i < layers_to_hide.length; i++)
+                if (!layers_to_hide[i] && (_19 != open_layers[0]))
+                    mclose(i);
+            _19 = open_layers[1]
+        }
+    };
+    this.eventclick = function () {
+        if (getchildnode(this, null).nodeName == 'A') {
+            _4 = true;
+            _1.pcloseall()
+        }
+    };
+    this.eventout = function () {
+        _4 = true
+    };
+    this.allout = function () {
+        mclosetime();
+        canceldelay()
+    };
+    this.allover = function () {
+        mcancelclosetime()
+    };
+    this.eventresize = function () {
+        setpositions(getClientWidth(), getScrollLeft())
+    };
+    this.eventscroll = function () {
+        setpositions(getClientWidth(), getScrollLeft())
+    };
+    this.pcloseall = function () {
+        for (var i = 0; i < _1._0.length; i++) {
+            if (_4)
+                mclose(i)
+        }
+    };
+    if (document.getElementById('debug'))
+        _18 = document.getElementById('debug');
+    _18.value = '';
+    var all_li = _10.getElementsByTagName("li");
+    this._0[0] = new layer(_10);
+    for (var z = 0; z < all_li.length; z++) {
+        var layer_handler = all_li[z].getElementsByTagName("ul")[0];
+        if (layer_handler)
+            this._0[this._0.length] = new layer(layer_handler);
+        all_li[z].onmouseover = this.eventover;
+        all_li[z].onmouseout = this.eventout;
+        if (_17)
+            all_li[z].onclick = this.eventclick
+    }
+    _10.onmouseout = this.allout;
+    _10.onmouseover = this.allover;
+    if (_9)
+        window.onresize = this.eventresize;
+    if (_9)
+        window.onscroll = this.eventscroll;
+    document.onclick = this.pcloseall;
+    for (var num = 1; num < this._0.length; num++) {
+        var nodesww = this._0[num].handler.childNodes;
+        var nodes = new Array();
+        var specific_nodes = new Array();
+        var maxwidth = 0;
+        for (var x = 0; x < nodesww.length; x++) {
+            if (!is_ignorable(nodesww[x]))
+                nodes[nodes.length] = nodesww[x]
+        }
+        for (var y = 0; y < nodes.length; y++) {
+            var dnodes = nodes[y].getElementsByTagName("*");
+            if (dnodes.length && !is_ignorable(dnodes[0]) && dnodes[0].nodeName != 'A') {
+                dnodes[0].style.display = 'none';
+                specific_nodes[specific_nodes.length] = dnodes[0]
+            }
+        }
+        for (var z = 0; z < nodes.length; z++) {
+            var anodes = nodes[z].getElementsByTagName("a");
+            if (anodes[0]) {
+                var width = anodes[0].offsetWidth;
+                if (width > maxwidth)
+                    maxwidth = width
+            }
+        }
+        for (var s = 0; s < specific_nodes.length; s++)
+            specific_nodes[s].style.display = 'block';
+        this._0[num].handler.style.width = maxwidth + 'px'
+    }
+    for (var num = 0; num < this._0.length; num++) {
+        var cl = this._0[num];
+        cl.level = getlevel(cl.handler);
+        cl.parentindex = getparentindex(cl.handler);
+        cl.outerwidth = cl.handler.offsetWidth;
+        cl.outerheight = cl.handler.offsetHeight;
+        cl.innerwidth = getchildnode(cl.handler.getElementsByTagName("li")[0], null).offsetWidth;
+        cl.innerheight = 0;
+        cl.border = (cl.outerwidth - cl.innerwidth) / 2;
+        cl.topmargin = gettopmargin(cl.handler);
+        cl.shifter = getparentheight(cl.handler);
+        cl.button = getparentbutton(cl.handler)
+    }
+    ;
+    for (var num = 0; num < this._0.length; num++) {
+        var level = this._0[num].level;
+        var cl = this._0[num];
+        if ((_8 == 'h' && level > 1) || (_8 == 'v' && level > 0)) {
+            cl.x = this._0[cl.parentindex].innerwidth + _13;
+            cl.y = cl.handler.offsetTop - cl.topmargin - cl.shifter + _16;
+            cl.handler.style.left = cl.x + 'px';
+            cl.handler.style.top = cl.y + 'px'
+        } else {
+            cl.x = cl.handler.offsetLeft;
+            cl.y = cl.handler.offsetTop - cl.topmargin
+        }
+        cl.xa = findPos(cl.handler)[0];
+        cl.ya = findPos(cl.handler)[1]
+    }
+    storebuttoncss();
+    setpositions(getClientWidth(), getScrollLeft())
+}
+function openLayer(obj_num, layer_num) {
+    obj_menu[obj_num].pmopentime(layer_num)
+}
+function changeOpac(obj_num, layer_num, opacity) {
+    var object = obj_menu[obj_num];
+    var layer = object._0[layer_num];
+    layer.degree = opacity;
+    layer.handler.style.opacity = (opacity / 100);
+    layer.handler.style.MozOpacity = (opacity / 100);
+    layer.handler.style.KhtmlOpacity = (opacity / 100);
+    layer.handler.style.filter = "alpha(opacity=" + opacity + ")";
+    if (opacity > 98)
+        layer.handler.style.filter = 'none';
+    if (opacity > 0)
+        layer.handler.style.visibility = 'visible';
+    if (opacity <= 0)
+        layer.handler.style.visibility = 'hidden'
+}
+function changePOS(obj_num, layer_num, pos, ori) {
+    var object = obj_menu[obj_num];
+    var layer = object._0[layer_num];
+    var level = layer.level;
+    var xa = layer.xa;
+    var ya = layer.ya;
+    var width = layer.outerwidth;
+    var height = layer.outerheight;
+    var margintop = layer.topmargin;
+    var reverse = layer.reverse;
+    layer.degree = pos;
+    var maxclip_w = getClientWidth() - xa;
+    var maxclip_h = getClientHeight() - ya;
+    if (!reverse) {
+        if (level == 1 && ori == 0) {
+            var h = height - pos * height / 100;
+            uniclip(layer.handler, h, maxclip_w, maxclip_h, 0);
+            layer.handler.style.marginTop = -h + margintop + 'px'
+        } else {
+            var w = width - pos * width / 100;
+            uniclip(layer.handler, 0, maxclip_w, maxclip_h, w);
+            layer.handler.style.marginLeft = -w + 'px'
+        }
+    } else {
+        var w = width - pos * width / 100;
+        var mw = width - w;
+        uniclip(layer.handler, 0, mw, maxclip_h, 0);
+        layer.handler.style.marginLeft = w + 'px'
+    }
+    if (pos <= 0) {
+        layer.handler.style.visibility = 'hidden';
+        uniclip(layer.handler, 0, 0, 0, 0);
+        layer.handler.style.marginLeft = 'auto';
+    }
+    if (pos > 0) {
+        layer.handler.style.visibility = 'visible';
+    }
+    if (pos > 98) {
+        uniclip(layer.handler, 0, 0, 0, 0);
+        layer.handler.style.marginLeft = 'auto';
+    }
+}
+function is_all_ws(nod) {
+    return !(/[^\t\n\r ]/.test(nod.data))
+}
+function is_ignorable(nod) {
+    return (nod.nodeType == 8) || ((nod.nodeType == 3) && is_all_ws(nod))
+}
+function node_after(sib) {
+    while ((sib = sib.nextSibling)) {
+        if (!is_ignorable(sib))
+            return sib
+    }
+    return null
+}
+function getchildnode(handler, nodename) {
+    var node = handler.childNodes[0];
+    try {
+        while (node.nodeName != nodename) {
+            if (!is_ignorable(node) && !nodename)
+                break;
+            node = node_after(node)
+        }
+        return node
+    } catch (err) {
+        return null
+    }
+}
+function uniclip(handler, x1, y1, x2, y2) {
+    if ((x1 == 0) && (y1 == 0) && (x2 == 0) && (y2 == 0)) {
+        var csstext = handler.style.cssText;
+        handler.style.cssText = csstext.replace(/clip: {0,2}.*\);{0,1}/i, '');
+        return
+    }
+    handler.style.clip = 'rect(' + x1 + 'px, ' + y1 + 'px, ' + x2 + 'px, ' + y2 + 'px)'
+}
+function getClientWidth() {
+    return document.documentElement.clientWidth
+}
+function getClientHeight() {
+    return document.documentElement.clientHeight
+}
+function getScrollLeft() {
+    return document.documentElement.scrollLeft
+}
+function findPos(obj) {
+    var curleft = curtop = 0;
+    if (obj.offsetParent) {
+        do {
+            curleft += obj.offsetLeft;
+            curtop += obj.offsetTop
+        } while (obj = obj.offsetParent)
+    }
+    return [curleft, curtop]
+}
+_3 = Array();
+function callAllLoaders() {
+    var i, loaderFunc;
+    for (i = 0; i < _3.length; i++) {
+        loaderFunc = _3[i];
+        if (loaderFunc != callAllLoaders)
+            loaderFunc()
+    }
+}
+function appendLoader(loaderFunc) {
+    if (window.onload && window.onload != callAllLoaders)
+        _3[_3.length] = window.onload;
+    window.onload = callAllLoaders;
+    _3[_3.length] = loaderFunc
+}
 appendLoader(mlddminit);
 function mlddminit2(md7) {
+    debugger;
     var candidates = document.getElementsByTagName("ul");
     var index = 0;
     for (var i = 0; i < candidates.length; i++) {

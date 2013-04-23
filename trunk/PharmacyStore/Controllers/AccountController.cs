@@ -10,7 +10,6 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PharmacyStore.Filters;
 using PharmacyStore.Models;
-using PharmacyStoreModel;
 
 namespace PharmacyStore
 {

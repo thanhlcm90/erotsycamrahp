@@ -53,6 +53,9 @@ public class BundlesFormats
 {
     public const string PRINT = @"<link href=""{0}"" rel=""stylesheet"" media=""print"" />";
     public const string SCREEN = @"<link href=""{0}"" rel=""stylesheet"" media=""screen"" />";
-    public const string RESOLUTION = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (min-width: 480px)"" />";
+    public const string RES480 = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (min-width: 480px)"" />";
+    public const string RES768 = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (min-width: 768px)"" />";
+    public const string RES992 = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (min-width: 992px)"" />";
+    public const string RES1200 = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (min-width: 1200px)"" />";
     public const string RETINA = @"<link href=""{0}"" rel=""stylesheet"" media=""only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)"" />";
 }

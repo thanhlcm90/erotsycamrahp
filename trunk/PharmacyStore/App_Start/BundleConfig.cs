@@ -9,7 +9,9 @@ namespace PharmacyStore
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-scrolltofixed.js",
+                        "~/Scripts/jquery.ajax.extension.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-ba-hashchange").Include(
                         "~/Scripts/developer/libs/jquery.ba-hashchange.min.js"));
 
@@ -17,8 +19,8 @@ namespace PharmacyStore
             //            "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/developr/libs/formValidator/jquery.validationEngine.js",
-                        "~/Scripts/developr/libs/formValidator/other-validations.js"));
+                        "~/Scripts/jquery.unobtrusive*",
+                        "~/Scripts/jquery.validate*"));
 
             //// Use the development version of Modernizr to develop with and learn from. Then, when you're
             //// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -27,9 +29,13 @@ namespace PharmacyStore
 
             bundles.Add(new StyleBundle("~/Content/developr/print").Include(
                         "~/Content/developr/print.css"));
-            bundles.Add(new StyleBundle("~/Content/developr/resolution").Include(
-                        "~/Content/developr/480.css",
-                        "~/Content/developr/768.css",
+            bundles.Add(new StyleBundle("~/Content/developr/480").Include(
+                        "~/Content/developr/480.css"));
+            bundles.Add(new StyleBundle("~/Content/developr/768").Include(
+                        "~/Content/developr/768.css"));
+            bundles.Add(new StyleBundle("~/Content/developr/992").Include(
+                        "~/Content/developr/992.css"));
+            bundles.Add(new StyleBundle("~/Content/developr/1200").Include(
                         "~/Content/developr/1200.css"));
             bundles.Add(new StyleBundle("~/Content/developr/resolutionRetina").Include(
                         "~/Content/developr/2x.css"));
@@ -41,7 +47,8 @@ namespace PharmacyStore
                         "~/Content/developr/styles/modal.css",
                         "~/Content/developr/styles/progress-slider.css",
                         "~/Content/developr/styles/switches.css",
-                        "~/Content/developr/styles/table.css"));
+                        "~/Content/developr/styles/table.css",
+                        "~/Content/css/validator.css"));
             bundles.Add(new ScriptBundle("~/developr/mainscript").Include(
                       "~/Scripts/developr/setup.js",
                       "~/Scripts/developr/developr.input.js",
@@ -52,6 +59,8 @@ namespace PharmacyStore
                       "~/Scripts/developr/developr.scroll.js",
                       "~/Scripts/developr/developr.details.js",
                       "~/Scripts/developr/developr.table.js",
+                      "~/Scripts/developr/developr.modal.js",
+                      "~/Scripts/developr/developr.progress-slider.js",
                       "~/Scripts/developr/libs/jquery.details.min.js",
                       "~/Scripts/developr/libs/tinycon.min.js"));
             bundles.Add(new StyleBundle("~/Content/developr/loginstyle").Include(
@@ -73,7 +82,7 @@ namespace PharmacyStore
             bundles.Add(new ScriptBundle("~/Scripts/kendo").Include(
                         "~/Scripts/kendo/2012.3.1114/kendo.all.min.js",
                         "~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js"));
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }
