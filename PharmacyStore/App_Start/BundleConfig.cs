@@ -9,9 +9,18 @@ namespace PharmacyStore
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-scrolltofixed.js",
-                        "~/Scripts/jquery.ajax.extension.js"));
+                        "~/Scripts/jQuery/jquery-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/myplugin").Include(
+                        "~/Scripts/MyPlugin/jquery-scrolltofixed.js",
+                        "~/Scripts/MyPlugin/jquery.ajax.extension.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+                        "~/Scripts/jquery.inputmask/jquery.inputmask.js",
+                        "~/Scripts/jquery.inputmask/jquery.inputmask.extensions.js",
+                        "~/Scripts/jquery.inputmask/jquery.inputmask.date.extensions.js",
+                        "~/Scripts/jquery.inputmask/jquery.inputmask.numeric.extensions.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery-ba-hashchange").Include(
                         "~/Scripts/developer/libs/jquery.ba-hashchange.min.js"));
 
@@ -19,8 +28,8 @@ namespace PharmacyStore
             //            "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jQuery/jquery.unobtrusive*",
+                        "~/Scripts/jQuery/jquery.validate*"));
 
             //// Use the development version of Modernizr to develop with and learn from. Then, when you're
             //// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -64,6 +73,12 @@ namespace PharmacyStore
                       "~/Scripts/developr/libs/jquery.details.min.js",
                       "~/Scripts/developr/libs/tinycon.min.js"));
             bundles.Add(new StyleBundle("~/Content/developr/loginstyle").Include(
+                        "~/Content/developr/reset.css",
+                        "~/Content/developr/style.css",
+                        "~/Content/developr/colors.css",
+                        "~/Content/developr/styles/form.css",
+                        "~/Content/developr/styles/switches.css"));
+            bundles.Add(new StyleBundle("~/Content/developr/loginstylemedia").Include(
                         "~/Content/developr/login.css"));
             bundles.Add(new ScriptBundle("~/developr/loginscript").Include(
                       "~/Scripts/developr/setup.js",
@@ -74,7 +89,7 @@ namespace PharmacyStore
             bundles.Add(new StyleBundle("~/Content/menustyle").Include(
                         "~/Content/css/jMenu.css"));
             bundles.Add(new ScriptBundle("~/Scripts/menuscript").Include(
-                        "~/Scripts/jMenu.js"));
+                        "~/Scripts/MyPlugin/jMenu.js"));
 
             bundles.Add(new StyleBundle("~/Content/kendo").Include(
                         "~/Content/kendo/2012.3.1114/kendo.common.min.css",
