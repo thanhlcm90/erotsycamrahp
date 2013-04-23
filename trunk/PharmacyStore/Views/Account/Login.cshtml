@@ -28,27 +28,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!-- For all browsers -->
-	<link rel="stylesheet" href="@Url.Content("~/Content/reset.css?v=1")">
-	<link rel="stylesheet" href="@Url.Content("~/Content/style.css?v=1")">
-	<link rel="stylesheet" href="@Url.Content("~/Content/colors.css?v=1")">
-	<link rel="stylesheet" media="print" href="@Url.Content("~/Content/print.css?v=1")">
+	@Styles.Render("~/Content/developr/loginstyle")
+	@Bundles.RenderFormat("~/Content/developr/print", BundlesFormats.PRINT)
 	<!-- For progressively larger displays -->
-	<link rel="stylesheet" media="only all and (min-width: 480px)" href="@Url.Content("~/Content/480.css?v=1")">
-	<link rel="stylesheet" media="only all and (min-width: 768px)" href="@Url.Content("~/Content/768.css?v=1")">
-	<link rel="stylesheet" media="only all and (min-width: 992px)" href="@Url.Content("~/Content/992.css?v=1")">
-	<link rel="stylesheet" media="only all and (min-width: 1200px)" href="@Url.Content("~/Content/1200.css?v=1")">
+	@Bundles.RenderFormat("~/Content/developr/480", BundlesFormats.RES480)
+	@Bundles.RenderFormat("~/Content/developr/768", BundlesFormats.RES768)
+	@Bundles.RenderFormat("~/Content/developr/1200", BundlesFormats.RES1200)
 	<!-- For Retina displays -->
-	<link rel="stylesheet" media="only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)" href="@Url.Content("~/Content/2x.css?v=1")">
+	@Bundles.RenderFormat("~/Content/developr/resolutionRetina", BundlesFormats.RETINA)
 	
-	<!-- Additional styles -->
-	<link rel="stylesheet" href="@Url.Content("~/Content/styles/form.css?v=1")">
-	<link rel="stylesheet" href="@Url.Content("~/Content/styles/switches.css?v=1")">
-
 	<!-- Login pages styles -->
-	<link rel="stylesheet" media="screen" href="@Url.Content("~/Content/login.css?v=1")">
+	@Bundles.RenderFormat("~/Content/developr/loginstylemedia", BundlesFormats.SCREEN)
+	
+	<!-- Webfonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
 	<!-- JavaScript at bottom except for Modernizr -->
-	<script src="@Url.Content("~/Scripts/developer/libs/modernizr.custom.js")"></script>
+	@Scripts.Render("~/developr/modernizr")
 
 	<!-- For Modern Browsers -->
 	<link rel="shortcut icon" src="@Url.Content("~/Images/favicons/favicon.png")">
@@ -80,15 +76,10 @@
 	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
 	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
 	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
-
-	<!-- Style for Kendo  -->
-	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
-	<script src="@Url.Content("~/Scripts/kendo/2012.3.1114/jquery.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.all.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js")"></script>
+	
+	<!-- jQuery -->
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/jquery-ba-hashchange")
 
 </head>
 <body class="linen">
@@ -96,8 +87,8 @@
 	<div id="container">
 
 		<hgroup id="login-title" class="large-margin-bottom">
-			<h1 class="login-title-image">Developr</h1>
-			<h5>&copy; Your Company</h5>
+			<h1 class="login-title-image">Pharmacy Store</h1>
+			<h5>&copy; Lê Cao Minh Thành</h5>
 		</hgroup>
 
 		<div id="form-wrapper">
@@ -107,27 +98,27 @@
 						@Html.AntiForgeryToken()
 						<ul class="inputs black-input large">
 							<!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
-							<li><span class="icon-user mid-margin-right"></span>@Html.TextBoxFor(m => m.UserName, new { @id = "login", @class = "input-unstyled", @placeholder = "Login", @autocomplete = "off" })</li>
-							<li><span class="icon-lock mid-margin-right"></span>@Html.PasswordFor(m => m.Password, new { @id = "pass", @class = "input-unstyled", @placeholder = "Password", @autocomplete = "off" })</li>
+							<li><span class="icon-user mid-margin-right"></span>@Html.TextBoxFor(m => m.UserName, new { @id = "login", @class = "input-unstyled", @placeholder = "Tên đăng nhập", @autocomplete = "off" })</li>
+							<li><span class="icon-lock mid-margin-right"></span>@Html.PasswordFor(m => m.Password, new { @id = "pass", @class = "input-unstyled", @placeholder = "Mật khẩu", @autocomplete = "off" })</li>
 						</ul>
 						<p class="button-height">
-							<button type="submit" class="button glossy float-right" id="login">Login</button>
-							@Html.CheckBoxFor(m => m.RememberMe, new {  @class = "switch tiny mid-margin-right with-tooltip", @title = "Enable auto-login" })
+							<button type="submit" class="button glossy float-right" id="login">Đăng nhập</button>
+							@Html.CheckBoxFor(m => m.RememberMe, new {  @class = "switch tiny mid-margin-right with-tooltip", @title = "Tự động đăng nhập" })
 							<label for="remind">Ghi nhớ</label>
 						</p>
 					</form>
 					<form method="post" action="" id="form-password" class="input-wrapper orange-gradient glossy" title="Quên mật khẩu?">
 
 						<p class="message">
-							If you can’t remember your password, fill the input below with your e-mail and we’ll send you a new one:
+							Nếu bạn không thể nhớ được mật khẩu cũ, hãy điền địa chỉ Email của bạn bên dưới, và chúng tôi sẽ gửi cho bạn mật khẩu mới:
 							<span class="block-arrow"><span></span></span>
 						</p>
 
 						<ul class="inputs black-input large">
-							<li><span class="icon-mail mid-margin-right"></span><input type="email" name="mail" id="mail" value="" class="input-unstyled" placeholder="Your e-mail" autocomplete="off"></li>
+							<li><span class="icon-mail mid-margin-right"></span><input type="email" name="mail" id="mail" value="" class="input-unstyled" placeholder="Địa chỉ Email của bạn" autocomplete="off"></li>
 						</ul>
 
-						<button type="submit" class="button glossy full-width" id="send-password">Send new password</button>
+						<button type="submit" class="button glossy full-width" id="send-password">Gửi yêu cầu</button>
 
 					</form>
 				</div>
@@ -137,13 +128,7 @@
 	<!-- JavaScript at the bottom for fast page loading -->
 
 	<!-- Scripts -->
-	<script src="@Url.Content("~/Scripts/developer/setup.js")"></script>
-
-	<!-- Template functions -->
-	<script src="@Url.Content("~/Scripts/developer/developr.input.js")"></script>
-	<script src="@Url.Content("~/Scripts/developer/developr.notify.js")"></script>
-	<script src="@Url.Content("~/Scripts/developer/developr.message.js")"></script>
-	<script src="@Url.Content("~/Scripts/developer/developr.tooltip.js")"></script>
+	@Scripts.Render("~/developr/loginscript")
 
 	<script>
 
@@ -217,7 +202,7 @@
 				}
 				else if (pass.length === 0) {
 					// Remove empty login message if displayed
-				    formWrapper.clearMessages('Bạn chưa nhập Tên đăng nhập');
+					formWrapper.clearMessages('Bạn chưa nhập Tên đăng nhập');
 
 					// Display message
 					displayError('Bạn chưa nhập Mật khẩu');
@@ -447,7 +432,7 @@
 			*/
 			function displayError(message) {
 				// Show message
-				var message = formWrapper.message(message, {
+				var message = formBlock.message(message, {
 					append: false,
 					arrow: 'bottom',
 					classes: ['red-gradient'],
@@ -471,7 +456,7 @@
 			*/
 			function displayLoading(message) {
 				// Show message
-				var message = formWrapper.message('<strong>' + message + '</strong>', {
+				var message = formBlock.message('<strong>' + message + '</strong>', {
 					append: false,
 					arrow: 'bottom',
 					classes: ['blue-gradient', 'align-center'],
