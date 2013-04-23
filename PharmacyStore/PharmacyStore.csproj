@@ -171,6 +171,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CommonFunction.cs" />
+    <Compile Include="CommonMessage.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,12 +182,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\OtherListModels.cs" />
-    <Compile Include="Models\System\AccountModels.cs" />
-    <Compile Include="Models\List\DoctorModels.cs" />
-    <Compile Include="Models\System\StoreModels.cs" />
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\validator.css" />
     <Content Include="Content\css\jMenu.css" />
     <Content Include="Content\developr\1200.css" />
     <Content Include="Content\developr\2x.css" />
@@ -337,6 +338,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.ttf" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.woff" />
+    <Content Include="Scripts\jquery.ajax.extension.js" />
+    <Content Include="Scripts\jquery-scrolltofixed.js" />
     <Content Include="Scripts\developr\developr.accordions.js" />
     <Content Include="Scripts\developr\developr.agenda.js" />
     <Content Include="Scripts\developr\developr.auto-resizing.js" />
@@ -1120,6 +1123,11 @@
     <Content Include="Scripts\flat\plugins\xeditable\bootstrap-editable.min.js" />
     <Content Include="Scripts\flat\plugins\xeditable\demo.js" />
     <Content Include="Scripts\jMenu.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.af-ZA.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.af.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.am-ET.min.js" />
@@ -1571,6 +1579,19 @@
     <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_UserMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_SelectSkinPartial.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Doctor\Create.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Doctor\Delete.cshtml" />
+    <Content Include="Views\Shared\_ShortcutPartial.cshtml" />
+    <Content Include="Views\Home\DatabaseManager.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Store\_FormPartial.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -1580,27 +1601,9 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_UserMenuPartial.cshtml" />
-    <Content Include="Views\Shared\_SelectSkinPartial.cshtml" />
-    <Content Include="Views\Store\Index.cshtml" />
-    <Content Include="Views\Store\Details.cshtml" />
-    <Content Include="Views\Store\Create.cshtml" />
-    <Content Include="Views\Store\Edit.cshtml" />
-    <Content Include="Views\Store\Delete.cshtml" />
-    <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Doctor\Details.cshtml" />
-    <Content Include="Views\Doctor\Create.cshtml" />
-    <Content Include="Views\Doctor\Edit.cshtml" />
-    <Content Include="Views\Doctor\Delete.cshtml" />
-    <Content Include="Views\Shared\_ShortcutPartial.cshtml" />
-    <Content Include="Views\Home\DatabaseManager.cshtml" />
-    <Content Include="Views\Shared\_MenuPartial.cshtml" />
-    <Content Include="Views\Store\Copy of Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Business\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

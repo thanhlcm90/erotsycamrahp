@@ -2188,7 +2188,6 @@ details.details > summary > h3 {
 
 /* Information spot */
 .info-spot {
-    display: inline-block;
     width: 16px;
     height: 16px;
     text-align: center;
@@ -2204,6 +2203,9 @@ details.details > summary > h3 {
     -moz-text-shadow: none;
     text-shadow: none;
     cursor: help;
+    float: right;
+    margin-top: -22px;
+    margin-right: -16px;
 }
 
     .info-spot > [class^="icon-"],
@@ -2211,7 +2213,7 @@ details.details > summary > h3 {
         position: absolute;
         font-size: 17px;
         top: 0;
-        left: 0;
+        left: -13px;
     }
 
     .info-spot:hover > [class^="icon-"],
@@ -2225,7 +2227,7 @@ details.details > summary > h3 {
     position: absolute;
     z-index: 98;
     top: -5px;
-    left: 15px;
+    left: 2px;
     min-width: 100px;
     padding: 8px 11px;
     background: #4c4c4c;
@@ -2235,6 +2237,7 @@ details.details > summary > h3 {
     -webkit-border-top-left-radius: 0;
     -moz-border-radius: 0 5px 5px 5px;
     border-radius: 0 5px 5px 5px;
+    margin-right: 17px;
 }
 
 .info-spot:hover > .info-bubble {
@@ -3193,9 +3196,9 @@ body.reversed #open-shortcuts {
     position: relative;
 }
 
-    #main-title + .with-padding {
+    /*#main-title + .with-padding {
         padding-top: 0 !important;
-    }
+    }*/
 
     #main-title h1,
     #main-title h2 {
@@ -3214,6 +3217,12 @@ body.reversed #open-shortcuts {
             font-size: 30px;
             vertical-align: -3px;
         }
+
+/* Main Body*/
+#main-body {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 /* Side tabs shortcuts */
 #shortcuts {

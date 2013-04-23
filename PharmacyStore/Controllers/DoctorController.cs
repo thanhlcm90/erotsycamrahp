@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 
 namespace PharmacyStore.Controllers
 {
@@ -39,7 +39,6 @@ namespace PharmacyStore.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website");
             return View();
         }
 
@@ -55,7 +54,6 @@ namespace PharmacyStore.Controllers
                 return RedirectToAction("Index");
             }
             
-            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website");
             return View(model);
         }
 
@@ -69,7 +67,6 @@ namespace PharmacyStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website", model.StoreId);
             return View(model);
         }
 
@@ -84,7 +81,6 @@ namespace PharmacyStore.Controllers
                 rep.UpdateDoctor(model);
                 return RedirectToAction("Index");
             }
-            ViewBag.StoreId = new SelectList(rep.GetStoreList(), "Id", "Website", model.StoreId);
             return View(model);
         }
 

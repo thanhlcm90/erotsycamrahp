@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 
@@ -19,65 +19,24 @@ namespace PharmacyStore.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public ActionResult GetStoreList([DataSourceRequest] DataSourceRequest request)
-        {
-            var model = rep.GetStoreList();
-            return Json(model.ToDataSourceResult(request));
-        }
-
-        //
-        // GET: /Store/Details/5
-
-        [Authorize]
-        public ActionResult Details(int id = 0)
-        {
-            var model = rep.GetStoreInfo(id);
-            if (model == null)
-            {
-                return HttpNotFound();
-            }
-            return View(model);
-        }
-
-        //
-        // GET: /Store/Create
-        [Authorize]
-        public ActionResult Create()
-        {
-            ViewBag.UserId = new SelectList(rep.GetUserList(), "Id", "UserName");
-            return View();
-        }
-
-        //
-        // POST: /Store/Create
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(SY_STORE model)
-        {
-            if (model != null && ModelState.IsValid)
-            {
-                model.UserId = rep.GetUserInfoFromUsername(User.Identity.Name).Id;
-                rep.InsertStore(model);
-            }
+            var model = rep.GetStoreInfo(User.Identity.Name);
             return View(model);
         }
 
         //
         // POST: /Store/Edit
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(SY_STORE model)
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind]SY_STORE model)
         {
-            if (model != null && ModelState.IsValid)
+            if (model  != null)
             {
-                rep.UpdateStore(model);
+                rep.UpdateStore(model, User.Identity.Name);
+                return Content(CommonMessage.MESSAGE_TRANSACTION_SUCCESS );
             }
-            return View(model);
+            return Content(CommonMessage.MESSAGE_TRANSACTION_FAIL);
         }
 
         //

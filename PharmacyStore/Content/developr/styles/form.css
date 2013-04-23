@@ -188,6 +188,7 @@ label {
 		.inputs > li > .input-unstyled:first-child {
 			margin-left: -9px;
 			padding-left: 9px !important;
+			padding-right: 9px;
 		}
 		.input > .input-unstyled:last-child,
 		.inputs > li > .input-unstyled:last-child {

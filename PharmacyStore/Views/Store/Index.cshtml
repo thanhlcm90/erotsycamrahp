@@ -1,65 +1,71 @@
-﻿@{
-    ViewBag.Title = "Danh sách tiệm thuốc";
+﻿@model PharmacyStore.Models.SY_STORE
+
+@{
+    ViewBag.Title = "Thông tin tiệm thuốc";
 }
+@Html.AntiForgeryToken()
+@CommonFunction.BuildToolbar(ToolbarItem.Edit, ToolbarItem.Delete)
 
-@(Html.Kendo().Grid<PharmacyStoreModel.SY_STORE>()
-    .Name("Grid")
-    .Columns(column =>
-    {
-        column.Bound(p => p.StoreName).HeaderHtmlAttributes(new {@class="hide-on-mobile" });
-        column.Bound(p => p.OwnerFullname);
-        column.Bound(p => p.StoreAddress);
-        column.Bound(p => p.StoreFax);
-        column.Bound(p => p.StoreTelephone);
-        column.Bound(p => p.StoreTaxNo);
-        column.Bound(p => p.Website);
-        column.Bound(p => p.Email);
-        column.Bound(p => p.ListDoctor);
-        column.Command(command => { command.Destroy(); }).Width(160);
-    })
-    .ToolBar(toolbar =>
-        {
-            toolbar.Create().Text("Thêm mới");
-        })
-    .Editable(p => p
-        .Window(win => win
-            .Title(ViewBag.PopupTitle)
-            .Visible(false)
-            .Modal(true)
-            .LoadContentFrom("Create", "Store"))
-        .Mode(GridEditMode.PopUp))    
-    .TableHtmlAttributes(new { @class="responsive-table" })
-    .Pageable()
-    .Sortable()
-    .Scrollable()
-    .Filterable(p => p
-        .Extra(false)
-        .Operators(o => o
-            .ForString(str => str
-                .Clear())))
-    .Resizable(p => p.Columns(true))
-    .Reorderable(p => p.Columns(true))
-    .Selectable(p => p.Mode(GridSelectionMode.Single))
-    .DataSource(datasource => datasource
-        .Ajax()
-        .PageSize(20)
-        .Model(model => model.Id(p => p.Id))
-        .Read(read => read.Action("GetStoreList", "Store"))
-        .Create(create => create.Action("Create", "Store"))
-        .Destroy(update => update.Action("Delete", "Store"))
-    )
-)
-
-@*@(Html.Kendo().Window().Name("Details")
-    .Title(ViewBag.PopupTitle)
-    .Visible(false)
-    .Modal(true)
-    .LoadContentFrom("Create", "Store")
-)
+<div id="FormEdit">
+    @
+</div>
 
 <script>
-    function CreateToolbarClick() {
-        var wnd = $("#Details").data("kendoWindow");
-        wnd.center().open();
-    }
-</script>*@
+    var formState;
+    $(document).ready(function () {
+        $('#toolbar').scrollToFixed({ marginTop: 40 });
+        EnabledInputs(false);
+    });
+
+    function ToolbarCommand(command) {
+        //command: trả về command của Toolbar khi click, command lấy trong CommonMessage
+        switch (command) {
+            case "@CommonMessage.TOOLBARITEM_EDIT":
+                formState = "@CommonMessage.STATE_EDIT";
+                EnabledInputs(true);
+                break;
+            case "@CommonMessage.TOOLBARITEM_CANCEL":
+                formState = "@CommonMessage.STATE_NORMAL";
+                EnabledInputs(false);
+                break;
+            case "@CommonMessage.TOOLBARITEM_DELETE":
+                if (confirm("Bạn có muốn xóa dữ liệu không?")) {
+
+                }
+                break;
+            case "@CommonMessage.TOOLBARITEM_SAVE":
+                var data = $("form").serialize();
+                switch (formState) {
+                    case "@CommonMessage.STATE_EDIT":
+                        var actionURL = '@Url.Action("Edit")';
+                        $.appAjax({
+                            type: "POST",
+                            url: "Store/Edit",
+                            data: data
+                        });
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        function EnabledInputs(enabled) {
+            $(".input").each(function () {
+                if (enabled) {
+                    $(this).removeClass("disabled");
+                    $(this).removeAttr("disabled");
+                } else {
+                    $(this).addClass("disabled");
+                    $(this).attr('disabled', 'disabled');
+                }
+            })
+
+            $(".input-unstyled").each(function () {
+                if (enabled) {
+                    $(this).removeAttr("disabled");
+                } else {
+                    $(this).attr('disabled', 'disabled');
+                }
+            })
+        }
+</script>
