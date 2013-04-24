@@ -24,8 +24,8 @@ using System.Web;
         public static string TOOLBARITEM_PRINT_ICON = "icon-printer";
         public static string TOOLBARITEM_IMPORT_ICON = "icon-inbox";
         public static string TOOLBARITEM_EXPORT_ICON = "icon-outbox";
-        public static string TOOLBARITEM_ACTIVE_ICON = "icon-unlock";
-        public static string TOOLBARITEM_DEACTIVE_ICON = "icon-lock";
+        public static string TOOLBARITEM_ACTIVE_ICON = "icon-lightning";
+        public static string TOOLBARITEM_DEACTIVE_ICON = "icon-forbidden";
 
         public static string STATE_NEW = "New";
         public static string STATE_EDIT = "Edit";

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmacyStoreModel
+namespace PharmacyStore.Models
 {
     public partial class PharmacyStoreRepository : IPharmacyStoreRepository
     {
@@ -13,6 +13,7 @@ namespace PharmacyStoreModel
         public PharmacyStoreRepository()
         {
             _dataContext = new PharmacyStoreModel();
+            _dataContext.Log = Console.Out;
         }
         public void Dispose()
         {

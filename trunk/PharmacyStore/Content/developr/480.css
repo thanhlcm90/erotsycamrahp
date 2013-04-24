@@ -78,6 +78,16 @@
 }
 
 /* 8. Main columns */
+#title-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	}
 #shortcuts {
 	width: 400px;
+}
+
+#open-menu, #open-shortcuts {
+	position: fixed;
 }

@@ -18,19 +18,14 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("webpages_Roles")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
-	[KeyGenerator(KeyGenerator.Autoinc)]
 	public partial class Webpages_Role
 	{
 		private int _roleId;
-		[Column("RoleId", OpenAccessType = OpenAccessType.Int32, IsBackendCalculated = true, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_roleId")]
 		public virtual int RoleId 
 		{ 
 		    get
@@ -44,8 +39,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _roleName;
-		[Column("RoleName", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, Length = 256, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_roleName")]
 		public virtual string RoleName 
 		{ 
 		    get
@@ -59,10 +52,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private IList<SY_USER> _sY_USERs = new List<SY_USER>();
-		[JoinTableAssociation(TableName = "webpages_UsersInRoles", OwnerColumns = "RoleId", TargetColumns = "UserId", SourceConstraint = "fk_RoleId", TargetConstraint = "fk_UserId")]
-		[Column("RoleId", OpenAccessType = OpenAccessType.Int32, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Column("UserId", OpenAccessType = OpenAccessType.Int32, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_sY_USERs")]
 		public virtual IList<SY_USER> SY_USERs 
 		{ 
 		    get

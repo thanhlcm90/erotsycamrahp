@@ -18,10 +18,10 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
 	public partial class PharmacyStoreModel : OpenAccessContext, IPharmacyStoreModelUnitOfWork
 	{
@@ -30,7 +30,7 @@ namespace PharmacyStoreModel
 		private static BackendConfiguration backend = GetBackendConfiguration();
 		
 			
-		private static MetadataSource metadataSource = AttributesMetadataSource.FromContext(typeof(PharmacyStoreModel));
+		private static MetadataSource metadataSource = XmlMetadataSource.FromAssemblyResource("EntitiesModel.rlinq");
 	
 		public PharmacyStoreModel()
 			:base(connectionStringName, backend, metadataSource)
@@ -92,11 +92,107 @@ namespace PharmacyStoreModel
 	    	}
 		}
 		
+		public IQueryable<LS_PRESERVE> LS_PRESERVEs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_PRESERVE>();
+	    	}
+		}
+		
+		public IQueryable<LS_PRESCRIPTION_DRUG> LS_PRESCRIPTION_DRUGs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_PRESCRIPTION_DRUG>();
+	    	}
+		}
+		
+		public IQueryable<LS_PRESCRIPTION> LS_PRESCRIPTIONs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_PRESCRIPTION>();
+	    	}
+		}
+		
+		public IQueryable<LS_NATION> LS_NATIONs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_NATION>();
+	    	}
+		}
+		
+		public IQueryable<LS_ELEMENT> LS_ELEMENTs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_ELEMENT>();
+	    	}
+		}
+		
+		public IQueryable<LS_DRUG_GROUP> LS_DRUG_GROUPs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_DRUG_GROUP>();
+	    	}
+		}
+		
+		public IQueryable<LS_DRUG> LS_DRUGs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_DRUG>();
+	    	}
+		}
+		
 		public IQueryable<LS_DOCTOR> LS_DOCTORs 
 		{
 	    	get
 	    	{
 	        	return this.GetAll<LS_DOCTOR>();
+	    	}
+		}
+		
+		public IQueryable<LS_DISEASE> LS_DISEASEs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_DISEASE>();
+	    	}
+		}
+		
+		public IQueryable<LS_CUSTOMER_GROUP> LS_CUSTOMER_GROUPs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_CUSTOMER_GROUP>();
+	    	}
+		}
+		
+		public IQueryable<LS_CUSTOMER> LS_CUSTOMERs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_CUSTOMER>();
+	    	}
+		}
+		
+		public IQueryable<LS_CALCUNIT> LS_CALCUNITs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_CALCUNIT>();
+	    	}
+		}
+		
+		public IQueryable<LS_CABINET> LS_CABINETs 
+		{
+	    	get
+	    	{
+	        	return this.GetAll<LS_CABINET>();
 	    	}
 		}
 		
@@ -136,7 +232,67 @@ namespace PharmacyStoreModel
 			get;
 		}
 
+		IQueryable<LS_PRESERVE> LS_PRESERVEs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_PRESCRIPTION_DRUG> LS_PRESCRIPTION_DRUGs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_PRESCRIPTION> LS_PRESCRIPTIONs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_NATION> LS_NATIONs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_ELEMENT> LS_ELEMENTs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_DRUG_GROUP> LS_DRUG_GROUPs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_DRUG> LS_DRUGs 
+		{ 
+			get;
+		}
+
 		IQueryable<LS_DOCTOR> LS_DOCTORs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_DISEASE> LS_DISEASEs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_CUSTOMER_GROUP> LS_CUSTOMER_GROUPs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_CUSTOMER> LS_CUSTOMERs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_CALCUNIT> LS_CALCUNITs 
+		{ 
+			get;
+		}
+
+		IQueryable<LS_CABINET> LS_CABINETs 
 		{ 
 			get;
 		}

@@ -4,52 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmacyStoreModel
+namespace PharmacyStore.Models
 {
     public partial class PharmacyStoreRepository
     {
-        public IList<SY_STORE> GetStoreList()
+        public SY_STORE GetStoreInfo(string username)
         {
             try
             {
-                var query = (from p in _dataContext.SY_STOREs
-                                 select new SY_STORE
-                                 {
-                                     Id = p.Id,
-                                     StoreName = p.StoreName,
-                                     StoreAddress = p.StoreAddress,
-                                     Email = p.Email,
-                                     OwnerFullname = p.SY_USER.Fullname,
-                                     StoreFax = p.StoreFax,
-                                     StoreTaxNo = p.StoreTaxNo,
-                                     StoreTelephone = p.StoreTelephone,
-                                     Website = p.Website
-                                 });
-                return query.ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public SY_STORE GetStoreInfo(int id)
-        {
-            try {
                 var query = from p in _dataContext.SY_STOREs
-                            where p.Id == id
+                            from u in _dataContext.SY_USERs.Where(f => f.Id==p.UserId)
+                            where u.UserName == username
                             select p;
+                
                 return query.SingleOrDefault();
             }
             catch (Exception)
             {
-                throw ;
+                throw;
             }
         }
 
-        public bool InsertStore(SY_STORE store) {
-            try {
-                _dataContext.Add(store);
-                _dataContext.SaveChanges();
+        public bool UpdateStore(SY_STORE store, string username)
+        {
+            try
+            {
+                var _check = (from p in _dataContext.SY_STOREs where p.UserId == store.UserId select p).SingleOrDefault();
+                if (_check != null)
+                {
+                    store.CopyProperties(_check);
+                    _dataContext.SaveChanges();
+                }
+                else
+                {
+                    var userId = (from p in _dataContext.SY_USERs where p.UserName == username select p.Id).SingleOrDefault();
+                    store.UserId = userId;
+                    _dataContext.Add(store);
+                    _dataContext.SaveChanges();
+                }
                 return true;
             }
             catch (Exception)
@@ -58,25 +50,11 @@ namespace PharmacyStoreModel
             }
         }
 
-        public bool UpdateStore(SY_STORE store)
+        public bool DeleteStore(int userId)
         {
             try
             {
-                _dataContext.AttachCopy<SY_STORE>(store);
-                _dataContext.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public bool DeleteStore(int id)
-        {
-            try
-            {
-                var item = (from p in _dataContext.SY_STOREs where p.Id==id select p).SingleOrDefault();
+                var item = (from p in _dataContext.SY_STOREs where p.UserId == userId select p).SingleOrDefault();
                 _dataContext.Delete(item);
                 _dataContext.SaveChanges();
                 return true;

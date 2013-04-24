@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmacyStoreModel
+namespace PharmacyStore.Models
 {
     public interface IPharmacyStoreRepository
     {
@@ -19,11 +19,9 @@ namespace PharmacyStoreModel
         #endregion
 
         #region Store
-        IList<SY_STORE> GetStoreList();
-        SY_STORE GetStoreInfo(int id);
-        bool InsertStore(SY_STORE store);
-        bool UpdateStore(SY_STORE store);
-        bool DeleteStore(int id);
+        SY_STORE GetStoreInfo(string username);
+        bool UpdateStore(SY_STORE store, string username);
+        bool DeleteStore(int userId);
         #endregion
 
         #region Doctor

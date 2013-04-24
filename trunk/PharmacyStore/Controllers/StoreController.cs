@@ -7,46 +7,57 @@ using System.Web.Mvc;
 using PharmacyStore.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using TugberkUg.MVC.Helpers;
 
 namespace PharmacyStore.Controllers
 {
     public class StoreController : Controller
     {
+        // Khai báo Repository để tương tác dữ liệu
         PharmacyStoreRepository rep = new PharmacyStoreRepository();
+
         //
         // GET: /Store/
-
         [Authorize]
         public ActionResult Index()
         {
+            // Action Default(Index) trả về View kèm theo dữ liệu Store
             var model = rep.GetStoreInfo(User.Identity.Name);
             return View(model);
         }
 
         //
         // POST: /Store/Edit
-
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind]SY_STORE model)
         {
-            if (model  != null)
+            // Action Edit, Save chỉnh sửa dữ liệu gọi từ Ajax request
+            // Trả về nội dung String để thông báo tác vụ thành công hay không
+            try
             {
-                rep.UpdateStore(model, User.Identity.Name);
-                return Content(CommonMessage.MESSAGE_TRANSACTION_SUCCESS );
+                if (model != null)
+                {
+                    rep.UpdateStore(model, User.Identity.Name);
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
+                }
+                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL });
             }
-            return Content(CommonMessage.MESSAGE_TRANSACTION_FAIL);
+            catch (Exception ex)
+            {
+                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL, data = ex.Message });
+            }
         }
 
-        //
-        // POST: /Store/Delete
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(int id)
+        [HttpPost]
+        [Authorize]
+        public ActionResult GetData()
         {
-            rep.DeleteStore(id);
-            return View();
+            // Action GetData, lấy dữ liệu Store gọi từ Ajax request
+            // Trả về nội dung Json với dữ liệu là nội dung Html được render từ Partial kèm theo model
+            var model = rep.GetStoreInfo(User.Identity.Name);
+            return Json(new { data = this.RenderPartialViewToString("_FormPartial", model) });
         }
 
         protected override void Dispose(bool disposing)
