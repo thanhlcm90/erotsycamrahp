@@ -32,7 +32,7 @@
                     @Html.DisplayNameFor(p => p.StoreTelephone)
                 </label>
                 <span class="input full-width">
-                    @Html.TextBoxFor(p => p.StoreTelephone, new { @type = "text", @class = "input-unstyled full-width" })
+                    @Html.TextBoxFor(p => p.StoreTelephone, new { @type = "text", @class = "input-unstyled full-width mask-phone" })
                     <span class="info-spot">
                         <span class="icon-info-round"></span>
                         <span class="info-bubble">Số điện thoại di động
@@ -45,7 +45,7 @@
                     <small>@Html.ValidationMessageFor(p => p.StoreTaxNo)</small>
                     @Html.DisplayNameFor(p => p.StoreTaxNo)
                 </label>
-                @Html.TextBoxFor(p => p.StoreTaxNo, new { @type = "text", @class = "input full-width" })
+                @Html.TextBoxFor(p => p.StoreTaxNo, new { @type = "text", @class = "input full-width mask-number" })
             </p>
         </div>
         <div class="new-row-mobile six-columns twelve-columns-mobile">
@@ -68,8 +68,9 @@
                     <small>@Html.ValidationMessageFor(p => p.StoreFax)</small>
                     @Html.DisplayNameFor(p => p.StoreFax)
                 </label>
-                @Html.TextBoxFor(p => p.StoreFax, new { @type = "text", @class = "input full-width" })
+                @Html.TextBoxFor(p => p.StoreFax, new { @type = "text", @class = "input full-width mask-phone" })
             </p>
+
         </div>
     </div>
 </fieldset>

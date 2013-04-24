@@ -20,15 +20,11 @@ using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("webpages_Membership")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
 	public partial class Webpages_Membership
 	{
 		private int _userId;
-		[Column("UserId", OpenAccessType = OpenAccessType.Int32, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_userId")]
 		public virtual int UserId 
 		{ 
 		    get
@@ -42,8 +38,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private DateTime? _createDate;
-		[Column("CreateDate", OpenAccessType = OpenAccessType.DateTime, IsNullable = true, Length = 0, Scale = 0, SqlType = "datetime")]
-		[Storage("_createDate")]
 		public virtual DateTime? CreateDate 
 		{ 
 		    get
@@ -57,8 +51,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _confirmationToken;
-		[Column("ConfirmationToken", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, IsNullable = true, Length = 128, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_confirmationToken")]
 		public virtual string ConfirmationToken 
 		{ 
 		    get
@@ -72,8 +64,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private bool? _isConfirmed;
-		[Column("IsConfirmed", OpenAccessType = OpenAccessType.Bit, IsNullable = true, Length = 0, Scale = 0, SqlType = "bit")]
-		[Storage("_isConfirmed")]
 		public virtual bool? IsConfirmed 
 		{ 
 		    get
@@ -87,8 +77,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private DateTime? _lastPasswordFailureDate;
-		[Column("LastPasswordFailureDate", OpenAccessType = OpenAccessType.DateTime, IsNullable = true, Length = 0, Scale = 0, SqlType = "datetime")]
-		[Storage("_lastPasswordFailureDate")]
 		public virtual DateTime? LastPasswordFailureDate 
 		{ 
 		    get
@@ -102,8 +90,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private int _passwordFailuresSinceLastSuccess;
-		[Column("PasswordFailuresSinceLastSuccess", OpenAccessType = OpenAccessType.Int32, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_passwordFailuresSinceLastSuccess")]
 		public virtual int PasswordFailuresSinceLastSuccess 
 		{ 
 		    get
@@ -117,8 +103,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _password;
-		[Column("Password", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, Length = 128, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_password")]
 		public virtual string Password 
 		{ 
 		    get
@@ -132,8 +116,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private DateTime? _passwordChangedDate;
-		[Column("PasswordChangedDate", OpenAccessType = OpenAccessType.DateTime, IsNullable = true, Length = 0, Scale = 0, SqlType = "datetime")]
-		[Storage("_passwordChangedDate")]
 		public virtual DateTime? PasswordChangedDate 
 		{ 
 		    get
@@ -147,8 +129,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _passwordSalt;
-		[Column("PasswordSalt", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, Length = 128, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_passwordSalt")]
 		public virtual string PasswordSalt 
 		{ 
 		    get
@@ -162,8 +142,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _passwordVerificationToken;
-		[Column("PasswordVerificationToken", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, IsNullable = true, Length = 128, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_passwordVerificationToken")]
 		public virtual string PasswordVerificationToken 
 		{ 
 		    get
@@ -177,8 +155,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private DateTime? _passwordVerificationTokenExpirationDate;
-		[Column("PasswordVerificationTokenExpirationDate", OpenAccessType = OpenAccessType.DateTime, IsNullable = true, Length = 0, Scale = 0, SqlType = "datetime")]
-		[Storage("_passwordVerificationTokenExpirationDate")]
 		public virtual DateTime? PasswordVerificationTokenExpirationDate 
 		{ 
 		    get

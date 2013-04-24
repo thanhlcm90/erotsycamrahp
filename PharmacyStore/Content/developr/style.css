@@ -80,11 +80,6 @@ body, button, input, textarea {
     color: #666666;
 }
 
-html, body {
-    height: 100% !important;
-}
-
-
 /********************************************************/
 /*               2. Basic elements/styles               */
 /********************************************************/
@@ -5560,7 +5555,7 @@ a:link {
 
 /* Hide for screenreaders and visual browsers */
 .hidden {
-    display: none;
+    display: none !important;
     visibility: hidden;
 }
 
@@ -5590,4 +5585,8 @@ a:link {
 /* Hide but maintain layout */
 .invisible {
     visibility: hidden;
+}
+
+.toolbaritem-text, .toolbaritem-text1 {
+    display:inline;
 }

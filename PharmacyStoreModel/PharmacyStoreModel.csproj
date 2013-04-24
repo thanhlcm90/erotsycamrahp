@@ -8,7 +8,7 @@
     <ProjectGuid>{C50145E6-A244-4F1F-B41F-90D1925B4A00}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PharmacyStoreModel</RootNamespace>
+    <RootNamespace>PharmacyStore.Models</RootNamespace>
     <AssemblyName>PharmacyStoreModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -46,40 +47,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunction.cs" />
-    <Compile Include="DataBusiness\System\Doctor.cs" />
+    <Compile Include="DataBusiness\List\Doctor.cs" />
     <Compile Include="DataBusiness\System\User.cs" />
     <Compile Include="DataBusiness\System\Store.cs" />
-    <Compile Include="ModelExtension\SY_STORE.cs" />
+    <Compile Include="DataBusiness\IPharmacyStoreRepository.cs" />
+    <Compile Include="DataBusiness\PharmacyStoreRepository.cs" />
     <Compile Include="EntitiesModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
-    <Compile Include="DataBusiness\IPharmacyStoreRepository.cs" />
-    <Compile Include="LS_DOCTOR.generated.cs" />
-    <Compile Include="DataBusiness\PharmacyStoreRepository.cs" />
+    <Compile Include="Models\Generated\LS_CABINET.generated.cs" />
+    <Compile Include="Models\Generated\LS_CALCUNIT.generated.cs" />
+    <Compile Include="Models\Generated\LS_CUSTOMER.generated.cs" />
+    <Compile Include="Models\Generated\LS_CUSTOMER_GROUP.generated.cs" />
+    <Compile Include="Models\Generated\LS_DISEASE.generated.cs" />
+    <Compile Include="Models\Generated\LS_DOCTOR.generated.cs" />
+    <Compile Include="Models\Generated\LS_DRUG.generated.cs" />
+    <Compile Include="Models\Generated\LS_DRUG_GROUP.generated.cs" />
+    <Compile Include="Models\Generated\LS_ELEMENT.generated.cs" />
+    <Compile Include="Models\Generated\LS_NATION.generated.cs" />
+    <Compile Include="Models\Generated\LS_PRESCRIPTION.generated.cs" />
+    <Compile Include="Models\Generated\LS_PRESCRIPTION_DRUG.generated.cs" />
+    <Compile Include="Models\Generated\LS_PRESERVE.generated.cs" />
+    <Compile Include="Models\Generated\SY_STORE.generated.cs" />
+    <Compile Include="Models\Generated\SY_USER.generated.cs" />
+    <Compile Include="Models\Generated\Webpages_Membership.generated.cs" />
+    <Compile Include="Models\Generated\Webpages_OAuthMembership.generated.cs" />
+    <Compile Include="Models\Generated\Webpages_Role.generated.cs" />
+    <Compile Include="Models\List\DoctorModels.cs" />
+    <Compile Include="Models\System\StoreModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SY_STORE.generated.cs" />
-    <Compile Include="SY_USER.generated.cs" />
-    <Compile Include="Webpages_Membership.generated.cs" />
-    <Compile Include="Webpages_OAuthMembership.generated.cs" />
-    <Compile Include="Webpages_Role.generated.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <OpenAccessDeploy Include="EntitiesModel.rlinq">
-      <Generator>MetaModelCodeGenerator</Generator>
-      <LastGenOutput>EntitiesModel.cs</LastGenOutput>
-    </OpenAccessDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="EntitiesModel.rlinq.diagram">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </None>
+    <OpenAccessDeploy Include="EntitiesModel.rlinq">
+      <Generator>MetaModelCodeGenerator</Generator>
+      <LastGenOutput>EntitiesModel.cs</LastGenOutput>
+    </OpenAccessDeploy>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBusiness\Business\" />
-    <Folder Include="DataBusiness\List\" />
+    <Folder Include="Models\Business\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />

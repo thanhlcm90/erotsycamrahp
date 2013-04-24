@@ -8,220 +8,241 @@
 <!--<![endif]-->
 <html>
 <head>
-    <title>@ViewBag.Title</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>@ViewBag.Title</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- For all browsers -->
-    @Styles.Render("~/Content/developr/mainstyle")
-    @Bundles.RenderFormat("~/Content/developr/print", BundlesFormats.PRINT)
-    <!-- For progressively larger displays -->
-    @Bundles.RenderFormat("~/Content/developr/480", BundlesFormats.RES480)
-    @Bundles.RenderFormat("~/Content/developr/768", BundlesFormats.RES768)
-    @Bundles.RenderFormat("~/Content/developr/1200", BundlesFormats.RES1200)
-    <!-- For Retina displays -->
-    @Bundles.RenderFormat("~/Content/developr/resolutionRetina", BundlesFormats.RETINA)
+	<!-- For all browsers -->
+	@Styles.Render("~/Content/developr/mainstyle")
+	@Bundles.RenderFormat("~/Content/developr/print", BundlesFormats.PRINT)
+	<!-- For progressively larger displays -->
+	@Bundles.RenderFormat("~/Content/developr/480", BundlesFormats.RES480)
+	@Bundles.RenderFormat("~/Content/developr/768", BundlesFormats.RES768)
+	@Bundles.RenderFormat("~/Content/developr/1200", BundlesFormats.RES1200)
+	<!-- For Retina displays -->
+	@Bundles.RenderFormat("~/Content/developr/resolutionRetina", BundlesFormats.RETINA)
 
-    <!-- Webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<!-- Webfonts -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
-    <!-- JavaScript at bottom except for Modernizr -->
-    @Scripts.Render("~/developr/modernizr")
+	<!-- JavaScript at bottom except for Modernizr -->
+	@Scripts.Render("~/developr/modernizr")
 
-    <!-- For Modern Browsers -->
-    <link rel="shortcut icon" src="@Url.Content("~/Content/img/favicons/favicon.png")">
-    <!-- For everything else -->
-    <link rel="shortcut icon" src="@Url.Content("~/Content/img/favicons/favicon.ico")">
-    <!-- For retina screens -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" src="@Url.Content("~/Content/img/favicons/apple-touch-icon-retina.png")">
-    <!-- For iPad 1-->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" src="@Url.Content("~/Content/img/favicons/apple-touch-icon-ipad.png")">
-    <!-- For iPhone 3G, iPod Touch and Android -->
-    <link rel="apple-touch-icon-precomposed" src="@Url.Content("~/Content/img/favicons/apple-touch-icon.png")">
+	<!-- For Modern Browsers -->
+	<link rel="shortcut icon" src="@Url.Content("~/Content/img/favicons/favicon.png")">
+	<!-- For everything else -->
+	<link rel="shortcut icon" src="@Url.Content("~/Content/img/favicons/favicon.ico")">
+	<!-- For retina screens -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" src="@Url.Content("~/Content/img/favicons/apple-touch-icon-retina.png")">
+	<!-- For iPad 1-->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" src="@Url.Content("~/Content/img/favicons/apple-touch-icon-ipad.png")">
+	<!-- For iPhone 3G, iPod Touch and Android -->
+	<link rel="apple-touch-icon-precomposed" src="@Url.Content("~/Content/img/favicons/apple-touch-icon.png")">
 
-    <!-- iOS web-app metas -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- iOS web-app metas -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Startup image for web apps -->
-    <link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/ipad-landscape.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-    <link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/ipad-portrait.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-    <link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/iphone.png")" media="screen and (max-device-width: 320px)">
+	<!-- Startup image for web apps -->
+	<link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/ipad-landscape.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+	<link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/ipad-portrait.png")" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+	<link rel="apple-touch-startup-image" src="@Url.Content("~/Content/img/splash/iphone.png")" media="screen and (max-device-width: 320px)">
 
-    <!-- Microsoft clear type rendering -->
-    <meta http-equiv="cleartype" content="on">
+	<!-- Microsoft clear type rendering -->
+	<meta http-equiv="cleartype" content="on">
 
-    <!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
-    <meta name="application-name" content="Developr Admin Skin">
-    <meta name="msapplication-tooltip" content="Cross-platform admin template.">
-    <meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
-    <!-- These custom tasks are examples, you need to edit them to show actual pages -->
-    <meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
-    <meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+	<!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
+	<meta name="application-name" content="Developr Admin Skin">
+	<meta name="msapplication-tooltip" content="Cross-platform admin template.">
+	<meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
+	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
+	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
 
-    <!-- jQuery -->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jquery-ba-hashchange")
-    @Scripts.Render("~/bundles/jqueryval")
+	<!-- jQuery -->
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/myplugin")
+	@Scripts.Render("~/bundles/inputmask")
+	@Scripts.Render("~/bundles/jquery-ba-hashchange")
+	@Scripts.Render("~/bundles/jqueryval")
 
-    <!-- Menu -->
-    @Styles.Render("~/Content/menustyle")
-    @Scripts.Render("~/Scripts/menuscript")
+	<!-- Menu -->
+	@Styles.Render("~/Content/menustyle")
+	@Scripts.Render("~/Scripts/menuscript")
 
 
-    <!-- Style for Kendo  -->
-    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.all.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js")"></script>
+	<!-- Style for Kendo  -->
+	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2012.3.1114/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2012.3.1114/kendo.aspnetmvc.min.js")"></script>
 </head>
 
 <body class="clearfix with-menu with-shortcuts">
-    <!-- Prompt IE 6 users to install Chrome Frame -->
-    <!--[if lt IE 7]><p class="message red-gradient simpler">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+	<!-- Prompt IE 6 users to install Chrome Frame -->
+	<!--[if lt IE 7]><p class="message red-gradient simpler">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-    <!-- Title bar -->
-    <header role="banner" id="title-bar">
-        @Html.Partial("_MenuPartial")
-        <h2></h2>
-    </header>
-
-    <!-- Button to open/hide menu -->
-    <a href="#" id="open-menu"><span>@User.Identity.Name</span></a>
-
-    <!-- Button to open/hide shortcuts -->
-    <a href="#" id="open-shortcuts"><span class="icon-thumbs"></span></a>
-
-    <!-- Main content -->
-    <section role="main" id="main">
-
-        <!-- Visible only to browsers without javascript -->
-        <noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
-        <hgroup id="main-title" class="thin">
-            <h1>@ViewBag.Title</h1>
-        </hgroup>
-        <div id="main-body">
-
-            @using (Html.BeginForm())
-            { 
-                @RenderBody()
-            }
-        </div>
-    </section>
-    <!-- End main content -->
-
-    <!-- Side tabs shortcuts -->
-    @Html.Partial("_ShortcutPartial")
-
-    <!-- Sidebar/drop-down menu -->
-    <section id="menu" role="complementary">
-        @Html.Partial("_UserMenuPartial")
-    </section>
-    <!-- End sidebar/drop-down menu -->
-
-    @*<div id="header">
-		<section id="login">
-			@Html.Partial("_LoginPartial")
-		</section>
-	</div>
-	<section id="menu">
+	<!-- Title bar -->
+	<header role="banner" id="title-bar">
 		@Html.Partial("_MenuPartial")
-	</section>*@
+		<h2></h2>
+	</header>
 
-    <!-- JavaScript at the bottom for fast page loading -->
+	<!-- Button to open/hide menu -->
+	<a href="#" id="open-menu"><span>@User.Identity.Name</span></a>
 
-    <!-- Scripts -->
-    @Scripts.Render("~/developr/mainscript")
+	<!-- Button to open/hide shortcuts -->
+	<a href="#" id="open-shortcuts"><span class="icon-thumbs"></span></a>
 
-    @RenderSection("scripts", required: false)
+	<!-- Main content -->
+	<section role="main" id="main">
 
-    <script type="text/javascript">
+		<!-- Visible only to browsers without javascript -->
+		<noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
+		<hgroup id="main-title" class="thin">
+			<h1>@ViewBag.Title</h1>
+		</hgroup>
+		<div id="main-body">
 
-        // If the browser support the Notification API, ask user for permission (with a little delay)
-        if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet()) {
-            setTimeout(function () {
-                notify.showNotificationPermission('Your browser supports desktop notification, click here to enable them.', function () {
-                    // Confirmation message
-                    if (notify.hasNotificationPermission()) {
-                        notify('Notifications API enabled!', 'You can now see notifications even when the application is in background', {
-                            icon: 'img/demo/icon.png',
-                            system: true
-                        });
-                    }
-                    else {
-                        notify('Notifications API disabled!', 'Desktop notifications will not be used.', {
-                            icon: 'img/demo/icon.png'
-                        });
-                    }
-                });
-
-            }, 2000);
-        }
-
-        //Thay đổi giao diện các control chuẩn của html thành của kendo
-        function TransformKendo() {
-            $("input").each(function () {
-                var type = $(this).attr("type");
-                if (type == 'text' || type == 'password' || type == 'email') {
-                    $(this).addClass('k-textbox');
-                } else if (type == 'submit' || type == 'reset') {
-                    $(this).addClass('k-button');
-                }
-            });
-        }
-
-        $(".toolbaritem").click(function () {
-            var btn = this;
-            var command = $(btn).attr("command");
-            var hasEdited = $(btn).attr("itemedited");
-            if (hasEdited == 'true') {
-                $("#toolbaredit").removeAttr("style");
-                $("#toolbar").attr("style", "display:none");
-            }
-            if (command == "@CommonMessage.TOOLBARITEM_SAVE") {
-			    $("form").submit();
-			    return;
-			} else if (command == "@CommonMessage.TOOLBARITEM_CANCEL") {
-			    $("#toolbar").removeAttr("style");
-			    $("#toolbaredit").attr("style", "display:none");
-			    ResetValidations();
-			    ResetAllInput();
+			@using (Html.BeginForm())
+			{ 
+@*Chống Cross-Site-Request*@
+				@Html.AntiForgeryToken()
+				@RenderBody()
 			}
-		    try {
-		        ToolbarCommand(command);
-		    } catch (ex) {
+		</div>
+	</section>
+	<!-- End main content -->
+
+	<!-- Side tabs shortcuts -->
+	@Html.Partial("_ShortcutPartial")
+
+	<!-- Sidebar/drop-down menu -->
+	<section id="menu" role="complementary">
+		@Html.Partial("_UserMenuPartial")
+	</section>
+	<!-- End sidebar/drop-down menu -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
+	<!-- Scripts -->
+	@Scripts.Render("~/developr/mainscript")
+
+	@RenderSection("scripts", required: false)
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+		    FormatMaskedInput();
+		});
+		$(document).on('init-queries', function () {
+		    ChangeResolution();
+		});
+		$(document).on('change-query', function () {
+		    ChangeResolution();
+		});
+		function ChangeResolution() {
+		    if ($.template.mediaQuery.name == 'mobile-landscape') {
+		        $('#toolbar').trigger('detach.ScrollToFixed');
+		        $('#toolbar').scrollToFixed({ marginTop: 40 });
+		        $('.toolbaritem-text').addClass('hidden');
+		        $('.toolbaritem-text1').removeClass('hidden');
+		        $('.toolbaritem').attr('style', 'width:auto;')
+		    } else if ($.template.mediaQuery.name == 'mobile-portrait') {
+		        $('#toolbar').trigger('detach.ScrollToFixed');
+		        $('#toolbar').scrollToFixed();
+		        $('.toolbaritem-text').addClass('hidden')
+		        $('.toolbaritem-text1').addClass('hidden');
+		        $('.toolbaritem').attr('style','width:0px;')
+		    } else {
+		        $('#toolbar').trigger('detach.ScrollToFixed');
+		        $('#toolbar').scrollToFixed({ marginTop: 40 });
+		        $('.toolbaritem-text').removeClass('hidden')
+		        $('.toolbaritem-text1').addClass('hidden');
+		        $('.toolbaritem').attr('style', 'width:auto;')
 		    }
+		}
+		$(document).on('click', '.disabled', function (event) {
+			event.preventDefault();
 		});
-        $("form").submit(function (event) {
-            event.preventDefault();
-            if ($("form").valid()) {
-                try {
-                    ToolbarCommand("@CommonMessage.TOOLBARITEM_SAVE");
-            } catch (ex) {
-            }
-        }
+
+		// If the browser support the Notification API, ask user for permission (with a little delay)
+		if (notify.hasNotificationAPI() && !notify.isNotificationPermissionSet()) {
+			setTimeout(function () {
+				notify.showNotificationPermission('Your browser supports desktop notification, click here to enable them.', function () {
+					// Confirmation message
+					if (notify.hasNotificationPermission()) {
+						notify('Notifications API enabled!', 'You can now see notifications even when the application is in background', {
+							icon: 'img/demo/icon.png',
+							system: true
+						});
+					}
+					else {
+						notify('Notifications API disabled!', 'Desktop notifications will not be used.', {
+							icon: 'img/demo/icon.png'
+						});
+					}
+				});
+
+			}, 2000);
+		}
+
+		//Thay đổi giao diện các control chuẩn của html thành của kendo
+		function TransformKendo() {
+			$("input").each(function () {
+				var type = $(this).attr("type");
+				if (type == 'text' || type == 'password' || type == 'email') {
+					$(this).addClass('k-textbox');
+				} else if (type == 'submit' || type == 'reset') {
+					$(this).addClass('k-button');
+				}
+			});
+		}
+
+		$(".toolbaritem").click(function () {
+			var btn = this;
+			var command = $(btn).attr("command");
+			var hasEdited = $(btn).attr("itemedited");
+			var hasDisabled = $(btn).hasClass("disabled");
+			if (hasDisabled) return;
+			ChangeToolbarState(hasEdited);
+			if (command == "@CommonMessage.TOOLBARITEM_SAVE") {
+				$("form").submit();
+				return;
+			} else if (command == "@CommonMessage.TOOLBARITEM_CANCEL") {
+				ChangeToolbarState(false);
+				ResetValidations();
+			}
+			try {
+				ToolbarCommand(command);
+			} catch (ex) {
+			}
 		});
-    function ResetValidations() {
-        $('.field-validation-error').empty();
-        $('input').each(function () {
-            $(this).removeClass('input-validation-error');
-        });
-    }
-    function ResetAllInput() {
-        $('input').val('');
-    }
-    
-    
-    </script>
+		$("form").submit(function (event) {
+			event.preventDefault();
+			if ($("form").valid()) {
+				try {
+					ToolbarCommand("@CommonMessage.TOOLBARITEM_SAVE");
+				} catch (ex) {
+				}
+			}
+		});
+		function ResetValidations() {
+			$('.field-validation-error').empty();
+			$('input').each(function () {
+				$(this).removeClass('input-validation-error');
+			});
+		}
+
+	</script>
 </body>
 </html>

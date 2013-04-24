@@ -175,6 +175,7 @@
     <Compile Include="CommonMessage.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\DrugGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -338,8 +339,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.ttf" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.woff" />
-    <Content Include="Scripts\jquery.ajax.extension.js" />
-    <Content Include="Scripts\jquery-scrolltofixed.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.date.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.extensions.min.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\MyPlugin\jquery.ajax.extension.js" />
+    <Content Include="Scripts\MyPlugin\jquery-scrolltofixed.js" />
     <Content Include="Scripts\developr\developr.accordions.js" />
     <Content Include="Scripts\developr\developr.agenda.js" />
     <Content Include="Scripts\developr\developr.auto-resizing.js" />
@@ -354,7 +363,7 @@
     <Content Include="Scripts\developr\developr.table.js" />
     <Content Include="Scripts\developr\developr.tabs.js" />
     <Content Include="Scripts\developr\developr.wizard.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jQuery\jquery-1.8.2.js" />
     <Content Include="Scripts\developr\libs\DataTables\package.json" />
     <Content Include="Scripts\developr\libs\glDatePicker\README.md" />
     <Content Include="Content\developr\Entypo\entypo-webfont.eot" />
@@ -1052,7 +1061,7 @@
     <Content Include="Scripts\developr\libs\google-code-prettify\prettify.css" />
     <Content Include="Scripts\developr\libs\google-code-prettify\prettify.js" />
     <Content Include="Scripts\developr\libs\google-code-prettify\sunburst.css" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jQuery\jquery-1.8.2.min.js" />
     <Content Include="Scripts\developr\libs\jquery-ui-1.9.1.custom.min.js" />
     <Content Include="Scripts\developr\libs\jquery.ba-hashchange.min.js" />
     <Content Include="Scripts\developr\libs\jquery.details.min.js" />
@@ -1122,12 +1131,15 @@
     <Content Include="Scripts\flat\plugins\xeditable\address.js" />
     <Content Include="Scripts\flat\plugins\xeditable\bootstrap-editable.min.js" />
     <Content Include="Scripts\flat\plugins\xeditable\demo.js" />
-    <Content Include="Scripts\jMenu.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MyPlugin\jMenu.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.extensions.min.js.map">
+      <DependentUpon>jquery.inputmask.extensions.js</DependentUpon>
+    </Content>
+    <None Include="Scripts\jQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.min.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jQuery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.af-ZA.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.af.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.am-ET.min.js" />
@@ -1483,7 +1495,7 @@
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.zu-ZA.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\cultures\kendo.culture.zu.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\jquery.min.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js.map">
+    <Content Include="Scripts\jQuery\jquery-1.8.2.min.js.map">
       <DependentUpon>jquery-1.8.2.js</DependentUpon>
     </Content>
     <None Include="Scripts\kendo\2012.3.1114\kendo.all-vsdoc.js" />
@@ -1584,10 +1596,6 @@
     <Content Include="Views\Shared\_SelectSkinPartial.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Doctor\Details.cshtml" />
-    <Content Include="Views\Doctor\Create.cshtml" />
-    <Content Include="Views\Doctor\Edit.cshtml" />
-    <Content Include="Views\Doctor\Delete.cshtml" />
     <Content Include="Views\Shared\_ShortcutPartial.cshtml" />
     <Content Include="Views\Home\DatabaseManager.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
@@ -1601,6 +1609,10 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Doctor\_GridPartial.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Doctor\_FormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

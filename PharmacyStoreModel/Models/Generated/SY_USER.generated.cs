@@ -18,19 +18,14 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("SY_USER")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
-	[KeyGenerator(KeyGenerator.Autoinc)]
 	public partial class SY_USER
 	{
 		private int _id;
-		[Column("Id", OpenAccessType = OpenAccessType.Int32, IsBackendCalculated = true, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_id")]
 		public virtual int Id 
 		{ 
 		    get
@@ -44,8 +39,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _userName;
-		[Column("UserName", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_userName")]
 		public virtual string UserName 
 		{ 
 		    get
@@ -59,8 +52,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _fullname;
-		[Column("Fullname", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_fullname")]
 		public virtual string Fullname 
 		{ 
 		    get
@@ -74,8 +65,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _email;
-		[Column("Email", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_email")]
 		public virtual string Email 
 		{ 
 		    get
@@ -89,8 +78,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _gender;
-		[Column("Gender", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_gender")]
 		public virtual string Gender 
 		{ 
 		    get
@@ -104,8 +91,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private DateTime _birthdate;
-		[Column("Birthdate", OpenAccessType = OpenAccessType.DateTime, Length = 0, Scale = 0, SqlType = "datetime")]
-		[Storage("_birthdate")]
 		public virtual DateTime Birthdate 
 		{ 
 		    get
@@ -119,8 +104,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _mobile;
-		[Column("Mobile", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_mobile")]
 		public virtual string Mobile 
 		{ 
 		    get
@@ -134,8 +117,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _userRefer;
-		[Column("UserRefer", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_userRefer")]
 		public virtual string UserRefer 
 		{ 
 		    get
@@ -149,8 +130,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _identification;
-		[Column("Identification", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_identification")]
 		public virtual string Identification 
 		{ 
 		    get
@@ -163,25 +142,25 @@ namespace PharmacyStoreModel
 		    }
 		}
 		
-		private IList<SY_STORE> _sY_STOREs = new List<SY_STORE>();
-		[Collection(InverseProperty = "SY_USER")]
-		[Storage("_sY_STOREs")]
-		public virtual IList<SY_STORE> SY_STOREs 
-		{ 
-		    get
-		    {
-		        return this._sY_STOREs;
-		    }
-		}
-		
 		private IList<Webpages_Role> _webpages_Roles = new List<Webpages_Role>();
-		[Collection(InverseProperty = "SY_USERs")]
-		[Storage("_webpages_Roles")]
 		public virtual IList<Webpages_Role> Webpages_Roles 
 		{ 
 		    get
 		    {
 		        return this._webpages_Roles;
+		    }
+		}
+		
+		private SY_STORE _sY_STORE;
+		public virtual SY_STORE SY_STORE 
+		{ 
+		    get
+		    {
+		        return this._sY_STORE;
+		    }
+		    set
+		    {
+		        this._sY_STORE = value;
 		    }
 		}
 		

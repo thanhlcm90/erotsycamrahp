@@ -20,15 +20,11 @@ using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("webpages_OAuthMembership")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
 	public partial class Webpages_OAuthMembership
 	{
 		private string _provider;
-		[Column("Provider", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, IsPrimaryKey = true, Length = 30, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_provider")]
 		public virtual string Provider 
 		{ 
 		    get
@@ -42,8 +38,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _providerUserId;
-		[Column("ProviderUserId", OpenAccessType = OpenAccessType.UnicodeStringVariableLength, IsPrimaryKey = true, Length = 100, Scale = 0, SqlType = "nvarchar")]
-		[Storage("_providerUserId")]
 		public virtual string ProviderUserId 
 		{ 
 		    get
@@ -57,8 +51,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private int _userId;
-		[Column("UserId", OpenAccessType = OpenAccessType.Int32, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_userId")]
 		public virtual int UserId 
 		{ 
 		    get

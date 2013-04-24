@@ -1,0 +1,47 @@
+﻿@model PharmacyStore.Models.LS_DOCTOR
+
+@Html.HiddenFor(p => p.Id, new {data_bind="value: Id" })
+<fieldset class="fieldset margin-bottom">
+    <legend class="legend">Thông tin</legend>
+    <div class="columns">
+        <div class="six-columns twelve-columns-mobile">
+            <p class="button-height block-label">
+                <label for="Fullname" class="label">
+                    <small>@Html.ValidationMessageFor(p => p.Fullname)</small>
+                    @Html.DisplayNameFor(p => p.Fullname)
+                </label>
+                @Html.TextBoxFor(p => p.Fullname, new { @type = "text", @class = "input full-width", data_bind="value: Fullname" })
+            </p>
+            <p class="button-height block-label">
+                <label for="Address" class="label">
+                    <small>@Html.ValidationMessageFor(p => p.Address)</small>
+                    @Html.DisplayNameFor(p => p.Address)
+                    </label>
+                    @Html.TextBoxFor(p => p.Address, new { @type = "text", @class = "input full-width", data_bind="value: Address" })
+                </p>
+            </div>
+            <div class="new-row-mobile six-columns twelve-columns-mobile">
+                <p class="button-height block-label">
+                <label for="Mobile" class="label">
+                    <small>@Html.ValidationMessageFor(p => p.Mobile)</small>
+                    @Html.DisplayNameFor(p => p.Mobile)
+                </label>
+                @Html.TextBoxFor(p => p.Mobile, new { @type = "text", @class = "input full-width mask-phone", data_bind="value: Mobile" })
+            </p>
+            <p class="button-height block-label">
+                <label for="Hospital" class="label">
+                    <small>@Html.ValidationMessageFor(p => p.Hospital)</small>
+                    @Html.DisplayNameFor(p => p.Hospital)
+                </label>
+                <span class="input full-width">
+                    @Html.TextBoxFor(p => p.Hospital, new { @type = "text", @class = "input-unstyled full-width", data_bind="value: Hospital" })
+                    <span class="info-spot">
+                        <span class="icon-info-round"></span>
+                        <span class="info-bubble">Tên bệnh viên nơi bác sĩ làm việc
+                        </span>
+                    </span>
+                </span>
+            </p>
+        </div>
+    </div>
+</fieldset>

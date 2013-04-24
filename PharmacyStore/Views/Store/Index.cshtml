@@ -1,71 +1,100 @@
 ﻿@model PharmacyStore.Models.SY_STORE
 
 @{
-    ViewBag.Title = "Thông tin tiệm thuốc";
+    // Đặt title cho View
+    ViewBag.Title = "Thông tin tiệm thuốc";        
 }
-@Html.AntiForgeryToken()
-@CommonFunction.BuildToolbar(ToolbarItem.Edit, ToolbarItem.Delete)
 
+@*Tạo Toolbar*@
+@CommonFunction.BuildToolbar(ToolbarItem.Edit)
+
+@*Tạo 1 Partial đặt tên là _FormPartial để chứa tất cả các Control nhập liệu
+Render Partial vào 1 thẻ div*@
 <div id="FormEdit">
-    @
+    @Html.Partial("_FormPartial")
 </div>
 
 <script>
+    //Trạng thái của View, tham khảo trong CommonMessage
     var formState;
+
     $(document).ready(function () {
-        $('#toolbar').scrollToFixed({ marginTop: 40 });
+        // Mặc định Disable tất cả Control
         EnabledInputs(false);
     });
 
+    // Function sự kiện của Toolbar (phải khai báo cho giống)
     function ToolbarCommand(command) {
         //command: trả về command của Toolbar khi click, command lấy trong CommonMessage
         switch (command) {
             case "@CommonMessage.TOOLBARITEM_EDIT":
+                // Chuyển trạng thái View sang Edit
                 formState = "@CommonMessage.STATE_EDIT";
+
+                // Enable tất cả control
                 EnabledInputs(true);
+
+                // Focus Input đầu tiên
+                FocusFirstInput();
                 break;
             case "@CommonMessage.TOOLBARITEM_CANCEL":
+                // Chuyển trạng thái View sang NORMAL
                 formState = "@CommonMessage.STATE_NORMAL";
-                EnabledInputs(false);
-                break;
-            case "@CommonMessage.TOOLBARITEM_DELETE":
-                if (confirm("Bạn có muốn xóa dữ liệu không?")) {
 
-                }
+                // Request server để lấy lại dữ liệu ban đầu
+                // Dùng hàm appAjax để gửi request. Hàm này tham khảo trong Coding Convention
+
+                // Lấy đường dẫn của Action GetData trong Controller
+                var actionURL = '@Url.Action("GetData")';
+                $.appAjax({
+                    type: "POST",
+                    url: actionURL,
+                    data: "",
+                    success: function (data) {
+                        // Dữ liệu trả về sẽ là nội dung Html của partial _FormPartial.
+                        // Gán nội dung vào div
+                        // Cả quá trình này giống như UpdatePanel, nghĩa là chỉ Update 1 bộ phận trên website -> Tốc độ nhanh
+                        debugger;
+                        $("#FormEdit").html(data.data);
+
+                        // Disable tất cả Control
+                        EnabledInputs(false);
+                    },
+                    error: function (xhr) {
+                        // Disable tất cả Control
+                        debugger;
+                        EnabledInputs(false);
+                    }
+                });
                 break;
             case "@CommonMessage.TOOLBARITEM_SAVE":
+                debugger;
+                // Chuyển toàn bộ nội dung nhập liệu của các control trên form thành dữ liệu Text
                 var data = $("form").serialize();
+
+                // Kiểm tra trạng thái View, tùy từng trạng thái chuyển hướng SAVE khác nhau
                 switch (formState) {
                     case "@CommonMessage.STATE_EDIT":
+                        // Lấy đường dẫn của Action Edit trong Controller
                         var actionURL = '@Url.Action("Edit")';
                         $.appAjax({
                             type: "POST",
-                            url: "Store/Edit",
-                            data: data
+                            url: actionURL,
+                            data: data,
+                            success: function (data) {
+                                // Sau khi Save thành công, không quan tâm giá trị trả về, gọi hàm ChangeToolbarState để đổi trạng thái Toolbar
+                                // Tham khải hàm ChangeToolbarState trong Coding Convention
+                                ChangeToolbarState(false);
+
+                                // Disable tất cả Control
+                                EnabledInputs(false);
+                            }
                         });
-                            break;
-                    }
-                    break;
-            }
-        }
-
-        function EnabledInputs(enabled) {
-            $(".input").each(function () {
-                if (enabled) {
-                    $(this).removeClass("disabled");
-                    $(this).removeAttr("disabled");
-                } else {
-                    $(this).addClass("disabled");
-                    $(this).attr('disabled', 'disabled');
+                        break;
                 }
-            })
-
-            $(".input-unstyled").each(function () {
-                if (enabled) {
-                    $(this).removeAttr("disabled");
-                } else {
-                    $(this).attr('disabled', 'disabled');
-                }
-            })
+                break;
         }
+    }
+
+    
 </script>

@@ -18,34 +18,27 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using PharmacyStoreModel;
+using PharmacyStore.Models;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("SY_STORE")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
-	[KeyGenerator(KeyGenerator.Autoinc)]
 	public partial class SY_STORE
 	{
-		private int _id;
-		[Column("Id", OpenAccessType = OpenAccessType.Int32, IsBackendCalculated = true, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_id")]
-		public virtual int Id 
+		private int _userId;
+		public virtual int UserId 
 		{ 
 		    get
 		    {
-		        return this._id;
+		        return this._userId;
 		    }
 		    set
 		    {
-		        this._id = value;
+		        this._userId = value;
 		    }
 		}
 		
 		private string _website;
-		[Column("Website", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_website")]
 		public virtual string Website 
 		{ 
 		    get
@@ -59,8 +52,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _storeTelephone;
-		[Column("StoreTelephone", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_storeTelephone")]
 		public virtual string StoreTelephone 
 		{ 
 		    get
@@ -74,8 +65,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _storeTaxNo;
-		[Column("StoreTaxNo", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_storeTaxNo")]
 		public virtual string StoreTaxNo 
 		{ 
 		    get
@@ -89,8 +78,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _storeName;
-		[Column("StoreName", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_storeName")]
 		public virtual string StoreName 
 		{ 
 		    get
@@ -104,8 +91,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _storeFax;
-		[Column("StoreFax", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_storeFax")]
 		public virtual string StoreFax 
 		{ 
 		    get
@@ -119,8 +104,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _storeAddress;
-		[Column("StoreAddress", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_storeAddress")]
 		public virtual string StoreAddress 
 		{ 
 		    get
@@ -134,8 +117,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _email;
-		[Column("Email", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_email")]
 		public virtual string Email 
 		{ 
 		    get
@@ -148,24 +129,7 @@ namespace PharmacyStoreModel
 		    }
 		}
 		
-		private int _userId;
-		[Column("UserId", OpenAccessType = OpenAccessType.Int32, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_userId")]
-		public virtual int UserId 
-		{ 
-		    get
-		    {
-		        return this._userId;
-		    }
-		    set
-		    {
-		        this._userId = value;
-		    }
-		}
-		
 		private SY_USER _sY_USER;
-		[ForeignKeyAssociation(ConstraintName = "FK_dbo.SY_STORE_dbo.SY_USER_UserId", SharedFields = "UserId", TargetFields = "Id")]
-		[Storage("_sY_USER")]
 		public virtual SY_USER SY_USER 
 		{ 
 		    get
@@ -175,17 +139,6 @@ namespace PharmacyStoreModel
 		    set
 		    {
 		        this._sY_USER = value;
-		    }
-		}
-		
-		private IList<LS_DOCTOR> _lS_DOCTORs = new List<LS_DOCTOR>();
-		[Collection(InverseProperty = "SY_STORE")]
-		[Storage("_lS_DOCTORs")]
-		public virtual IList<LS_DOCTOR> LS_DOCTORs 
-		{ 
-		    get
-		    {
-		        return this._lS_DOCTORs;
 		    }
 		}
 		

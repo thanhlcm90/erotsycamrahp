@@ -18,19 +18,13 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using PharmacyStoreModel;
 
 
-namespace PharmacyStoreModel	
+namespace PharmacyStore.Models	
 {
-	[Table("LS_DOCTOR")]
-	[ConcurrencyControl(OptimisticConcurrencyControlStrategy.Changed)]
-	[KeyGenerator(KeyGenerator.Autoinc)]
 	public partial class LS_DOCTOR
 	{
 		private int _id;
-		[Column("Id", OpenAccessType = OpenAccessType.Int32, IsBackendCalculated = true, IsPrimaryKey = true, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_id")]
 		public virtual int Id 
 		{ 
 		    get
@@ -43,24 +37,7 @@ namespace PharmacyStoreModel
 		    }
 		}
 		
-		private int _storeId;
-		[Column("StoreId", OpenAccessType = OpenAccessType.Int32, Length = 0, Scale = 0, SqlType = "int")]
-		[Storage("_storeId")]
-		public virtual int StoreId 
-		{ 
-		    get
-		    {
-		        return this._storeId;
-		    }
-		    set
-		    {
-		        this._storeId = value;
-		    }
-		}
-		
 		private string _mobile;
-		[Column("Mobile", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_mobile")]
 		public virtual string Mobile 
 		{ 
 		    get
@@ -74,8 +51,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _fullname;
-		[Column("Fullname", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_fullname")]
 		public virtual string Fullname 
 		{ 
 		    get
@@ -89,8 +64,6 @@ namespace PharmacyStoreModel
 		}
 		
 		private string _address;
-		[Column("Address", OpenAccessType = OpenAccessType.UnicodeStringInfiniteLength, IsNullable = true, Length = 0, Scale = 0, SqlType = "nvarchar(max)")]
-		[Storage("_address")]
 		public virtual string Address 
 		{ 
 		    get
@@ -103,18 +76,29 @@ namespace PharmacyStoreModel
 		    }
 		}
 		
-		private SY_STORE _sY_STORE;
-		[ForeignKeyAssociation(ConstraintName = "FK_dbo.LS_DOCTOR_dbo.SY_STORE_StoreId", SharedFields = "StoreId", TargetFields = "Id")]
-		[Storage("_sY_STORE")]
-		public virtual SY_STORE SY_STORE 
+		private string _hospital;
+		public virtual string Hospital 
 		{ 
 		    get
 		    {
-		        return this._sY_STORE;
+		        return this._hospital;
 		    }
 		    set
 		    {
-		        this._sY_STORE = value;
+		        this._hospital = value;
+		    }
+		}
+		
+		private System.Nullable<System.Char> _actflg;
+		public virtual System.Nullable<System.Char> Actflg 
+		{ 
+		    get
+		    {
+		        return this._actflg;
+		    }
+		    set
+		    {
+		        this._actflg = value;
 		    }
 		}
 		
