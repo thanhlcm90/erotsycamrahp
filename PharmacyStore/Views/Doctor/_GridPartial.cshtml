@@ -6,6 +6,10 @@
         col.Bound(p => p.Address);
         col.Bound(p => p.Mobile);
         col.Bound(p => p.Hospital);
+        col.Bound(p => p.Actflg)
+            .HeaderHtmlAttributes(new { @style = "text-align:center;" })
+            .HtmlAttributes(new { @style = "text-align:center;" })
+            .Width(100);
     })
     .Pageable(p => p
         .PageSizes(true)

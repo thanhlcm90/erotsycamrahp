@@ -24,33 +24,7 @@
 	<!-- Navigation menu goes here -->
 	<section class="navigable only-on-mobile">
 		<ul class="big-menu">
-			<li class="with-right-arrow">
-				<span>Nghiệp vụ</span>
-				<ul class="big-menu">
-					<li><a href="typography.html">Bán hàng</a></li>
-					<li><a href="columns.html">Nhập kho</a></li>
-				</ul>
-			</li>
-			<li class="with-right-arrow">
-				<span>Thiết lập</span>
-				<ul class="big-menu">
-					<li><a href="auto-setup.html">Thông tin quầy thuốc</a></li>
-				</ul>
-			</li>
-			<li class="with-right-arrow">
-				<span>Danh mục</span>
-				<ul class="big-menu">
-					<li><a href="Store">Danh sách quầy thuốc</a></li>
-					<li><a href="Doctor">Danh sách bác sĩ</a></li>
-				</ul>
-			</li>
-			<li class="with-right-arrow">
-				<span>Báo cáo</span>
-				<ul class="big-menu">
-					<li><a href="Store">Báo cáo thu</a></li>
-					<li><a href="Doctor">Báo cáo chi</a></li>
-				</ul>
-			</li>
+			@CommonFunction.BuildUserMenu()
 		</ul>
 	</section>
 	<ul class="unstyled-list">

@@ -69,10 +69,9 @@
 
 	<!-- jQuery -->
 	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/myplugin")
 	@Scripts.Render("~/bundles/inputmask")
-	@Scripts.Render("~/bundles/jquery-ba-hashchange")
 	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/myplugin")
 
 	<!-- Menu -->
 	@Styles.Render("~/Content/menustyle")
@@ -95,7 +94,7 @@
 	<!-- Title bar -->
 	<header role="banner" id="title-bar">
 		@Html.Partial("_MenuPartial")
-		<h2></h2>
+		<h2 class="only-on-mobile">@ViewBag.Title</h2>
 	</header>
 
 	<!-- Button to open/hide menu -->
@@ -109,18 +108,18 @@
 
 		<!-- Visible only to browsers without javascript -->
 		<noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
-		<hgroup id="main-title" class="thin">
+		<hgroup id="main-title" class="thin hidden-on-mobile">
 			<h1>@ViewBag.Title</h1>
 		</hgroup>
-		<div id="main-body">
 
-			@using (Html.BeginForm())
-			{ 
+		@using (Html.BeginForm())
+		{ 
 @*Chống Cross-Site-Request*@
-				@Html.AntiForgeryToken()
+			@Html.AntiForgeryToken()
+			<div id="main-body">
 				@RenderBody()
-			}
-		</div>
+			</div>
+		}
 	</section>
 	<!-- End main content -->
 
@@ -135,41 +134,111 @@
 
 	<!-- JavaScript at the bottom for fast page loading -->
 	<!-- Scripts -->
+	@Scripts.Render("~/developr/jquery-ba-hashchange")
 	@Scripts.Render("~/developr/mainscript")
 
 	@RenderSection("scripts", required: false)
 
 	<script type="text/javascript">
 
+		var win = $(window),
+		bod = $(document.body),
+		main = $('#main-body'),
+		init = false;
+		// Ajax navigation, xử lý click hash change
+		$(document).on('click', 'a', function (event) {
+			var link = $(this),
+				href = link.attr('href'),
+				docmenu;
+		    // Some elements from the doc shouldn't be processed
+			if (link.closest('.mlddm').length == 0 && link.closest('.navigable, .collapsible').length == 0) {
+			    event.preventDefault();
+			    return;
+			}
+
+			// If local link
+			if (href && !href.match(/^(https?:|#|\.\/|javascript:)/)) {
+				event.preventDefault();
+				window.location.hash = '#' + href;
+				if (!bod.parent().hasClass('hashchange')) {
+					win.hashchange();
+				}
+
+				// If in menu, add visual indicator
+				docmenu = link.closest('#doc-menu');
+				if (docmenu.length > 0) {
+					docmenu.find('.current').removeClass('current');
+					link.addClass('current');
+				}
+			}
+		});
+
+		// Listen to hash changes
+		win.hashchange(function (event) {
+			var hash = $.trim(window.location.hash || '');
+			if (hash.length > 1) {
+				var actionURL = hash.substring(1);
+				main.loadWithJs({
+					type: "get",
+					url: actionURL,
+					success: function () {
+
+					}
+				});
+
+				//main.load(hash.substring(1), function (data) {
+				//    console.log(data);
+				//    //var scripts = ajaxResponse.find('script');
+				//	// Scroll
+				//	bod.animate({
+				//		scrollTop: 0
+				//	});
+				//});
+			}
+			else {
+				window.location.reload();
+			}
+		});
+
+		// Init
+		if (window.location.hash && window.location.hash.length > 1) {
+			win.hashchange();
+		}
+		init = true;
+
 		$(document).ready(function () {
-		    FormatMaskedInput();
+			FormatMaskedInput();
+
+			//Đăng ký Hotkey
+			RegisterHotkey();
 		});
 		$(document).on('init-queries', function () {
-		    ChangeResolution();
+			ChangeResolution();
 		});
 		$(document).on('change-query', function () {
-		    ChangeResolution();
+			ChangeResolution();
 		});
+
 		function ChangeResolution() {
-		    if ($.template.mediaQuery.name == 'mobile-landscape') {
-		        $('#toolbar').trigger('detach.ScrollToFixed');
-		        $('#toolbar').scrollToFixed({ marginTop: 40 });
-		        $('.toolbaritem-text').addClass('hidden');
-		        $('.toolbaritem-text1').removeClass('hidden');
-		        $('.toolbaritem').attr('style', 'width:auto;')
-		    } else if ($.template.mediaQuery.name == 'mobile-portrait') {
-		        $('#toolbar').trigger('detach.ScrollToFixed');
-		        $('#toolbar').scrollToFixed();
-		        $('.toolbaritem-text').addClass('hidden')
-		        $('.toolbaritem-text1').addClass('hidden');
-		        $('.toolbaritem').attr('style','width:0px;')
-		    } else {
-		        $('#toolbar').trigger('detach.ScrollToFixed');
-		        $('#toolbar').scrollToFixed({ marginTop: 40 });
-		        $('.toolbaritem-text').removeClass('hidden')
-		        $('.toolbaritem-text1').addClass('hidden');
-		        $('.toolbaritem').attr('style', 'width:auto;')
-		    }
+			if ($.template.mediaQuery.name == 'mobile-landscape') {
+				$('#toolbar').trigger('detach.ScrollToFixed');
+				$('#toolbar').scrollToFixed({ marginTop: 40 });
+				$('.toolbaritem-text').addClass('hidden');
+				$('.toolbaritem-text1').removeClass('hidden');
+				$('.toolbaritem').attr('style', 'width:auto;')
+			} else if ($.template.mediaQuery.name == 'mobile-portrait') {
+				$('#toolbar').trigger('detach.ScrollToFixed');
+				$('#toolbar').scrollToFixed();
+				$('.toolbaritem-text').addClass('hidden')
+				$('.toolbaritem-text1').addClass('hidden');
+				$('.toolbaritem').attr('style', 'width:0px;')
+			} else {
+				$('#toolbar').trigger('detach.ScrollToFixed');
+				$('#toolbar').scrollToFixed({ marginTop: 40 });
+				$('.toolbaritem-text').removeClass('hidden')
+				$('.toolbaritem-text1').addClass('hidden');
+				$('.toolbaritem').attr('style', 'width:auto;')
+			}
 		}
 		$(document).on('click', '.disabled', function (event) {
 			event.preventDefault();
@@ -208,25 +277,27 @@
 			});
 		}
 
-		$(".toolbaritem").click(function () {
-			var btn = this;
-			var command = $(btn).attr("command");
-			var hasEdited = $(btn).attr("itemedited");
-			var hasDisabled = $(btn).hasClass("disabled");
-			if (hasDisabled) return;
-			ChangeToolbarState(hasEdited);
-			if (command == "@CommonMessage.TOOLBARITEM_SAVE") {
-				$("form").submit();
-				return;
+		$(document).on('click', '.toolbaritem', function () {
+		    debugger;
+		    var btn = this;
+		    var command = $(btn).attr("command");
+		    var hasEdited = $(btn).attr("itemedited");
+		    var hasDisabled = $(btn).hasClass("disabled");
+		    if (hasDisabled) return;
+		    if (hasEdited == null) hasEdited = "false";
+		    if (command == "@CommonMessage.TOOLBARITEM_SAVE") {
+			    $("form").submit();
+			    return;
 			} else if (command == "@CommonMessage.TOOLBARITEM_CANCEL") {
-				ChangeToolbarState(false);
-				ResetValidations();
+			    ResetValidations();
 			}
-			try {
-				ToolbarCommand(command);
-			} catch (ex) {
-			}
+		    try {
+		        ChangeToolbarState(hasEdited);
+		        ToolbarCommand(command);
+		    } catch (ex) {
+		    }
 		});
+
 		$("form").submit(function (event) {
 			event.preventDefault();
 			if ($("form").valid()) {

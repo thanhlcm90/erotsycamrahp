@@ -336,9 +336,11 @@
     <Content Include="Content\kendo\2012.3.1114\Uniform\slider-h.gif" />
     <Content Include="Content\kendo\2012.3.1114\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2012.3.1114\Uniform\sprite.png" />
+    <Content Include="App_Data\Menu.xml" />
     <Content Include="Global.asax" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.ttf" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.woff" />
+    <Content Include="Scripts\developr\libs\jquery.ba-hashchange.js" />
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.date.extensions.js" />
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.date.extensions.min.js" />
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.extensions.js" />
@@ -347,6 +349,7 @@
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.min.js" />
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.numeric.extensions.js" />
     <Content Include="Scripts\jquery.inputmask\jquery.inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\MyPlugin\jquery.shortcuts.js" />
     <Content Include="Scripts\MyPlugin\jquery.ajax.extension.js" />
     <Content Include="Scripts\MyPlugin\jquery-scrolltofixed.js" />
     <Content Include="Scripts\developr\developr.accordions.js" />
@@ -1063,7 +1066,6 @@
     <Content Include="Scripts\developr\libs\google-code-prettify\sunburst.css" />
     <Content Include="Scripts\jQuery\jquery-1.8.2.min.js" />
     <Content Include="Scripts\developr\libs\jquery-ui-1.9.1.custom.min.js" />
-    <Content Include="Scripts\developr\libs\jquery.ba-hashchange.min.js" />
     <Content Include="Scripts\developr\libs\jquery.details.min.js" />
     <Content Include="Scripts\developr\libs\jquery.tablesorter.min.js" />
     <Content Include="Scripts\developr\libs\modernizr.custom.js" />
@@ -1570,6 +1572,7 @@
     <Content Include="Scripts\kendo\2012.3.1114\kendo.validator.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\kendo.web.min.js" />
     <Content Include="Scripts\kendo\2012.3.1114\kendo.window.min.js" />
+    <Content Include="Views\Doctor\script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1614,9 +1617,7 @@
     </Content>
     <Content Include="Views\Doctor\_FormPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

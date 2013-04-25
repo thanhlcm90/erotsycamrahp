@@ -1,29 +1,11 @@
-﻿@model PharmacyStore.Models.LS_DOCTOR
+﻿// Các hàm jQuery mở rộng để xử dụng
+// Copyright: Lê Cao Minh Thành
 
-@{
-    // Đặt title cho View
-    ViewBag.Title = "Danh sách bác sĩ";
-    //Layout = null;
-}
+; (function ($) {
 
-@*Tạo Toolbar*@
-@CommonFunction.BuildToolbar(ToolbarItem.Create, ToolbarItem.Edit, ToolbarItem.Delete, ToolbarItem.Active, ToolbarItem.Deactive)
-
-@*Tạo 1 Partial đặt tên là _FormPartial để chứa tất cả các Control nhập liệu
-Render Partial vào 1 thẻ div*@
-<div id="FormEdit">
-    @Html.Partial("_FormPartial")
-</div>
-@Html.Partial("_GridPartial")
-
-<script>
     //Trạng thái của View, tham khảo trong CommonMessage
     var formState;
-
-    $(document).ready(function () {
-        // Mặc định Disable tất cả Control
-        EnabledInputs(false);
-    });
+    EnabledInputs(false);
 
     // Function sự kiện của Toolbar (phải khai báo cho giống)
     function ToolbarCommand(command) {
@@ -198,4 +180,34 @@ Render Partial vào 1 thẻ div*@
         }
     }
 
-</script>
+    function onDataBound(arg) {
+        // Sự kiện DataBound, kiểm tra xem số lượng Item. Nếu không có dữ liệu nào trong danh sách thì Disable các ToolbarItem khác ngoài Create
+        var itemCount = this.dataSource.total();
+
+        // Nếu không có row nào được select thì Disable các ToolbarItem trừ Create
+        if (this.select().length == 0) {
+            DisableAllToolbarItemExpectCreate(true);
+        } else {
+            DisableAllToolbarItemExpectCreate(itemCount == 0);
+        }
+
+        // Select lại item vừa chọn lấy từ Hidden field Id
+        var grid = this;
+        var id = $("#Id").val();
+        if (id != null && id != '') {
+            var dataItem = grid.dataSource.get(id);
+            if (dataItem != null) {
+                var row = grid.tbody.find("tr[data-uid='" + dataItem.uid + "']");
+                grid.select(row);
+            } else {
+                // Nếu không tìm thấy Row với id thì chọn Row đầu tiên
+                var row = grid.tbody.find("tr:first");
+                grid.select(row);
+            }
+        } else {
+            // Nếu Id rỗng (thao tác xóa, hoặc lần đầu tiên load View) thì chọn lại Row đầu tiên
+            var row = grid.tbody.find("tr:first");
+            grid.select(row);
+        }
+    }
+})(jQuery);

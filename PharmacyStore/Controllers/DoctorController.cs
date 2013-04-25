@@ -114,16 +114,70 @@ namespace PharmacyStore.Controllers
         [Authorize]
         public ActionResult Delete(int id)
         {
-            if (rep.DeleteDoctor(id))
+            try
             {
-                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
+                if (rep.DeleteDoctor(id))
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
+                }
+                else
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL });
+                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL, data = ex.Message });
             }
         }
 
+        //
+        // POST: /Doctor/Active
+
+        [HttpPost, ActionName("Active")]
+        [Authorize]
+        public ActionResult Active(int id)
+        {
+            try
+            {
+                if (rep.ChangeDoctorStatus(id,'A'))
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
+                }
+                else
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL, data = ex.Message });
+            }
+        }
+
+        //
+        // POST: /Doctor/Active
+
+        [HttpPost, ActionName("Deactive")]
+        [Authorize]
+        public ActionResult Deactive(int id)
+        {
+            try
+            {
+                if (rep.ChangeDoctorStatus(id, 'I'))
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
+                }
+                else
+                {
+                    return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_FAIL, data = ex.Message });
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             rep.Dispose();
