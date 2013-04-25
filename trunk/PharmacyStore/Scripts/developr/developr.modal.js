@@ -1091,23 +1091,22 @@
 
 		// Buttons
 		options.buttons = {};
+		options.buttons[options.textConfirm] = {
+		    classes: 'blue-gradient glossy',
+		    click: function (modal) {
+		        // Mark as sumbmitted to prevent the cancel callback to fire
+		        isConfirmed = true;
+
+		        // Callback
+		        confirmCallback.call(modal[0]);
+
+		        // Close modal
+		        modal.closeModal();
+		    }
+		};
 		options.buttons[ options.textCancel ] = {
 			classes:	'glossy',
 			click:		function(modal) { modal.closeModal(); }
-		};
-		options.buttons[ options.textConfirm ] = {
-			classes:	'blue-gradient glossy',
-			click:		function(modal)
-			{
-				// Mark as sumbmitted to prevent the cancel callback to fire
-				isConfirmed = true;
-
-				// Callback
-				confirmCallback.call(modal[0]);
-
-				// Close modal
-				modal.closeModal();
-			}
 		};
 
 		// Open modal

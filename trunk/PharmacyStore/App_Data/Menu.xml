@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group>
+    <Item Text="Hệ thống">
+      <Group>
+        <Item Controller="Store" Text="Thông tin quầy thuốc"></Item>
+        <Item Controller="" Text="Thay đổi mật khẩu"></Item>
+        <Item Controller="" Text="Quản lý tài khoản" url="#"></Item>
+        <Item Controller="" Text="Quản lý nhóm tài khoản" url="#"></Item>
+        <Item Controller="" Text="Cấu hình hệ thống" url="#"></Item>
+        <Item Controller="" Text="Sao lưu dữ liệu" url="#"></Item>
+      </Group>
+    </Item>
+    <Item Text="Nghiệp vụ">
+      <Group>
+        <Item Controller="" Text="Bán thuốc theo đơn bác sĩ" url="#"></Item>
+        <Item Controller="" Text="Bán thuốc không theo đơn" url="#"></Item>
+        <Item Controller="" Text="Quán lý xuất hàng bán buôn" url="#"></Item>
+        <Item Controller="" Text="Nhập thuốc" url="#"></Item>
+        <Item  Controller="" Text="Xuất huỷ thuốc quá hạn, hư hỏng" url="#"></Item>
+        <Item  Controller="" Text="Xuất hàng chuyển kho" url="#"></Item>
+        <Item  Controller="" Text="Tạo đơn đặt hàng" url="#"></Item>
+        <Item  Controller="" Text="Lập dự trù thuốc" url="#"></Item>
+        <Item  Controller="" Text="Cài đặt tương tác thuốc" url="#"></Item>
+        <Item  Controller="" Text="Quản lý hoá đơn xuất - nhập thuốc" url="#"></Item>
+        <Item  Controller="" Text="Theo dõi hàng hoá sắp hết hạn sử dụng" url="#"></Item>
+        <Item  Controller="" Text="Theo dõi hàng hoá sắp hết số lượng tối thiểu" url="#"></Item>
+        <Item  Controller="" Text="Quản lý hàng tồn kho" url="#"></Item>
+        <Item  Controller="" Text="Quản lý thẻ kho" url="#"></Item>
+        <Item  Controller="" Text="Quản lý Xuất - Nhập - Tồn" url="#"></Item>
+        <Item  Controller="" Text="Quản lý giá niêm yết" url="#"></Item>
+        <Item  Controller="" Text="Quản lý biến động giá" url="#"></Item>
+        <Item  Controller="" Text="Cập nhật số dư công nợ" url="#"></Item>
+        <Item  Controller="" Text="Quản lý công nợ" url="#"></Item>
+        <Item  Controller="" Text="Quản lý phiếu thu - Thu tiền" url="#"></Item>
+        <Item  Controller="" Text="Quản lý chi tiền -  Phiếu chi" url="#"></Item>
+      </Group>
+    </Item>
+    <Item Text="Danh mục">
+      <Group>
+        <Item  Controller="" Text="Danh mục nhóm thuốc, vật tư" url="#"></Item>
+        <Item  Controller="" Text="Danh mục hoạt chất" url="#"></Item>
+        <Item  Controller="" Text="Danh mục thuốc vật tư" url="#"></Item>
+        <Item  Controller="" Text="Danh mục thuốc - liều dùng" url="#"></Item>
+        <Item  Controller="" Text="Danh mục bệnh" url="#"></Item>
+        <Item  Controller="" Text="Danh mục Bệnh - Đơn thuốc" url="#"></Item>
+        <Item  Controller="" Text="Danh mục nhóm khách hàng" url="#"></Item>
+        <Item  Controller="" Text="Danh mục khách hàng" url="#"></Item>
+        <Item  Controller="Doctor" Text="Danh mục bác sĩ" url="#"></Item>
+        <Item  Controller="" Text="Danh mục nguồn gốc xuất xứ" url="#"></Item>
+        <Item  Controller="" Text="Danh mục Nhà sản xuất" url="#"></Item>
+        <Item  Controller="" Text="Danh mục Nhà cung cấp" url="#"></Item>
+        <Item  Controller="" Text="Danh mục kho hàng" url="#"></Item>
+        <Item  Controller="" Text="Danh mục đơn vị tính" url="#"></Item>
+      </Group>
+    </Item>
+    <Item Text="Báo cáo">
+      <Group>
+        <Item  Controller="" Text="Báo cáo nhập hàng" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo xuất hàng tổng hợp" url="#"></Item>
+        <Item  Controller="" Text="Nhật ký bán lẻ" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo bán hàng" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo Xuất - Nhập - Tồn" url="#"></Item>
+        <Item  Controller="" Text="Bảng kê đơn thuốc chi tiết" url="#"></Item>
+        <Item  Controller="" Text="Bảng kê đơn thuốc tổng hợp" url="#"></Item>
+        <Item  Controller="" Text="Bảng kê hóa đơn bán buôn" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo lợi nhuận theo đơn hàng" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo lợi nhuận theo từng mặt hàng" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo nhóm thuốc đang cung cấp" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo thuốc đang cung cấp" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo danh sách nhà cung cấp" url="#"></Item>
+        <Item  Controller="" Text="Báo cáo danh sách khách hàng" url="#"></Item>
+      </Group>
+    </Item>
+  </Group>
+</Menu>

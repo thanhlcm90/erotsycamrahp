@@ -78,5 +78,20 @@ namespace PharmacyStore.Models
                 throw;
             }
         }
+
+        public bool ChangeDoctorStatus(int id, char actflg)
+        {
+            try
+            {
+                var item = (from p in _dataContext.LS_DOCTORs where p.Id == id select p).SingleOrDefault();
+                item.Actflg = actflg;
+                _dataContext.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

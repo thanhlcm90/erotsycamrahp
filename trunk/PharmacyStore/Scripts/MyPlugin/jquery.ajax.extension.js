@@ -1,7 +1,47 @@
 ﻿// Các hàm jQuery mở rộng để xử dụng
 // Copyright: Lê Cao Minh Thành
 
-(function ($) {
+; (function ($) {
+
+    $.fn.loadWithJs = function (o) {
+        console.log(".loadWithJs - started");
+        var target = this;
+
+        target.addScript = function (scripts, n, success) {
+            var script = scripts[n];
+            var scriptNode = document.createElement('script');
+            for (var i = 0; i < script.attributes.length; i++) {
+                var attr = script.attributes[i];
+                $(scriptNode).attr(attr.name, attr.value);
+            }
+            scriptNode.appendChild(
+                document.createTextNode($(script).html())
+            );
+            $(scriptNode).load(function () {
+                if (++n < scripts.length)
+                    target.addScript(scripts, n, success);
+                else if (success)
+                    success();
+            });
+            document.head.appendChild(scriptNode);
+        };
+
+        var success = o.success;
+        o.success = function (html) {
+            // convert script tags
+            var h = $('<div />').append(
+                html.replace(/<(\/)?script/ig, "<$1codex")
+            );
+            // detach script divs from html
+            var scripts = h.find("codex").detach();
+            // populate target
+            target.html(h.children());
+            // start recursive loading of scripts
+            target.addScript(scripts, 0, success);
+        };
+
+        $.ajax(o);
+    };
 
     $.appAjax = function (options) {
         // Hàm gọi Ajax đã được xử lý Lỗi và Loading
@@ -40,6 +80,7 @@
                     else {
                         ShowNotify('Không kết nối được với Server', 'error');
                     }
+                    loading.closeModal();
                     execError(xhr);
                 },
                 success: function (data, status, xhr) {
@@ -65,6 +106,7 @@
         } catch (ex) {
             loading.closeModal();
         }
+
         function openLoadingModal() {
             return $.modal({
                 contentAlign: 'center',
@@ -242,5 +284,54 @@
             textCancel: 'Không',
             textConfirm: 'Có'
         });
+    }
+
+    window.RegisterHotkey = function () {
+        $.Shortcuts.add({
+            type: 'up',
+            mask: 'Shift+Alt+M',
+            enableInInput: true,
+            handler: function () {
+                ChangeToolbarState(true);
+                try {
+                    ToolbarCommand('Create');
+                } catch (ex) {
+                }
+            }
+        });
+        $.Shortcuts.add({
+            type: 'up',
+            mask: 'Shift+Alt+S',
+            enableInInput: true,
+            handler: function () {
+                ChangeToolbarState(true);
+                try {
+                    ToolbarCommand('Edit');
+                } catch (ex) {
+                }
+            }
+        });
+        $.Shortcuts.add({
+            type: 'up',
+            mask: 'Shift+Alt+L',
+            enableInInput: true,
+            handler: function () {
+                $("form").submit();
+            }
+        });
+        $.Shortcuts.add({
+            type: 'up',
+            mask: 'Shift+Alt+H',
+            enableInInput: true,
+            handler: function () {
+                ChangeToolbarState(false);
+                ResetValidations();
+                try {
+                    ToolbarCommand('Cancel');
+                } catch (ex) {
+                }
+            }
+        });
+        $.Shortcuts.start();
     }
 })(jQuery);

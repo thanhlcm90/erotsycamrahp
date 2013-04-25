@@ -2,7 +2,8 @@
 
 @{
     // Đặt title cho View
-    ViewBag.Title = "Thông tin tiệm thuốc";        
+    ViewBag.Title = "Thông tin tiệm thuốc";
+    //Layout = null;  
 }
 
 @*Tạo Toolbar*@
@@ -54,7 +55,6 @@ Render Partial vào 1 thẻ div*@
                         // Dữ liệu trả về sẽ là nội dung Html của partial _FormPartial.
                         // Gán nội dung vào div
                         // Cả quá trình này giống như UpdatePanel, nghĩa là chỉ Update 1 bộ phận trên website -> Tốc độ nhanh
-                        debugger;
                         $("#FormEdit").html(data.data);
 
                         // Disable tất cả Control

@@ -30,6 +30,7 @@ namespace PharmacyStore.Models
         bool InsertDoctor(LS_DOCTOR doctor);
         bool UpdateDoctor(LS_DOCTOR doctor);
         bool DeleteDoctor(int id);
+        bool ChangeDoctorStatus(int id, char actflg);
         #endregion
     }
 }

@@ -13,7 +13,8 @@ namespace PharmacyStore
 
             bundles.Add(new ScriptBundle("~/bundles/myplugin").Include(
                         "~/Scripts/MyPlugin/jquery-scrolltofixed.js",
-                        "~/Scripts/MyPlugin/jquery.ajax.extension.js"));
+                        "~/Scripts/MyPlugin/jquery.ajax.extension.js",
+                        "~/Scripts/MyPlugin/jquery.shortcuts.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
                         "~/Scripts/jquery.inputmask/jquery.inputmask.js",
@@ -21,8 +22,8 @@ namespace PharmacyStore
                         "~/Scripts/jquery.inputmask/jquery.inputmask.date.extensions.js",
                         "~/Scripts/jquery.inputmask/jquery.inputmask.numeric.extensions.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-ba-hashchange").Include(
-                        "~/Scripts/developer/libs/jquery.ba-hashchange.min.js"));
+            bundles.Add(new ScriptBundle("~/developr/jquery-ba-hashchange").Include(
+                        "~/Scripts/developr/libs/jquery.ba-hashchange.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
             //            "~/Scripts/jquery-ui-{version}.js"));
