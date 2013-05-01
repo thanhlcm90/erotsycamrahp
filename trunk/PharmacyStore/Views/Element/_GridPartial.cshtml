@@ -1,11 +1,8 @@
-﻿@(Html.Kendo().Grid<PharmacyStore.Models.LS_DOCTOR>()
+﻿@(Html.Kendo().Grid<PharmacyStore.Models.LS_ELEMENT>()
     .Name("Grid")
     .Columns(col =>
     {
-        col.Bound(p => p.Fullname);
-        col.Bound(p => p.Address);
-        col.Bound(p => p.Mobile);
-        col.Bound(p => p.Hospital);
+        col.Bound(p => p.Name);
         col.Bound(p => p.Actflg)
             .HeaderHtmlAttributes(new { @style = "text-align:center;" })
             .HtmlAttributes(new { @style = "text-align:center;" })
@@ -63,7 +60,7 @@
         .Ajax()
         .PageSize(10)
         .Model(model => model.Id(p => p.Id))
-        .Read(read => read.Action("GetList", "Doctor"))
+        .Read(read => read.Action("GetList", "Element"))
     )
 )
 
@@ -71,10 +68,7 @@
     // Khai báo MVVM để field dữ liệu từ Grid khi select row
     var vm = kendo.observable({
         Id: null,
-        Fullname: null,
-        Address: null,
-        Mobile: null,
-        Hospital: null
+        Name: null
     });
 
     kendo.bind($('#FormEdit'), vm);
@@ -83,10 +77,7 @@
     function OnGridSelectedChange(selectedItem) {
         // Thay đổi MVVM dự vào dữ liệu các cột của row được select
         vm.set("Id", selectedItem.Id);
-        vm.set("Fullname", selectedItem.Fullname);
-        vm.set("Address", selectedItem.Address);
-        vm.set("Mobile", selectedItem.Mobile);
-        vm.set("Hospital", selectedItem.Hospital);
+        vm.set("Name", selectedItem.Name);
     }
 
 </script>

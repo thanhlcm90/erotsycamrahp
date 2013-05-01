@@ -15,8 +15,8 @@ public static class CommonFunction
         {
             StringBuilder toolbar = new StringBuilder();
             toolbar.AppendLine("<div id='toolbar' class='white-gradient wrapped full-width with-small-padding margin-bottom'>");
-            toolbar.AppendLine("<a command='" + CommonMessage.TOOLBARITEM_SAVE + "' href='javascript:void(0)' class='toolbaritem button hidden with-tooltip tooltip-bottom' title='Lưu dữ liệu (Phím tắt: SHIFT + ALT + L)'><span class='button-icon blue-gradient'><span class='" + CommonMessage.TOOLBARITEM_SAVE_ICON + "'></span></span><div class='toolbaritem-text'><u>L</u>ưu thay đổi</div><div class='toolbaritem-text1 hidden'><u>L</u>ưu</div></a>");
-            toolbar.AppendLine("<a command='" + CommonMessage.TOOLBARITEM_CANCEL + "' href='javascript:void(0)' class='toolbaritem button hidden with-tooltip tooltip-bottom' title='Hủy bỏ thao tác (Phím tắt: SHIFT + ALT + H)'><span class='button-icon red-gradient'><span class='" + CommonMessage.TOOLBARITEM_CANCEL_ICON + "'></span></span><div class='toolbaritem-text'><u>H</u>ủy bỏ</div><div class='toolbaritem-text1 hidden'><u>H</u>ủy</div></a>");
+            toolbar.AppendLine("<a id='" + CommonMessage.TOOLBARITEM_SAVE + "' command='" + CommonMessage.TOOLBARITEM_SAVE + "' href='javascript:void(0)' class='toolbaritem button hidden with-tooltip tooltip-bottom' title='Lưu dữ liệu (Phím tắt: SHIFT + ALT + L)'><span class='button-icon blue-gradient'><span class='" + CommonMessage.TOOLBARITEM_SAVE_ICON + "'></span></span><div class='toolbaritem-text'><u>L</u>ưu thay đổi</div><div class='toolbaritem-text1 hidden'><u>L</u>ưu</div></a>");
+            toolbar.AppendLine("<a id='" + CommonMessage.TOOLBARITEM_CANCEL + "' command='" + CommonMessage.TOOLBARITEM_CANCEL + "' href='javascript:void(0)' class='toolbaritem button hidden with-tooltip tooltip-bottom' title='Hủy bỏ thao tác (Phím tắt: SHIFT + ALT + H)'><span class='button-icon red-gradient'><span class='" + CommonMessage.TOOLBARITEM_CANCEL_ICON + "'></span></span><div class='toolbaritem-text'><u>H</u>ủy bỏ</div><div class='toolbaritem-text1 hidden'><u>H</u>ủy</div></a>");
             foreach (ToolbarItem item in items)
             {
                 string strName = "";
@@ -112,7 +112,7 @@ public static class CommonFunction
                         icon = CommonMessage.TOOLBARITEM_DEACTIVE_ICON;
                         break;
                 }
-                toolbar.AppendLine("<a command='" + strName + "' itemedited='" + hasEdited + "' href='javascript:void(0)' class='toolbaritem button with-tooltip tooltip-bottom' title='" + tooltip + "'><span class='button-icon " + color + "'><span class='" + icon + "'></span></span><div class='toolbaritem-text'>" + strText + "</div><div class='toolbaritem-text1 hidden'>" + strText1 + "</div></a>");
+                toolbar.AppendLine("<a id='" + strName + "' command='" + strName + "' itemedited='" + hasEdited + "' href='javascript:void(0)' class='toolbaritem button with-tooltip tooltip-bottom' title='" + tooltip + "'><span class='button-icon " + color + "'><span class='" + icon + "'></span></span><div class='toolbaritem-text'>" + strText + "</div><div class='toolbaritem-text1 hidden'>" + strText1 + "</div></a>");
             }
             toolbar.AppendLine("</div>");
             return MvcHtmlString.Create(toolbar.ToString());

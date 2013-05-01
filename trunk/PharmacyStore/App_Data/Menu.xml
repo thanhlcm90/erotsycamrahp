@@ -38,8 +38,8 @@
     </Item>
     <Item Text="Danh mục">
       <Group>
-        <Item  Controller="" Text="Danh mục nhóm thuốc, vật tư" url="#"></Item>
-        <Item  Controller="" Text="Danh mục hoạt chất" url="#"></Item>
+        <Item  Controller="DrugGroup" Text="Danh mục nhóm thuốc, vật tư" url="#"></Item>
+        <Item  Controller="Element" Text="Danh mục hoạt chất" url="#"></Item>
         <Item  Controller="" Text="Danh mục thuốc vật tư" url="#"></Item>
         <Item  Controller="" Text="Danh mục thuốc - liều dùng" url="#"></Item>
         <Item  Controller="" Text="Danh mục bệnh" url="#"></Item>

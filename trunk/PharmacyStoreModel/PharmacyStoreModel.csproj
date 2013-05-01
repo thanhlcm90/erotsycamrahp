@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunction.cs" />
+    <Compile Include="DataBusiness\List\Element.cs" />
+    <Compile Include="DataBusiness\List\DrugGroup.cs" />
     <Compile Include="DataBusiness\List\Doctor.cs" />
     <Compile Include="DataBusiness\System\User.cs" />
     <Compile Include="DataBusiness\System\Store.cs" />
@@ -75,6 +77,8 @@
     <Compile Include="Models\Generated\Webpages_Membership.generated.cs" />
     <Compile Include="Models\Generated\Webpages_OAuthMembership.generated.cs" />
     <Compile Include="Models\Generated\Webpages_Role.generated.cs" />
+    <Compile Include="Models\List\ElementModels.cs" />
+    <Compile Include="Models\List\DrugGroupModels.cs" />
     <Compile Include="Models\List\DoctorModels.cs" />
     <Compile Include="Models\System\StoreModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
