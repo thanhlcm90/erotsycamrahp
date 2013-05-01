@@ -18,6 +18,7 @@ namespace PharmacyStore.Controllers
         //
         // GET: /Doctor/
         [Authorize]
+        [HttpPost]
         public ActionResult Index()
         {
             return View();

@@ -1,0 +1,98 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Evolve 404 Demo</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/error/css/main.css">
+    @Scripts.Render("~/bundles/jquery")
+    <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+    <div id="main">
+        <header class="header" role="banner">
+            <h1>Page Not Found</h1>
+        </header>
+        <div class="content-box-wrapper">
+            <div class="content-box">
+                <div class="content-container">
+                    <h2>The page you were looking for could not be found.</h2>
+                    <p>
+                        Please use the navigation below to help you either find the page you were looking for, or to go back 
+          to the previous page.
+                    </p>
+                </div>
+                <div class="navigation-container">
+                    <ul class="navigation">
+                        <li><a href="#search">Search</a></li>
+                        <li><a href="#sitemap">Site Map</a></li>
+                        <li><a href="#loading" onclick="history.go(-1);return true;">Go Back</a></li>
+                    </ul>
+                </div>
+                <div class="nav-content" id="search">
+                    <form class="search-container">
+                        <input type="text" name="search" placeholder="Search..." />
+                        <button type="submit"><span class="search-icon"></span></button>
+                    </form>
+                </div>
+                <div class="nav-content" id="sitemap">
+                    <div class="sitemap-container-l1">
+                        <div class="sitemap-container-l2">
+                            <ul>
+                                <li>
+                                    <h2>Services</h2>
+                                </li>
+                                <li><a href="#">Enterprise Services</a></li>
+                                <li><a href="#">Network Solutions</a></li>
+                                <li><a href="#">Content Creation</a></li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <h2>Company</h2>
+                                </li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Package Pricing</a></li>
+                                <li><a href="#">What's New?</a></li>
+                                <li><a href="#">Try it Free</a></li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <h2>Support</h2>
+                                </li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Client Area</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Network Status</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="nav-content" id="loading">
+                    <div class="spinner">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                        <div class="bar4"></div>
+                        <div class="bar5"></div>
+                        <div class="bar6"></div>
+                        <div class="bar7"></div>
+                        <div class="bar8"></div>
+                        <div class="bar9"></div>
+                        <div class="bar10"></div>
+                        <div class="bar11"></div>
+                        <div class="bar12"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Content/error/js/base.js"></script>
+</body>
+</html>

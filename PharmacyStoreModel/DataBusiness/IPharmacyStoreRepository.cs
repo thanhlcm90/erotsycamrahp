@@ -32,5 +32,23 @@ namespace PharmacyStore.Models
         bool DeleteDoctor(int id);
         bool ChangeDoctorStatus(int id, char actflg);
         #endregion
+
+        #region DrugGroup
+        IList<LS_DRUG_GROUP> GetDrugGroupList();
+        LS_DRUG_GROUP GetDrugGroupInfo(int id);
+        bool InsertDrugGroup(LS_DRUG_GROUP doctor);
+        bool UpdateDrugGroup(LS_DRUG_GROUP doctor);
+        bool DeleteDrugGroup(int id);
+        bool ChangeDrugGroupStatus(int id, char actflg);
+        #endregion
+
+        #region Element
+        IList<LS_ELEMENT> GetElementList();
+        LS_ELEMENT GetElementInfo(int id);
+        bool InsertElement(LS_ELEMENT doctor);
+        bool UpdateElement(LS_ELEMENT doctor);
+        bool DeleteElement(int id);
+        bool ChangeElementStatus(int id, char actflg);
+        #endregion
     }
 }

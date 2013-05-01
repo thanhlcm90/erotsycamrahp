@@ -11,12 +11,12 @@ using TugberkUg.MVC.Helpers;
 
 namespace PharmacyStore.Controllers
 {
-    public class DrugGroupController : Controller
+    public class ElementController : Controller
     {
         private PharmacyStoreRepository rep = new PharmacyStoreRepository();
 
         //
-        // GET: /DrugGroup/
+        // GET: /Element/
         [Authorize]
         [HttpPost]
         public ActionResult Index()
@@ -25,34 +25,34 @@ namespace PharmacyStore.Controllers
         }
 
         //
-        // POST: /DrugGroup/GetList
+        // POST: /Element/GetList
         [HttpPost]
         [Authorize]
         public ActionResult GetList([DataSourceRequest] DataSourceRequest request)
         {
             // Action GetList, dùng cho Grid load danh sách dữ liệu
-            var model = rep.GetDrugGroupList();
+            var model = rep.GetElementList();
             return Json(model.ToDataSourceResult(request));
         }
 
         //
-        // POST: /DrugGroup/GetData
+        // POST: /Element/GetData
         [HttpPost]
         [Authorize]
         public ActionResult GetData(int id)
         {
             // Action GetData, trả về model dữ liệu
-            var model = rep.GetDrugGroupInfo(id);
+            var model = rep.GetElementInfo(id);
             return Json(new { data = this.RenderPartialViewToString("_FormPartial", model) });
         }
 
         //
-        // POST: /DrugGroup/Create
+        // POST: /Element/Create
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Exclude = "Id")]LS_DRUG_GROUP model)
+        public ActionResult Create([Bind(Exclude = "Id")]LS_ELEMENT model)
         {
             // Action Create, Save dữ liệu thêm mới gọi từ Ajax request
             // Trả về nội dung String để thông báo tác vụ thành công hay không
@@ -60,7 +60,7 @@ namespace PharmacyStore.Controllers
             {
                 if (model != null)
                 {
-                    if (rep.InsertDrugGroup(model))
+                    if (rep.InsertElement(model))
                     {
                         // Lưu thành công và trả về Id của model mới
                         return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS, data = model.Id });
@@ -79,11 +79,11 @@ namespace PharmacyStore.Controllers
         }
 
         //
-        // POST: /DrugGroup/Edit
+        // POST: /Element/Edit
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind]LS_DRUG_GROUP model)
+        public ActionResult Edit([Bind]LS_ELEMENT model)
         {
             // Action Edit, Save chỉnh sửa dữ liệu gọi từ Ajax request
             // Trả về nội dung String để thông báo tác vụ thành công hay không
@@ -91,7 +91,7 @@ namespace PharmacyStore.Controllers
             {
                 if (model != null)
                 {
-                    if (rep.UpdateDrugGroup(model))
+                    if (rep.UpdateElement(model))
                     {
                         return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
                     }
@@ -109,7 +109,7 @@ namespace PharmacyStore.Controllers
         }
 
         //
-        // POST: /DrugGroup/Delete/5
+        // POST: /Element/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [Authorize]
@@ -117,7 +117,7 @@ namespace PharmacyStore.Controllers
         {
             try
             {
-                if (rep.DeleteDrugGroup(id))
+                if (rep.DeleteElement(id))
                 {
                     return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
                 }
@@ -133,7 +133,7 @@ namespace PharmacyStore.Controllers
         }
 
         //
-        // POST: /DrugGroup/Active
+        // POST: /Element/Active
 
         [HttpPost, ActionName("Active")]
         [Authorize]
@@ -141,7 +141,7 @@ namespace PharmacyStore.Controllers
         {
             try
             {
-                if (rep.ChangeDrugGroupStatus(id, 'A'))
+                if (rep.ChangeElementStatus(id, 'A'))
                 {
                     return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
                 }
@@ -157,7 +157,7 @@ namespace PharmacyStore.Controllers
         }
 
         //
-        // POST: /DrugGroup/Active
+        // POST: /Element/Active
 
         [HttpPost, ActionName("Deactive")]
         [Authorize]
@@ -165,7 +165,7 @@ namespace PharmacyStore.Controllers
         {
             try
             {
-                if (rep.ChangeDrugGroupStatus(id, 'I'))
+                if (rep.ChangeElementStatus(id, 'I'))
                 {
                     return Json(new { result = CommonMessage.MESSAGE_TRANSACTION_SUCCESS });
                 }

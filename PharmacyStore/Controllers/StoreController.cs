@@ -19,6 +19,7 @@ namespace PharmacyStore.Controllers
         //
         // GET: /Store/
         [Authorize]
+        [HttpPost]
         public ActionResult Index()
         {
             // Action Default(Index) trả về View kèm theo dữ liệu Store

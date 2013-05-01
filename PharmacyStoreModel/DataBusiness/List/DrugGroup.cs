@@ -8,11 +8,12 @@ namespace PharmacyStore.Models
 {
     public partial class PharmacyStoreRepository
     {
-        public IList<LS_DOCTOR> GetDoctorList()
+        public IList<LS_DRUG_GROUP> GetDrugGroupList()
         {
             try
             {
-                var query = (from p in _dataContext.LS_DOCTORs.ToList()
+                var query = (from p in _dataContext.LS_DRUG_GROUPs.ToList()
+                             orderby p.Name
                             select p).ToList();
                 return query;
             }
@@ -21,11 +22,11 @@ namespace PharmacyStore.Models
                 throw;
             }
         }
-        public LS_DOCTOR GetDoctorInfo(int id)
+        public LS_DRUG_GROUP GetDrugGroupInfo(int id)
         {
             try
             {
-                var query = from p in _dataContext.LS_DOCTORs
+                var query = from p in _dataContext.LS_DRUG_GROUPs
                            where p.Id == id
                            select p;
                 return query.SingleOrDefault();
@@ -36,7 +37,7 @@ namespace PharmacyStore.Models
             }
         }
 
-        public bool InsertDoctor(LS_DOCTOR doctor)
+        public bool InsertDrugGroup(LS_DRUG_GROUP doctor)
         {
             try
             {
@@ -51,11 +52,11 @@ namespace PharmacyStore.Models
             }
         }
 
-        public bool UpdateDoctor(LS_DOCTOR doctor)
+        public bool UpdateDrugGroup(LS_DRUG_GROUP doctor)
         {
             try
             {
-                _dataContext.AttachCopy<LS_DOCTOR>(doctor);
+                _dataContext.AttachCopy<LS_DRUG_GROUP>(doctor);
                 _dataContext.SaveChanges();
                 return true;
             }
@@ -65,11 +66,11 @@ namespace PharmacyStore.Models
             }
         }
 
-        public bool DeleteDoctor(int id)
+        public bool DeleteDrugGroup(int id)
         {
             try
             {
-                var item = (from p in _dataContext.LS_DOCTORs where p.Id == id select p).SingleOrDefault();
+                var item = (from p in _dataContext.LS_DRUG_GROUPs where p.Id == id select p).SingleOrDefault();
                 _dataContext.Delete(item);
                 _dataContext.SaveChanges();
                 return true;
@@ -80,11 +81,11 @@ namespace PharmacyStore.Models
             }
         }
 
-        public bool ChangeDoctorStatus(int id, char actflg)
+        public bool ChangeDrugGroupStatus(int id, char actflg)
         {
             try
             {
-                var item = (from p in _dataContext.LS_DOCTORs where p.Id == id select p).SingleOrDefault();
+                var item = (from p in _dataContext.LS_DRUG_GROUPs where p.Id == id select p).SingleOrDefault();
                 item.Actflg = actflg;
                 _dataContext.SaveChanges();
                 return true;
