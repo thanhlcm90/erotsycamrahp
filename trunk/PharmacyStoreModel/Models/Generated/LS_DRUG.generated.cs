@@ -194,8 +194,8 @@ namespace PharmacyStore.Models
 		    }
 		}
 		
-		private int _backlogMax;
-		public virtual int BacklogMax 
+		private int? _backlogMax;
+		public virtual int? BacklogMax 
 		{ 
 		    get
 		    {

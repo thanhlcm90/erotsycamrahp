@@ -187,7 +187,7 @@
           <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="ea0fd563-ca20-40a2-a332-08715612fe35" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
         <orm:field name="_lS_DRUGs" property="LS_DRUGs" behavior="readwrite" uniqueId="9b908bbc-68de-403d-aa7b-3712ec19da15" type="PharmacyStore.Models.LS_DRUG">
           <orm:collection element-class="PharmacyStore.Models.LS_DRUG" inverse-field="_lS_PRESERVEs" order-by="" uniqueId="038ce3cb-1f7a-4dca-ba3d-ba2db3e987b1" />
@@ -247,7 +247,7 @@
           <orm:column name="DiseaseId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="d25dd562-2e69-446a-834f-a34325ae0bc0" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
         <orm:field name="_lS_DISEASE" property="LS_DISEASE" behavior="readwrite" uniqueId="d7c613bf-e856-483b-8faf-c9a460693280" type="PharmacyStore.Models.LS_DISEASE">
           <orm:reference uniqueId="1d24cdf4-bf67-4d04-8d57-f0491ac2be39">
@@ -273,7 +273,7 @@
           <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="c0c6a76b-74b9-467a-a548-ecf841bdffbe" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
       </orm:class>
       <orm:class name="LS_ELEMENT" uniqueId="6341e2f9-2236-4b8d-8218-95fe7c192f63">
@@ -290,7 +290,7 @@
           <orm:column name="Name" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="fd83a69a-9b2d-4caa-9201-61cbe7b3c6ca" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
         <orm:field name="_lS_DRUGs" property="LS_DRUGs" behavior="readwrite" uniqueId="d018b912-b780-4f07-accd-e3c8d1235c51" type="PharmacyStore.Models.LS_DRUG">
           <orm:collection element-class="PharmacyStore.Models.LS_DRUG" inverse-field="_lS_ELEMENTs" order-by="" uniqueId="314f1301-25c3-4b92-a12e-e432117e0148" />
@@ -310,7 +310,7 @@
           <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="176a45db-e38f-4100-9700-f9234ef36f25" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
         <orm:field name="_lS_DRUGs" property="LS_DRUGs" behavior="readwrite" uniqueId="0e8ba028-0426-4093-8e4e-c2739fe484f1" type="PharmacyStore.Models.LS_DRUG">
           <orm:collection element-class="PharmacyStore.Models.LS_DRUG" inverse-field="_lS_DRUG_GROUP" order-by="" uniqueId="0104cbf9-44f1-4e76-ac67-cdf6e02bf080" />
@@ -362,8 +362,8 @@
         <orm:field name="_priceStock" property="PriceStock" behavior="readwrite" uniqueId="48dc2257-6b26-4921-afdc-2dcf770a96cf" type="System.Int32">
           <orm:column name="PriceStock" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
-        <orm:field name="_backlogMax" property="BacklogMax" behavior="readwrite" uniqueId="09e0a180-c047-458a-9897-97a9a514e9ea" type="System.Int32">
-          <orm:column name="BacklogMax" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:field name="_backlogMax" property="BacklogMax" behavior="readwrite" uniqueId="09e0a180-c047-458a-9897-97a9a514e9ea" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="BacklogMax" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="_backlogMin" property="BacklogMin" behavior="readwrite" uniqueId="bc3fde27-68a4-4daa-9551-a549567f2670" type="System.Int32">
           <orm:column name="BacklogMin" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
@@ -482,7 +482,7 @@
           <orm:column name="Hospital" sql-type="nvarchar" nullable="true" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
         <orm:field name="_actflg" property="Actflg" behavior="readwrite" uniqueId="dffdb240-47d1-43a0-86bd-c784fb82ddfb" type="System.Nullable`1[[System.Char, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+          <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         </orm:field>
       </orm:class>
       <orm:class name="LS_DISEASE" uniqueId="0c79fc23-b8ec-42e4-9998-fe7e73f9aaf7">
@@ -687,7 +687,7 @@
       <orm:table name="LS_PRESERVE">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
       </orm:table>
       <orm:table name="LS_PRESCRIPTION_DRUG">
         <orm:column name="PrescriptionId" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
@@ -706,7 +706,7 @@
         <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         <orm:column name="Note" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
         <orm:column name="DiseaseId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
         <orm:constraint name="FK_LS_PRESCRIPTION_LS_DISEASE" destination-table="LS_DISEASE">
           <orm:column name="DiseaseId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -714,12 +714,12 @@
       <orm:table name="LS_NATION">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
       </orm:table>
       <orm:table name="LS_ELEMENT">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Name" sql-type="nvarchar(max)" nullable="false" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
       </orm:table>
       <orm:table name="LS_DRUG_PRESERVE" join-table="true">
         <orm:column name="DrugId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
@@ -734,7 +734,7 @@
       <orm:table name="LS_DRUG_GROUP">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Name" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
       </orm:table>
       <orm:table name="LS_DRUG_ELEMENT" join-table="true">
         <orm:column name="DrugId" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
@@ -760,7 +760,7 @@
         <orm:column name="PriceWholeSale" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="PriceRetail" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="PriceStock" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="BacklogMax" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="BacklogMax" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="BacklogMin" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="LifeDay" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="CabinetId" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -793,7 +793,7 @@
         <orm:column name="Fullname" sql-type="nvarchar" nullable="false" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         <orm:column name="Address" sql-type="nvarchar" nullable="true" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
         <orm:column name="Hospital" sql-type="nvarchar" nullable="true" length="255" scale="0" ado-type="UnicodeStringVariableLength" />
-        <orm:column has-default-value="true" nullable="true" length="1" name="Actflg" scale="0" sql-type="nchar" ado-type="UnicodeCharacter" />
+        <orm:column name="Actflg" sql-type="nchar" nullable="true" length="1" scale="0" has-default-value="true" ado-type="UnicodeCharacter" />
       </orm:table>
       <orm:table name="LS_DISEASE">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -1070,7 +1070,7 @@
     </DomainClass>
     <DomainClass Id="68de7575-5d8e-4d6f-b09b-5165c17c6067" name="LS_DRUG" namespace="PharmacyStore.Models" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="f4a2678f-fd81-4da7-b8c8-d9004bbf3b34" name="Id" type="Int32" label="Id : Int32" kind="Persistent" identity="true" fieldName="_id" />
-      <Property Id="09e0a180-c047-458a-9897-97a9a514e9ea" name="BacklogMax" type="Int32" label="BacklogMax : Int32" kind="Persistent" fieldName="_backlogMax" />
+      <Property Id="09e0a180-c047-458a-9897-97a9a514e9ea" name="BacklogMax" type="Int32" label="BacklogMax : Int32" nullable="true" kind="Persistent" fieldName="_backlogMax" />
       <Property Id="bc3fde27-68a4-4daa-9551-a549567f2670" name="BacklogMin" type="Int32" label="BacklogMin : Int32" kind="Persistent" fieldName="_backlogMin" />
       <Property Id="0cf0c255-35b3-4df6-9dc7-2da56a730b1e" name="Barcode" type="Int64" label="Barcode : Int64" nullable="true" kind="Persistent" fieldName="_barcode" />
       <Property Id="fce6b42e-b7b2-4c09-b274-3ac1ba2b790d" name="CabinetId" type="Int32" label="CabinetId : Int32" nullable="true" kind="Persistent" fieldName="_cabinetId" />

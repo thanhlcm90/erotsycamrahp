@@ -1,76 +1,84 @@
 ﻿@model PharmacyStore.Models.SY_STORE
 
 @Html.HiddenFor(p => p.UserId)
-<fieldset class="fieldset">
-    <legend class="legend">Thông tin</legend>
-    <div class="columns">
-        <div class="six-columns twelve-columns-mobile">
-            <p class="button-height block-label">
-                <label for="StoreName" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.StoreName)</small>
-                    @Html.DisplayNameFor(p => p.StoreName)
-                </label>
-                <span class="input full-width">
-                    @Html.TextBoxFor(p => p.StoreName, new { @type = "text", @class = "input-unstyled full-width" })
-                    <span class="info-spot">
-                        <span class="icon-info-round"></span>
-                        <span class="info-bubble">Tên cửa hàng thuốc
-                        </span>
-                    </span>
-                </span>
-            </p>
-            <p class="button-height block-label">
-                <label for="StoreAddress" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.StoreAddress)</small>
-                    @Html.DisplayNameFor(p => p.StoreAddress)
-                </label>
-                @Html.TextBoxFor(p => p.StoreAddress, new { @type = "text", @class = "input full-width" })
-            </p>
-            <p class="button-height block-label">
-                <label for="StoreTelephone" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.StoreTelephone)</small>
-                    @Html.DisplayNameFor(p => p.StoreTelephone)
-                </label>
-                <span class="input full-width">
-                    @Html.TextBoxFor(p => p.StoreTelephone, new { @type = "text", @class = "input-unstyled full-width mask-phone" })
-                    <span class="info-spot">
-                        <span class="icon-info-round"></span>
-                        <span class="info-bubble">Số điện thoại di động
-                        </span>
-                    </span>
-                </span>
-            </p>
-            <p class="button-height block-label">
-                <label for="StoreTaxNo" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.StoreTaxNo)</small>
-                    @Html.DisplayNameFor(p => p.StoreTaxNo)
-                </label>
-                @Html.TextBoxFor(p => p.StoreTaxNo, new { @type = "text", @class = "input full-width mask-number" })
-            </p>
-        </div>
-        <div class="new-row-mobile six-columns twelve-columns-mobile">
-            <p class="button-height block-label">
-                <label for="Website" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.Website)</small>
-                    @Html.DisplayNameFor(p => p.Website)
-                </label>
-                @Html.TextBoxFor(p => p.Website, new { @type = "text", @class = "input full-width" })
-            </p>
-            <p class="button-height block-label">
-                <label for="Email" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.Email)</small>
-                    @Html.DisplayNameFor(p => p.Email)
-                </label>
-                @Html.TextBoxFor(p => p.Email, new { @type = "text", @class = "input full-width" })
-            </p>
-            <p class="button-height block-label">
-                <label for="StoreFax" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.StoreFax)</small>
-                    @Html.DisplayNameFor(p => p.StoreFax)
-                </label>
-                @Html.TextBoxFor(p => p.StoreFax, new { @type = "text", @class = "input full-width mask-phone" })
-            </p>
+@(Html.Kendo().PanelBar()
+    .Name("panelbar")
+    .ExpandMode(PanelBarExpandMode.Single)
+    .Items(panelbar =>
+    {
+        panelbar.Add().Text("Thông tin nhà thuốc")
+            .Expanded(true)
+            .Content(@<div style="padding: 20px;">
+                <div class="columns">
+                    <div class="six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="StoreName" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.StoreName)</small>
+                                @Html.DisplayNameFor(p => p.StoreName)
+                            </label>
+                            <span class="input full-width">
+                                @Html.TextBoxFor(p => p.StoreName, new { @type = "text", @class = "input-unstyled full-width" })
+                                <span class="info-spot">
+                                    <span class="icon-info-round"></span>
+                                    <span class="info-bubble">Tên cửa hàng thuốc
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="StoreAddress" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.StoreAddress)</small>
+                                @Html.DisplayNameFor(p => p.StoreAddress)
+                            </label>
+                            @Html.TextBoxFor(p => p.StoreAddress, new { @type = "text", @class = "input full-width" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="StoreTelephone" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.StoreTelephone)</small>
+                                @Html.DisplayNameFor(p => p.StoreTelephone)
+                            </label>
+                            <span class="input full-width">
+                                @Html.TextBoxFor(p => p.StoreTelephone, new { @type = "text", @class = "input-unstyled full-width mask-phone" })
+                                <span class="info-spot">
+                                    <span class="icon-info-round"></span>
+                                    <span class="info-bubble">Số điện thoại di động
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="StoreTaxNo" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.StoreTaxNo)</small>
+                                @Html.DisplayNameFor(p => p.StoreTaxNo)
+                            </label>
+                            @Html.TextBoxFor(p => p.StoreTaxNo, new { @type = "text", @class = "input full-width mask-number" })
+                        </p>
+                    </div>
+                    <div class="new-row-mobile six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Website" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Website)</small>
+                                @Html.DisplayNameFor(p => p.Website)
+                            </label>
+                            @Html.TextBoxFor(p => p.Website, new { @type = "text", @class = "input full-width" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Email" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Email)</small>
+                                @Html.DisplayNameFor(p => p.Email)
+                            </label>
+                            @Html.TextBoxFor(p => p.Email, new { @type = "text", @class = "input full-width" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="StoreFax" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.StoreFax)</small>
+                                @Html.DisplayNameFor(p => p.StoreFax)
+                            </label>
+                            @Html.TextBoxFor(p => p.StoreFax, new { @type = "text", @class = "input full-width mask-phone" })
+                        </p>
 
-        </div>
-    </div>
-</fieldset>
+                    </div>
+                </div>
+            </div>);
+    })
+)

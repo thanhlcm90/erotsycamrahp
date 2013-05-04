@@ -15,25 +15,12 @@
       <Group>
         <Item Controller="" Text="Bán thuốc theo đơn bác sĩ" url="#"></Item>
         <Item Controller="" Text="Bán thuốc không theo đơn" url="#"></Item>
-        <Item Controller="" Text="Quán lý xuất hàng bán buôn" url="#"></Item>
+        <Item Controller="" Text="Quản lý xuất hàng bán buôn" url="#"></Item>
         <Item Controller="" Text="Nhập thuốc" url="#"></Item>
-        <Item  Controller="" Text="Xuất huỷ thuốc quá hạn, hư hỏng" url="#"></Item>
-        <Item  Controller="" Text="Xuất hàng chuyển kho" url="#"></Item>
-        <Item  Controller="" Text="Tạo đơn đặt hàng" url="#"></Item>
-        <Item  Controller="" Text="Lập dự trù thuốc" url="#"></Item>
         <Item  Controller="" Text="Cài đặt tương tác thuốc" url="#"></Item>
         <Item  Controller="" Text="Quản lý hoá đơn xuất - nhập thuốc" url="#"></Item>
         <Item  Controller="" Text="Theo dõi hàng hoá sắp hết hạn sử dụng" url="#"></Item>
         <Item  Controller="" Text="Theo dõi hàng hoá sắp hết số lượng tối thiểu" url="#"></Item>
-        <Item  Controller="" Text="Quản lý hàng tồn kho" url="#"></Item>
-        <Item  Controller="" Text="Quản lý thẻ kho" url="#"></Item>
-        <Item  Controller="" Text="Quản lý Xuất - Nhập - Tồn" url="#"></Item>
-        <Item  Controller="" Text="Quản lý giá niêm yết" url="#"></Item>
-        <Item  Controller="" Text="Quản lý biến động giá" url="#"></Item>
-        <Item  Controller="" Text="Cập nhật số dư công nợ" url="#"></Item>
-        <Item  Controller="" Text="Quản lý công nợ" url="#"></Item>
-        <Item  Controller="" Text="Quản lý phiếu thu - Thu tiền" url="#"></Item>
-        <Item  Controller="" Text="Quản lý chi tiền -  Phiếu chi" url="#"></Item>
       </Group>
     </Item>
     <Item Text="Danh mục">
@@ -41,17 +28,15 @@
         <Item  Controller="DrugGroup" Text="Danh mục nhóm thuốc, vật tư" url="#"></Item>
         <Item  Controller="Element" Text="Danh mục hoạt chất" url="#"></Item>
         <Item  Controller="" Text="Danh mục thuốc vật tư" url="#"></Item>
-        <Item  Controller="" Text="Danh mục thuốc - liều dùng" url="#"></Item>
         <Item  Controller="" Text="Danh mục bệnh" url="#"></Item>
         <Item  Controller="" Text="Danh mục Bệnh - Đơn thuốc" url="#"></Item>
         <Item  Controller="" Text="Danh mục nhóm khách hàng" url="#"></Item>
         <Item  Controller="" Text="Danh mục khách hàng" url="#"></Item>
         <Item  Controller="Doctor" Text="Danh mục bác sĩ" url="#"></Item>
         <Item  Controller="" Text="Danh mục nguồn gốc xuất xứ" url="#"></Item>
-        <Item  Controller="" Text="Danh mục Nhà sản xuất" url="#"></Item>
         <Item  Controller="" Text="Danh mục Nhà cung cấp" url="#"></Item>
-        <Item  Controller="" Text="Danh mục kho hàng" url="#"></Item>
         <Item  Controller="" Text="Danh mục đơn vị tính" url="#"></Item>
+        <Item  Controller="" Text="Danh mục cách bảo quản" url="#"></Item>
       </Group>
     </Item>
     <Item Text="Báo cáo">
