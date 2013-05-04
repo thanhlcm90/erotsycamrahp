@@ -498,8 +498,12 @@
         <orm:field name="_name" property="Name" behavior="readwrite" uniqueId="16fb6c72-370e-4dc7-8c72-44e1b57eeb26" type="System.String">
           <orm:column name="Name" sql-type="nvarchar" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
-        <orm:field name="_description" property="Description" uniqueId="c2e34f05-e252-4637-8099-75cba8328053" type="System.String" />
-        <orm:field name="_actflg" property="Actflg" uniqueId="20e53256-fbbb-4e13-ad92-600da333b7d9" type="System.Char" />
+        <orm:field name="_description" property="Description" uniqueId="c2e34f05-e252-4637-8099-75cba8328053" type="System.String">
+          <orm:column nullable="true" length="255" name="Description" scale="0" sql-type="nvarchar" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="_actflg" property="Actflg" uniqueId="20e53256-fbbb-4e13-ad92-600da333b7d9" type="System.Char">
+          <orm:column nullable="false" length="1" name="Actflg" scale="0" sql-type="char" ado-type="Character" />
+        </orm:field>
         <orm:field name="_lS_PRESCRIPTIONs" property="LS_PRESCRIPTIONs" behavior="readwrite" uniqueId="1de6aeb8-9d37-41af-a200-50e0b89efed8" type="PharmacyStore.Models.LS_PRESCRIPTION">
           <orm:collection element-class="PharmacyStore.Models.LS_PRESCRIPTION" inverse-field="_lS_DISEASE" order-by="" uniqueId="1d24cdf4-bf67-4d04-8d57-f0491ac2be39" />
         </orm:field>
@@ -801,6 +805,8 @@
       <orm:table name="LS_DISEASE">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="Name" sql-type="nvarchar" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
+        <orm:column nullable="true" length="255" name="Description" scale="0" sql-type="nvarchar" ado-type="StringVariableLength" />
+        <orm:column nullable="false" length="1" name="Actflg" scale="0" sql-type="char" ado-type="Character" />
       </orm:table>
       <orm:table name="LS_CUSTOMER_GROUP">
         <orm:column name="Id" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
