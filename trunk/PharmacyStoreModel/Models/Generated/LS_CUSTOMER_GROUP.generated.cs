@@ -90,6 +90,19 @@ namespace PharmacyStore.Models
 		    }
 		}
 		
+		private Char _actflg;
+		public virtual Char Actflg 
+		{ 
+		    get
+		    {
+		        return this._actflg;
+		    }
+		    set
+		    {
+		        this._actflg = value;
+		    }
+		}
+		
 		private IList<LS_CUSTOMER> _lS_CUSTOMERs = new List<LS_CUSTOMER>();
 		public virtual IList<LS_CUSTOMER> LS_CUSTOMERs 
 		{ 
