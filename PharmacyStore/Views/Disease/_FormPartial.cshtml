@@ -1,0 +1,31 @@
+﻿@model PharmacyStore.Models.LS_DISEASE
+
+@Html.HiddenFor(p => p.Id, new { data_bind = "value: Id" })
+@(Html.Kendo().PanelBar()
+    .Name("panelbar")
+    .ExpandMode(PanelBarExpandMode.Single)
+    .Items(panelbar =>
+    {
+        panelbar.Add().Text("Thông tin bệnh")
+            .Expanded(true)
+            .Content(@<div style="padding: 20px;">
+                <div class="columns">
+                    <div class="six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Fullname" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Name)</small>
+                                @Html.DisplayNameFor(p => p.Name)
+                            </label>
+                            @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Address" class="label">
+                                @Html.DisplayNameFor(p => p.Description)
+                            </label>
+                            @Html.TextBoxFor(p => p.Description, new { @type = "text", @class = "input full-width", data_bind = "value: Description" })
+                        </p>
+                    </div>
+                </div>
+            </div>);
+    })
+)

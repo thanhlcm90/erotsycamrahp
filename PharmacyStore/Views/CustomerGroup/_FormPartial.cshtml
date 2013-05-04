@@ -1,0 +1,49 @@
+﻿@model PharmacyStore.Models.LS_CUSTOMER_GROUP
+
+@Html.HiddenFor(p => p.Id, new { data_bind = "value: Id" })
+
+@(Html.Kendo().PanelBar()
+    .Name("panelbar")
+    .ExpandMode(PanelBarExpandMode.Single)
+    .Items(panelbar =>
+    {
+        panelbar.Add().Text("Thông tin nhóm khách hàng")
+            .Expanded(true)
+            .Content(@<div style="padding: 20px;">
+                <div class="columns">
+                    <div class="six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Fullname" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Name)</small>
+                                @Html.DisplayNameFor(p => p.Name)
+                            </label>
+                            @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Address" class="label">
+                                @Html.DisplayNameFor(p => p.InDiscount)
+                            </label>
+                            @Html.TextBoxFor(p => p.InDiscount, new { @type = "text", @class = "input full-width", data_bind = "value: InDiscount" })
+                        </p>
+                    </div>
+                    <div class="new-row-mobile six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Mobile" class="label">
+                                @Html.DisplayNameFor(p => p.OutDiscount)
+                            </label>
+                            @Html.TextBoxFor(p => p.OutDiscount, new { @type = "text", @class = "input full-width mask-phone", data_bind = "value: OutDiscount" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Hospital" class="label">
+                                @Html.DisplayNameFor(p => p.Note)
+                            </label>
+                            <span class="input full-width">
+                                @Html.TextBoxFor(p => p.Note, new { @type = "text", @class = "input-unstyled full-width", data_bind = "value: Note" })
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>);
+    })
+)
+

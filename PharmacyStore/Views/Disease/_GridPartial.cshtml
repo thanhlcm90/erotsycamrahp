@@ -1,0 +1,86 @@
+﻿@(Html.Kendo().Grid<PharmacyStore.Models.LS_DISEASE>()
+    .Name("Grid")
+    .Columns(col =>
+    {
+        col.Bound(p => p.Name);
+        col.Bound(p => p.Description);
+        col.Bound(p => p.Actflg)
+            .HeaderHtmlAttributes(new { @style = "text-align:center;" })
+            .HtmlAttributes(new { @style = "text-align:center;" })
+            .Width(100);
+    })
+    .Pageable(p => p
+        .PageSizes(true)
+        .Refresh(true)
+        .Messages(m => m
+            .Empty("Không có dữ liệu.")
+            .First("Trang đầu")
+            .ItemsPerPage("Bản ghi")
+            .Last("Trang cuối")
+            .Next("Trang tiếp")
+            .Previous("Trang trước")
+            .Of("Trong tổng {0}")
+            .Page("Trang")
+            .Display("Tổng số bản ghi: {2}")))
+    .Sortable()
+    .Scrollable()
+    .Filterable(p => p
+        .Extra(false)
+        .Messages(msg => msg
+            .Filter("Lọc")
+            .Clear("Tất cả")
+            .And("Và")
+            .Or("Hoặc")
+            .Info("Lọc dữ liệu"))
+        .Operators(o => o
+            .ForString(str => str
+                .Clear()
+                .Contains("Chứa")
+                .DoesNotContain("Không chứa"))
+            .ForDate(d => d
+                .Clear()
+                .IsEqualTo("=")
+                .IsGreaterThan(">")
+                .IsGreaterThanOrEqualTo(">=")
+                .IsLessThan("<")
+                .IsLessThanOrEqualTo("<=")
+                .IsNotEqualTo("<>"))
+            .ForNumber(n => n
+                .Clear()
+                .IsEqualTo("=")
+                .IsGreaterThan(">")
+                .IsGreaterThanOrEqualTo(">=")
+                .IsLessThan("<")
+                .IsLessThanOrEqualTo("<=")
+                .IsNotEqualTo("<>"))))
+    .Resizable(p => p.Columns(true))
+    .Reorderable(p => p.Columns(true))
+    .Selectable(p => p.Mode(GridSelectionMode.Single))
+    .Events(e => e.DataBound("onDataBound").Change("onSelectedChange"))
+    .DataSource(datasource => datasource
+        .Ajax()
+        .PageSize(10)
+        .Model(model => model.Id(p => p.Id))
+        .Read(read => read.Action("GetList", "Disease"))
+    )
+)
+
+<script>
+    // Khai báo MVVM để field dữ liệu từ Grid khi select row
+    var vm = kendo.observable({
+        Id: null,
+        Name: null,
+        Description: null,
+    });
+
+    kendo.bind($('#FormEdit'), vm);
+
+    // Hàm sự kiện row selected, KHÔNG THAY ĐỔI TÊN HÀM
+    function OnGridSelectedChange(selectedItem) {
+        // Thay đổi MVVM dự vào dữ liệu các cột của row được select
+        vm.set("Id", selectedItem.Id);
+        vm.set("Name", selectedItem.Name);
+        vm.set("Description", selectedItem.Description);
+    }
+
+</script>
