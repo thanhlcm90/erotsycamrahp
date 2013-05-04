@@ -51,6 +51,32 @@ namespace PharmacyStore.Models
 		    }
 		}
 		
+		private string _description;
+		public virtual string Description 
+		{ 
+		    get
+		    {
+		        return this._description;
+		    }
+		    set
+		    {
+		        this._description = value;
+		    }
+		}
+		
+		private Char _actflg;
+		public virtual Char Actflg 
+		{ 
+		    get
+		    {
+		        return this._actflg;
+		    }
+		    set
+		    {
+		        this._actflg = value;
+		    }
+		}
+		
 		private IList<LS_PRESCRIPTION> _lS_PRESCRIPTIONs = new List<LS_PRESCRIPTION>();
 		public virtual IList<LS_PRESCRIPTION> LS_PRESCRIPTIONs 
 		{ 
