@@ -498,6 +498,8 @@
         <orm:field name="_name" property="Name" behavior="readwrite" uniqueId="16fb6c72-370e-4dc7-8c72-44e1b57eeb26" type="System.String">
           <orm:column name="Name" sql-type="nvarchar" nullable="false" length="50" scale="0" ado-type="UnicodeStringVariableLength" />
         </orm:field>
+        <orm:field name="_description" property="Description" uniqueId="c2e34f05-e252-4637-8099-75cba8328053" type="System.String" />
+        <orm:field name="_actflg" property="Actflg" uniqueId="20e53256-fbbb-4e13-ad92-600da333b7d9" type="System.Char" />
         <orm:field name="_lS_PRESCRIPTIONs" property="LS_PRESCRIPTIONs" behavior="readwrite" uniqueId="1de6aeb8-9d37-41af-a200-50e0b89efed8" type="PharmacyStore.Models.LS_PRESCRIPTION">
           <orm:collection element-class="PharmacyStore.Models.LS_PRESCRIPTION" inverse-field="_lS_DISEASE" order-by="" uniqueId="1d24cdf4-bf67-4d04-8d57-f0491ac2be39" />
         </orm:field>
@@ -524,6 +526,7 @@
         <orm:field name="_note" property="Note" behavior="readwrite" uniqueId="bd8f17c4-9cdb-456b-8d53-fb323a64aeff" type="System.String">
           <orm:column name="Note" sql-type="nvarchar(max)" nullable="true" length="0" scale="0" ado-type="UnicodeStringInfiniteLength" />
         </orm:field>
+        <orm:field name="_actflg" property="Actflg" uniqueId="47dc9bf4-ffad-4ed2-9be9-797453a34d47" type="System.Char" />
         <orm:field name="_lS_CUSTOMERs" property="LS_CUSTOMERs" behavior="readwrite" uniqueId="c851c7cb-aa5e-4863-b130-4ac309951b22" type="PharmacyStore.Models.LS_CUSTOMER">
           <orm:collection element-class="PharmacyStore.Models.LS_CUSTOMER" inverse-field="_lS_CUSTOMER_GROUP" order-by="" uniqueId="e54cb108-2359-4841-aab0-ccaf6f7a4496" />
         </orm:field>
@@ -861,7 +864,12 @@
       <OutputPath>Models\Generated\</OutputPath>
       <MappingDefinitionType>Xml</MappingDefinitionType>
     </CodeGenerationSettings>
-    <SchemaUpdateSettings />
+    <SchemaUpdateSettings>
+      <AppendDateTimeStamp>false</AppendDateTimeStamp>
+      <ExecuteScript>true</ExecuteScript>
+      <DeploymentProject>PharmacyStoreModel</DeploymentProject>
+      <UpdateDatabaseOperation>Migrate</UpdateDatabaseOperation>
+    </SchemaUpdateSettings>
     <BackendConfigurationSettings>
       <BackendConfiguration>
         <Backend>MsSql</Backend>
@@ -1224,6 +1232,8 @@
     <DomainClass Id="0c79fc23-b8ec-42e4-9998-fe7e73f9aaf7" name="LS_DISEASE" namespace="PharmacyStore.Models" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
       <Property Id="6c26ee21-7ebf-4716-9c17-ccf91383eb14" name="Id" type="Int32" label="Id : Int32" kind="Persistent" identity="true" fieldName="_id" />
       <Property Id="16fb6c72-370e-4dc7-8c72-44e1b57eeb26" name="Name" label="Name : String" kind="Persistent" fieldName="_name" />
+      <Property Id="c2e34f05-e252-4637-8099-75cba8328053" name="Description" label="Description : String" nullable="true" fieldName="_description" />
+      <Property Id="20e53256-fbbb-4e13-ad92-600da333b7d9" name="Actflg" type="Char" label="Actflg : Char" fieldName="_actflg" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="9c13fd8a-0b03-4c7e-89fb-4b126f9ee4cc">
           <NavigationalProperty Id="1de6aeb8-9d37-41af-a200-50e0b89efed8" name="LS_PRESCRIPTIONs" type="IList&lt;LS_PRESCRIPTION&gt;" label="LS_PRESCRIPTIONs : IList&lt;LS_PRESCRIPTION&gt;" nullable="true" kind="Persistent" fieldName="_lS_PRESCRIPTIONs" isDependent="false" isManaged="false" />
@@ -1236,6 +1246,7 @@
       <Property Id="aa6a63c9-7da8-4c67-939d-1b4bacf57441" name="Name" label="Name : String" kind="Persistent" fieldName="_name" />
       <Property Id="bd8f17c4-9cdb-456b-8d53-fb323a64aeff" name="Note" label="Note : String" kind="Persistent" fieldName="_note" />
       <Property Id="b8340476-a188-4330-91c9-5208a883370a" name="OutDiscount" type="Int32" label="OutDiscount : Int32" nullable="true" kind="Persistent" fieldName="_outDiscount" />
+      <Property Id="47dc9bf4-ffad-4ed2-9be9-797453a34d47" name="Actflg" type="Char" label="Actflg : Char" fieldName="_actflg" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="dfac2c9b-2c26-4749-823e-a3ac6a79ab46">
           <NavigationalProperty Id="c851c7cb-aa5e-4863-b130-4ac309951b22" name="LS_CUSTOMERs" type="IList&lt;LS_CUSTOMER&gt;" label="LS_CUSTOMERs : IList&lt;LS_CUSTOMER&gt;" nullable="true" kind="Persistent" fieldName="_lS_CUSTOMERs" isDependent="false" isManaged="false" />
