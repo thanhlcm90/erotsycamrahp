@@ -260,6 +260,8 @@
 		$(".mask-number").inputmask("9", { repeat: 255, greedy: false });
 		// Định dạng tất cả input Money thàng Masked
 		$(".mask-money").inputmask("integer", { autoGroup: true, groupSeparator: ",", groupSize: 3, autoUnmask: true });
+	    // Định dạng tất cả input Percent thàng Masked
+		$(".mask-percent").inputmask("999%", { autoUnmask: true, placeholder: " " });
 		$(":input").each(function () {
 			var max = $(this).attr('data-val-length-max');
 			if (max != null && max != '') {
