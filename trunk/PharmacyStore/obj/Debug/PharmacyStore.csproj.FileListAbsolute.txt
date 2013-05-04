@@ -39,7 +39,6 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.Razor.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Deployment.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\System.Web.WebPages.Razor.xml
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.35.Extensions.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.Data.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Microsoft.Web.WebPages.OAuth.xml
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\WebMatrix.WebData.xml
@@ -65,5 +64,3 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.pdb
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Elmah.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\TugberkUg.MVC.dll
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.dll
-D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.xml
