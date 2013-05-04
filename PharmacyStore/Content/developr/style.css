@@ -5590,3 +5590,7 @@ a:link {
 .toolbaritem-text, .toolbaritem-text1 {
     display:inline;
 }
+
+#FormEdit {
+    margin-bottom:10px;
+}

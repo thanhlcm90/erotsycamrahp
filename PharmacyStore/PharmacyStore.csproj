@@ -339,7 +339,9 @@
     <Content Include="Content\kendo\2012.3.1114\Uniform\slider-h.gif" />
     <Content Include="Content\kendo\2012.3.1114\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2012.3.1114\Uniform\sprite.png" />
-    <Content Include="App_Data\Menu.xml" />
+    <Content Include="App_Data\Menu.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.ttf" />
     <Content Include="Content\kendo\2012.3.1114\images\KendoUI.woff" />
@@ -1638,7 +1640,9 @@
     <Content Include="Views\Element\_GridPartial.cshtml" />
     <Content Include="Views\Element\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Drug\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

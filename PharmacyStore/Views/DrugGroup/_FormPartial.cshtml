@@ -1,17 +1,27 @@
 ﻿@model PharmacyStore.Models.LS_DRUG_GROUP
 
 @Html.HiddenFor(p => p.Id, new { data_bind = "value: Id" })
-<fieldset class="fieldset margin-bottom">
-    <legend class="legend">Thông tin</legend>
-    <div class="columns">
-        <div class="six-columns twelve-columns-mobile">
-            <p class="button-height block-label">
-                <label for="Name" class="label">
-                    <small>@Html.ValidationMessageFor(p => p.Name)</small>
-                    @Html.DisplayNameFor(p => p.Name)
-                </label>
-                @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
-            </p>
-        </div>
-    </div>
-</fieldset>
+
+@(Html.Kendo().PanelBar()
+    .Name("panelbar")
+    .ExpandMode(PanelBarExpandMode.Single)
+    .Items(panelbar =>
+    {
+        panelbar.Add().Text("Thông tin nhóm thuốc, vật tư")
+            .Expanded(true)
+            .Content(@<div style="padding: 20px;">
+                <div class="columns">
+                    <div class="six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Name" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Name)</small>
+                                @Html.DisplayNameFor(p => p.Name)
+                            </label>
+                            @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
+                        </p>
+                    </div>
+                </div>
+            </div>);
+    })
+)
+

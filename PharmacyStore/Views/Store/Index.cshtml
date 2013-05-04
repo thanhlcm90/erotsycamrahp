@@ -1,8 +1,6 @@
 ﻿@model PharmacyStore.Models.SY_STORE
 
 @{
-    // Đặt title cho View
-    ViewBag.Title = "Thông tin tiệm thuốc";
     Layout = null;  
 }
 
@@ -18,6 +16,8 @@ Render Partial vào 1 thẻ div*@
 <script>
     //Trạng thái của View, tham khảo trong CommonMessage
     var formState;
+    // Gán tiêu đề View
+    ViewTitle("Thông tin tiệm thuốc");
 
     $(document).ready(function () {
         // Mặc định Disable tất cả Control

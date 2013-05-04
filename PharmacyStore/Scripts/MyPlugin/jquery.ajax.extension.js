@@ -510,6 +510,9 @@
 			}
 		}
 	});
+
+	window.ToolbarCommand = function (command) { }
+
 	// Listen to hash changes
 	win.hashchange(function (event) {
 		var hash = $.trim(window.location.hash || '');
@@ -581,70 +584,81 @@
 
 
 	window.onDataBound = function (arg) {
-		// Sự kiện DataBound, kiểm tra xem số lượng Item. Nếu không có dữ liệu nào trong danh sách thì Disable các ToolbarItem khác ngoài Create
-		var itemCount = this.dataSource.total();
+		try {
+			// Sự kiện DataBound, kiểm tra xem số lượng Item. Nếu không có dữ liệu nào trong danh sách thì Disable các ToolbarItem khác ngoài Create
+			var itemCount = this.dataSource.total();
 
-		var grid = this;
+			var grid = this;
 
-		// Nếu không có row nào được select thì Disable các ToolbarItem trừ Create
-		if (this.select().length == 0) {
-			DisableAllToolbarItemExpectCreate(true);
-		} else {
-			DisableAllToolbarItemExpectCreate(itemCount == 0);
-		}
-
-		// Select lại item vừa chọn lấy từ Hidden field Id
-		// Kiểm tra trạng thái form, nếu trạng thái New/Edit thì bỏ qua bước select này
-		var command = getURLParameters("state");
-		var IdParam = getURLParameters("Id");
-		if (command == null || command == 'Edit') {
-			//var id = $("#Id").val();
-			if (IdParam != null && IdParam != '') {
-				var IdParams = IdParam.split('-');
-				var id = IdParams[0];
-				var dataItem = grid.dataSource.get(id);
-				if (dataItem != null) {
-					var row = grid.tbody.find("tr[data-uid='" + dataItem.uid + "']");
-					grid.select(row);
-				} else {
-					// Nếu không tìm thấy Row với id thì chọn đổi Page, chọn lại
-				    var page = IdParams[1];
-				    var pageSize = IdParams[2];
-				    if (firstload) {
-				        grid.dataSource.pageSize(pageSize);
-					    grid.dataSource.page(page);
-					} else {
-						var row = grid.tbody.find("tr:first");
-						grid.select(row);
-					}
-					firstload = false;
-				}
+			// Nếu không có row nào được select thì Disable các ToolbarItem trừ Create
+			if (this.select().length == 0) {
+				DisableAllToolbarItemExpectCreate(true);
 			} else {
-				// Nếu Id rỗng (thao tác xóa, hoặc lần đầu tiên load View) thì chọn lại Row đầu tiên
-				var row = grid.tbody.find("tr:first");
-				grid.select(row);
+				DisableAllToolbarItemExpectCreate(itemCount == 0);
 			}
-		}
+
+			// Select lại item vừa chọn lấy từ Hidden field Id
+			// Kiểm tra trạng thái form, nếu trạng thái New/Edit thì bỏ qua bước select này
+			var command = getURLParameters("state");
+			var IdParam = getURLParameters("Id");
+			if (command == null || command == 'Edit') {
+				//var id = $("#Id").val();
+				if (IdParam != null && IdParam != '') {
+					var IdParams = IdParam.split('-');
+					var id = IdParams[0];
+					var dataItem = grid.dataSource.get(id);
+					if (dataItem != null) {
+						var row = grid.tbody.find("tr[data-uid='" + dataItem.uid + "']");
+						grid.select(row);
+					} else {
+						// Nếu không tìm thấy Row với id thì chọn đổi Page, chọn lại
+						var page = IdParams[1];
+						var pageSize = IdParams[2];
+						if (firstload) {
+							grid.dataSource.pageSize(pageSize);
+							grid.dataSource.page(page);
+						} else {
+							var row = grid.tbody.find("tr:first");
+							grid.select(row);
+						}
+						firstload = false;
+					}
+				} else {
+					// Nếu Id rỗng (thao tác xóa, hoặc lần đầu tiên load View) thì chọn lại Row đầu tiên
+					var row = grid.tbody.find("tr:first");
+					grid.select(row);
+				}
+			}
+		} catch (ex) { }
 	}
 
 	window.onSelectedChange = function (arg) {
-	    var grid = $("#Grid").data("kendoGrid");
-	    // Lấy row được select và set cho MVVM
-	    var selectedItem = grid.dataItem(grid.select());
-	    if (selectedItem != null) {
-	        var id = '';
-	        id = selectedItem.Id;
-	        var gridPage = grid.dataSource.page();
-	        var gridPageSize = grid.dataSource.pageSize();
-	        id += '-' + gridPage + '-' + gridPageSize;
-	        ChangeUrlHash(addURLHashParameters("Id", id));
-	        OnGridSelectedChange(selectedItem);
+		try {
+			var grid = $("#Grid").data("kendoGrid");
+			if (grid == null) return;
+			if (grid.select() == null) return;
+			// Lấy row được select và set cho MVVM
+			var selectedItem = grid.dataItem(grid.select());
+			if (selectedItem != null) {
+				var id = '';
+				id = selectedItem.Id;
+				var gridPage = grid.dataSource.page();
+				var gridPageSize = grid.dataSource.pageSize();
+				id += '-' + gridPage + '-' + gridPageSize;
+				ChangeUrlHash(addURLHashParameters("Id", id));
+				OnGridSelectedChange(selectedItem);
 
-	        // Format các Mask Input
-	        FormatMaskedInput();
-	    }
-	    // Enable toàn  bộ ToolbarItem
-	    DisableAllToolbarItemExpectCreate(false);
+				// Format các Mask Input
+				FormatMaskedInput();
+			}
+			// Enable toàn  bộ ToolbarItem
+			DisableAllToolbarItemExpectCreate(false);
+		} catch (ex) { }
+	}
+
+	window.ViewTitle = function (str) {
+		$(".ViewTitle").html(str);
+		document.title = str;
 	}
 
 })(this.jQuery, window, document);

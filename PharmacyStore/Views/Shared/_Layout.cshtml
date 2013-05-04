@@ -106,10 +106,11 @@
     <section role="main" id="main">
 
         <!-- Visible only to browsers without javascript -->
-        <noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
-        <hgroup id="main-title" class="thin hidden-on-mobile">
+        <noscript class="message black-gradient simpler">Trình duyệt của bạn không hỗ trợ Javascript! Hệ thống sẽ vận hành không chính xác, bạn hãy thay đổi trình duyệt hoặc bật tính năng hỗ trợ Javascript lên...</noscript>
+        @*<hgroup id="main-title" class="thin hidden-on-mobile">
             <h1><span class="ViewTitle"></span></h1>
-        </hgroup>
+        </hgroup>*@
+        <div style="margin-bottom:30px;" class="only-on-mobile"></div>
 
         @using (Html.BeginForm())
         { 
@@ -141,6 +142,7 @@
 
     <script type="text/javascript">
 
+        ViewTitle("Trang chủ");
         $("form").submit(function (event) {
             console.log(event);
             event.preventDefault();

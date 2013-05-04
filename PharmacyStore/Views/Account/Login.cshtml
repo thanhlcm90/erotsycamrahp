@@ -36,10 +36,10 @@
 	@Bundles.RenderFormat("~/Content/developr/1200", BundlesFormats.RES1200)
 	<!-- For Retina displays -->
 	@Bundles.RenderFormat("~/Content/developr/resolutionRetina", BundlesFormats.RETINA)
-	
+
 	<!-- Login pages styles -->
 	@Bundles.RenderFormat("~/Content/developr/loginstylemedia", BundlesFormats.SCREEN)
-	
+
 	<!-- Webfonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
@@ -76,7 +76,7 @@
 	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
 	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
 	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
-	
+
 	<!-- jQuery -->
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/jquery-ba-hashchange")
@@ -103,7 +103,7 @@
 						</ul>
 						<p class="button-height">
 							<button type="submit" class="button glossy float-right" id="login">Đăng nhập</button>
-							@Html.CheckBoxFor(m => m.RememberMe, new {  @class = "switch tiny mid-margin-right with-tooltip", @title = "Tự động đăng nhập" })
+							@Html.CheckBoxFor(m => m.RememberMe, new { @class = "switch tiny mid-margin-right with-tooltip", @title = "Tự động đăng nhập" })
 							<label for="remind">Ghi nhớ</label>
 						</p>
 					</form>
@@ -115,7 +115,8 @@
 						</p>
 
 						<ul class="inputs black-input large">
-							<li><span class="icon-mail mid-margin-right"></span><input type="email" name="mail" id="mail" value="" class="input-unstyled" placeholder="Địa chỉ Email của bạn" autocomplete="off"></li>
+							<li><span class="icon-mail mid-margin-right"></span>
+								<input type="email" name="mail" id="mail" value="" class="input-unstyled" placeholder="Địa chỉ Email của bạn" autocomplete="off"></li>
 						</ul>
 
 						<button type="submit" class="button glossy full-width" id="send-password">Gửi yêu cầu</button>
@@ -227,7 +228,8 @@
 			forms.each(function (i) {
 				var form = $(this),
 					height = form.outerHeight(),
-					active = (hash === false && i === 0) || (hash === this.id),
+					//active = (hash === false && i === 0) || (hash === this.id),
+					active = (i===0),
 					color = this.className.match(/[a-z]+-gradient/) ? ' ' + (/([a-z]+)-gradient/.exec(this.className)[1]) + '-active' : '';
 
 				// Store size
@@ -245,7 +247,6 @@
 
 				// Remove title to prevent tooltip from showing - thanks efreed :)
 				this.title = '';
-
 				// If active
 				if (active) {
 					// Store
@@ -261,6 +262,7 @@
 			});
 
 			// Main bloc height (without form height)
+
 			blocHeight = formBlock.height() - currentForm.data('height');
 
 			// Handle resizing (mostly for debugging)
