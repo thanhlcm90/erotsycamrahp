@@ -64,3 +64,6 @@ D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\obj\Debug\PharmacyStore.pdb
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Elmah.dll
 D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\TugberkUg.MVC.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.35.Extensions.xml
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.dll
+D:\Visual Basic .NET\PharmacyStore\PharmacyStore\bin\Telerik.OpenAccess.xml
