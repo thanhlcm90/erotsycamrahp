@@ -1,0 +1,47 @@
+﻿@model PharmacyStore.Models.LS_CUSTOMER
+
+@Html.HiddenFor(p => p.Id, new { data_bind = "value: Id" })
+
+@(Html.Kendo().PanelBar()
+    .Name("panelbar")
+    .ExpandMode(PanelBarExpandMode.Single)
+    .Items(panelbar =>
+    {
+        panelbar.Add().Text("Thông tin khách hàng")
+            .Expanded(true)
+            .Content(@<div style="padding: 20px;">
+                <div class="columns">
+                    <div class="six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Name" class="label">
+                                <small>@Html.ValidationMessageFor(p => p.Name)</small>
+                                @Html.DisplayNameFor(p => p.Name)
+                            </label>
+                            @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Mobile" class="label">
+                                @Html.DisplayNameFor(p => p.Mobile)
+                            </label>
+                            @Html.TextBoxFor(p => p.Mobile, new { @type = "text", @class = "input full-width", data_bind = "value: Mobile" })
+                        </p>
+                    </div>
+                    <div class="new-row-mobile six-columns twelve-columns-mobile">
+                        <p class="button-height block-label">
+                            <label for="Email" class="label">
+                                @Html.DisplayNameFor(p => p.Email)
+                            </label>
+                            @Html.TextBoxFor(p => p.Email, new { @type = "text", @class = "input full-width", data_bind = "value: Email" })
+                        </p>
+                        <p class="button-height block-label">
+                            <label for="Email" class="label">
+                                @Html.DisplayNameFor(p => p.Email)
+                            </label>
+                            @Html.TextBoxFor(p => p.Email, new { @type = "text", @class = "input full-width", data_bind = "value: Email" })
+                        </p>
+                    </div>
+                </div>
+            </div>);
+    })
+)
+

@@ -20,18 +20,32 @@
                             @Html.TextBoxFor(p => p.Name, new { @type = "text", @class = "input full-width", data_bind = "value: Name" })
                         </p>
                         <p class="button-height block-label">
-                            <label for="Address" class="label">
+                            <label for="InDiscount" class="label">
                                 @Html.DisplayNameFor(p => p.InDiscount)
                             </label>
-                            @Html.TextBoxFor(p => p.InDiscount, new { @type = "text", @class = "input full-width", data_bind = "value: InDiscount" })
+                            <span class="input full-width">
+                                @Html.TextBoxFor(p => p.InDiscount, new { @type = "text", @class = "input-unstyled full-width mask-percent", data_bind = "value: InDiscount" })
+                                <span class="info-spot">
+                                    <span class="icon-info-round"></span>
+                                    <span class="info-bubble">Phần trăm giảm giá khi nhập hàng
+                                    </span>
+                                </span>
+                            </span>
                         </p>
                     </div>
                     <div class="new-row-mobile six-columns twelve-columns-mobile">
                         <p class="button-height block-label">
-                            <label for="Mobile" class="label">
+                            <label for="InDiscount" class="label">
                                 @Html.DisplayNameFor(p => p.OutDiscount)
                             </label>
-                            @Html.TextBoxFor(p => p.OutDiscount, new { @type = "text", @class = "input full-width mask-phone", data_bind = "value: OutDiscount" })
+                            <span class="input full-width">
+                                @Html.TextBoxFor(p => p.OutDiscount, new { @type = "text", @class = "input-unstyled full-width mask-percent", data_bind = "value: OutDiscount" })
+                                <span class="info-spot">
+                                    <span class="icon-info-round"></span>
+                                    <span class="info-bubble">Phần trăm giảm giá khi xuất hàng
+                                    </span>
+                                </span>
+                            </span>
                         </p>
                         <p class="button-height block-label">
                             <label for="Hospital" class="label">
