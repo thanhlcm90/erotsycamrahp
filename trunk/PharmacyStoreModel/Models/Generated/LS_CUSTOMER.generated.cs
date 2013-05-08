@@ -142,16 +142,16 @@ namespace PharmacyStore.Models
 		    }
 		}
 		
-		private string _contractPerson;
-		public virtual string ContractPerson 
+		private string _contactPerson;
+		public virtual string ContactPerson 
 		{ 
 		    get
 		    {
-		        return this._contractPerson;
+		        return this._contactPerson;
 		    }
 		    set
 		    {
-		        this._contractPerson = value;
+		        this._contactPerson = value;
 		    }
 		}
 		
