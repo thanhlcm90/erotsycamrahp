@@ -28,10 +28,10 @@
         <Item  Controller="DrugGroup" Text="Danh mục nhóm thuốc, vật tư" url="#"></Item>
         <Item  Controller="Element" Text="Danh mục hoạt chất" url="#"></Item>
         <Item  Controller="" Text="Danh mục thuốc vật tư" url="#"></Item>
-        <Item  Controller="" Text="Danh mục bệnh" url="#"></Item>
+        <Item  Controller="Disease" Text="Danh mục bệnh" url="#"></Item>
         <Item  Controller="" Text="Danh mục Bệnh - Đơn thuốc" url="#"></Item>
-        <Item  Controller="" Text="Danh mục nhóm khách hàng" url="#"></Item>
-        <Item  Controller="" Text="Danh mục khách hàng" url="#"></Item>
+        <Item  Controller="CustomerGroup" Text="Danh mục nhóm khách hàng" url="#"></Item>
+        <Item  Controller="Customer" Text="Danh mục khách hàng" url="#"></Item>
         <Item  Controller="Doctor" Text="Danh mục bác sĩ" url="#"></Item>
         <Item  Controller="" Text="Danh mục nguồn gốc xuất xứ" url="#"></Item>
         <Item  Controller="" Text="Danh mục Nhà cung cấp" url="#"></Item>
