@@ -123,12 +123,12 @@
           <elementListCompartment Id="5ea68c77-ed7e-40a7-baba-88df46c97e3d" absoluteBounds="7.515, 21.932587890625, 1.9700000000000002, 0.44169108072916652" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
         </nestedChildShapes>
       </classShape>
-      <classShape Id="a257bcb8-ffdd-4830-ae02-1dcadbc4a935" absoluteBounds="5.25, 18.875, 1.5, 4.2626904296874955" fillColor="225, 249, 128, 67" outlineColor="213, 71, 0" textColor="White">
+      <classShape Id="a257bcb8-ffdd-4830-ae02-1dcadbc4a935" absoluteBounds="4.875, 18.875, 1.875, 4.2626904296874955" fillColor="225, 249, 128, 67" outlineColor="213, 71, 0" textColor="White">
         <DomainClassMoniker name="/PharmacyStoreModel/LS_CUSTOMER" />
         <nestedChildShapes>
-          <elementListCompartment Id="69176949-bc59-4dfa-a69a-e612fe149741" absoluteBounds="5.265, 19.384999999999998, 1.4700000000000002, 2.749308268229167" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-          <elementListCompartment Id="7e60432d-30f4-49e4-947d-5b37809d1bf0" absoluteBounds="5.265, 22.144308268229167, 1.4700000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
-          <elementListCompartment Id="8a7c9426-4102-40ff-be78-172c3f92252f" absoluteBounds="5.265, 22.403697916666665, 1.4700000000000002, 0.633992513020833" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="69176949-bc59-4dfa-a69a-e612fe149741" absoluteBounds="4.89, 19.385, 1.8450000000000002, 2.749308268229167" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="7e60432d-30f4-49e4-947d-5b37809d1bf0" absoluteBounds="4.89, 22.144308268229167, 1.8450000000000002, 0.2493896484375" name="ImplementationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+          <elementListCompartment Id="8a7c9426-4102-40ff-be78-172c3f92252f" absoluteBounds="4.89, 22.403697916666665, 1.8450000000000002, 0.633992513020833" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
         </nestedChildShapes>
       </classShape>
       <classShape Id="b3c13405-03c1-4a57-a30a-3765e0764f38" absoluteBounds="5.25, 16, 1.5, 2.1473746744791669" fillColor="225, 249, 128, 67" outlineColor="213, 71, 0" textColor="White">
@@ -171,7 +171,7 @@
           <classShapeMoniker Id="6991f245-9b6f-463d-8648-329912149685" />
         </nodes>
       </associationConnector>
-      <associationConnector edgePoints="[(4.5 : 3.16983805338542); (5.375 : 3.16983805338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <associationConnector edgePoints="[(4.5 : 3.16983805338542); (5.375 : 3.16983805338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         <AssociationMoniker Id="1d24cdf4-bf67-4d04-8d57-f0491ac2be39" />
         <relativeChildShapes />
         <nodes>
@@ -203,7 +203,7 @@
           <classShapeMoniker Id="b3c13405-03c1-4a57-a30a-3765e0764f38" />
         </nodes>
       </associationConnector>
-      <associationConnector edgePoints="[(3.75 : 17.9068147786458); (3.75 : 21.0063452148437); (5.25 : 21.0063452148437)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <associationConnector edgePoints="[(3.75 : 17.9068147786458); (3.75 : 21.0063452148437); (4.875 : 21.0063452148437)]" fixedFrom="Algorithm" fixedTo="Algorithm">
         <AssociationMoniker Id="5c2e418b-5d56-4741-8bb3-1a3de1831300" />
         <relativeChildShapes />
         <nodes>
@@ -219,7 +219,7 @@
           <classShapeMoniker Id="54d67529-4f82-4114-b5ef-1610d21fd46b" />
         </nodes>
       </associationConnector>
-      <associationConnector edgePoints="[(6.75 : 21.1121394856771); (7.5 : 21.1121394856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <associationConnector edgePoints="[(6.75 : 21.1121394856771); (7.5 : 21.1121394856771)]" fixedFrom="Algorithm" fixedTo="Algorithm">
         <AssociationMoniker Id="e54cb108-2359-4841-aab0-ccaf6f7a4496" />
         <relativeChildShapes />
         <nodes>

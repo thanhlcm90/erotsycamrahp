@@ -39,12 +39,19 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenAccess ORM\Telerik.OpenAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenAccess ORM\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonFunction.cs" />
+    <Compile Include="DataBusiness\List\Customer.cs" />
+    <Compile Include="DataBusiness\List\CustomerGroup.cs" />
+    <Compile Include="DataBusiness\List\Disease.cs" />
     <Compile Include="DataBusiness\List\Element.cs" />
     <Compile Include="DataBusiness\List\DrugGroup.cs" />
     <Compile Include="DataBusiness\List\Doctor.cs" />
@@ -75,6 +82,9 @@
     <Compile Include="Models\Generated\Webpages_Membership.generated.cs" />
     <Compile Include="Models\Generated\Webpages_OAuthMembership.generated.cs" />
     <Compile Include="Models\Generated\Webpages_Role.generated.cs" />
+    <Compile Include="Models\List\Customer.cs" />
+    <Compile Include="Models\List\CustomerGroup.cs" />
+    <Compile Include="Models\List\DiseaseModels.cs" />
     <Compile Include="Models\List\DrugModels.cs" />
     <Compile Include="Models\List\ElementModels.cs" />
     <Compile Include="Models\List\DrugGroupModels.cs" />
@@ -95,9 +105,6 @@
   <ItemGroup>
     <Folder Include="DataBusiness\Business\" />
     <Folder Include="Models\Business\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PharmacyStoreConnection.rlinq.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Condition="Exists('$(MSBuildExtensionsPath)\OpenAccess.targets')" Project="$(MSBuildExtensionsPath)\OpenAccess.targets" />
