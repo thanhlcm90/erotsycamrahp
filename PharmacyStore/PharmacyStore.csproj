@@ -113,9 +113,13 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.OpenAccess, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenAccess ORM\Telerik.OpenAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2013.1.219.3, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\OpenAccess ORM\Telerik.OpenAccess.35.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="TugberkUg.MVC">
       <HintPath>..\packages\TugberkUg.MVC.1.0.4356.29718\lib\net40\TugberkUg.MVC.dll</HintPath>
     </Reference>
@@ -174,6 +178,9 @@
     <Compile Include="CommonFunction.cs" />
     <Compile Include="CommonMessage.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomerGroupController.cs" />
+    <Compile Include="Controllers\DiseaseController.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DrugGroupController.cs" />
@@ -1639,6 +1646,15 @@
     <Content Include="Views\Element\_FormPartial.cshtml" />
     <Content Include="Views\Element\_GridPartial.cshtml" />
     <Content Include="Views\Element\Index.cshtml" />
+    <Content Include="Views\CustomerGroup\Index.cshtml" />
+    <Content Include="Views\CustomerGroup\_FormPartial.cshtml" />
+    <Content Include="Views\CustomerGroup\_GridPartial.cshtml" />
+    <Content Include="Views\Disease\Index.cshtml" />
+    <Content Include="Views\Disease\_FormPartial.cshtml" />
+    <Content Include="Views\Disease\_GridPartial.cshtml" />
+    <Content Include="Views\Customer\_FormPartial.cshtml" />
+    <Content Include="Views\Customer\_GridPartial.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Drug\" />
